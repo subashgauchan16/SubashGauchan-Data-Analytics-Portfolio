@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://subashgauchan16.github.io/SubashGauchan-Data-Analytics-Portfolio/sitemap.xml

@@ -3,7 +3,7 @@
 
 > A hands-on portfolio exploring business intelligence, sales and KPI analysis, market-entry research, operational improvement, AI workflow controls, and exploratory financial forecasting. Built through independent learning alongside a BSc (Hons) Applied Management degree, with project methods, findings, and limitations documented transparently.
 
-**Website:** [denilthaks.github.io/SubashtheAnalyst](https://denilthaks.github.io/SubashtheAnalyst/) · **Repository layout:** `site/` is the published website; `data/` holds the source workbooks, `docs/` the audit and reconciliation notes, `source/` the 3D chart build, and `reference/` archived earlier versions. Only `site/` is deployed.
+**Website:** [subashgauchan16.github.io/SubashGauchan-Data-Analytics-Portfolio](https://subashgauchan16.github.io/SubashGauchan-Data-Analytics-Portfolio/) · **Repository layout:** `site/` is the published website; `data/` holds the source workbooks, `docs/` the audit and reconciliation notes, `source/` the 3D chart build, and `reference/` archived earlier versions. Only `site/` is deployed.
 
 **Connect with me on LinkedIn:** [Subash Gauchan](https://www.linkedin.com/in/subash-gauchan16/)
 
@@ -11,7 +11,7 @@
   <img src="https://img.shields.io/badge/Portfolio-Analytics%20%26%20Business%20Insight-17365D?style=for-the-badge&logo=github" alt="Analytics and Business Insight Portfolio" />
   <a href="https://www.linkedin.com/in/subash-gauchan16/"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
   <a href="mailto:thakalidenil@gmail.com"><img src="https://img.shields.io/badge/Email-Contact-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
-  <a href="https://github.com/denilthaks"><img src="https://img.shields.io/badge/GitHub-Projects-181717?style=for-the-badge&logo=github" alt="GitHub" /></a>
+  <a href="https://github.com/subashgauchan16"><img src="https://img.shields.io/badge/GitHub-Projects-181717?style=for-the-badge&logo=github" alt="GitHub" /></a>
 </p>
 
 ---
@@ -119,7 +119,7 @@ gantt
 
 ## CurioTrail — A story-driven learning game
 
-**[▶ Play CurioTrail directly](https://denilthaks.github.io/CURIO/#/)** · [View the source code](https://github.com/denilthaks/CURIO)
+**[▶ Play CurioTrail directly](https://denilthaks.github.io/CURIO/#/)** · [View the source code](https://github.com/subashgauchan16/CURIO)
 
 *Best viewed on a modern browser; this prototype is still being iterated. A verified project screenshot will be added when one is available.*
 
@@ -394,7 +394,7 @@ This is an **exploratory prototype**, not a validated trading strategy. The repo
 
 **Conclusion:** The current evaluation does not demonstrate a reliable predictive edge or investment profitability. This project demonstrates an analytical workflow and critical model evaluation—not investment advice.
 
-**Full HTML report:** [Walk-Forward Forecast Review](https://denilthaks.github.io/SubashtheAnalyst/projects/forecasting/walk-forward-review.html) — the charts and key insights above are also visible directly in this README without opening the report.
+**Full HTML report:** [Walk-Forward Forecast Review](https://subashgauchan16.github.io/SubashGauchan-Data-Analytics-Portfolio/projects/forecasting/walk-forward-review.html) — the charts and key insights above are also visible directly in this README without opening the report.
 
 ## 5. Green Motion — Operations analysis and improvement proposal
 
@@ -486,7 +486,7 @@ I am particularly interested in opportunities where I can combine analytical ski
 
 - **Email:** [thakalidenil@gmail.com](mailto:thakalidenil@gmail.com)
 - **LinkedIn:** [linkedin.com/in/subash-gauchan16](https://www.linkedin.com/in/subash-gauchan16/)
-- **GitHub:** [github.com/denilthaks](https://github.com/denilthaks)
+- **GitHub:** [github.com/denilthaks](https://github.com/subashgauchan16)
 - **Location:** Woking, Surrey, United Kingdom
 
 ---
