@@ -54,7 +54,7 @@ My projects explore commercial performance, market-entry strategy, operational i
 
 I am largely self-taught, and AI-assisted development has become one of the ways I learn. I sometimes call it *vibe coding*, but I do not see the process as simply asking an AI tool to generate code and accepting whatever comes back. I start with a problem, explain the context, work through the logic, build a practical solution, and then test where it works and where it falls short.
 
-For example, I am building [CurioTrail](https://denilthaks.github.io/CURIO/#/), a story-driven learning game that turns concepts such as SQL, Python, Excel and KPI analysis into interactive challenges. I learn by experimenting with ideas and building things I can use to practise them. AI tools can accelerate implementation, but I remain responsible for checking the behaviour, understanding the decisions I can explain, and being clear about limitations.
+For example, I am building [CurioTrail](https://subashgauchan16.github.io/CURIO/), a story-driven learning game that turns concepts such as SQL, Python, Excel and KPI analysis into interactive challenges. I learn by experimenting with ideas and building things I can use to practise them. AI tools can accelerate implementation, but I remain responsible for checking the behaviour, understanding the decisions I can explain, and being clear about limitations.
 
 That approach connects with how I think about analysis: begin with a real problem, gather context, reason through possible solutions, test assumptions and improve the result. Analysts cannot prevent every business problem, but they can help identify risks earlier, investigate root causes and support better-informed decisions before issues become more costly.
 
@@ -119,7 +119,7 @@ gantt
 
 ## CurioTrail — A story-driven learning game
 
-**[▶ Play CurioTrail directly](https://denilthaks.github.io/CURIO/#/)** · [View the source code](https://github.com/subashgauchan16/CURIO)
+**[▶ Play CurioTrail directly](https://subashgauchan16.github.io/CURIO/)** · [View the source code](https://github.com/subashgauchan16/CURIO)
 
 *Best viewed on a modern browser; this prototype is still being iterated. A verified project screenshot will be added when one is available.*
 
