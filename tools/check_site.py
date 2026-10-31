@@ -93,6 +93,10 @@ def main():
     pages = {}
     for f in files:
         if f.endswith('.html'):
+            # Google Search Console verification files intentionally contain a single token line,
+            # not a normal web page with a title or favicon. Keep the file exact for verification.
+            if re.fullmatch(r'google[0-9a-f]+\.html', os.path.basename(f)):
+                continue
             p = Page()
             p.feed(open(os.path.join(ROOT, f), encoding='utf-8').read())
             pages[f] = p
