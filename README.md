@@ -133,6 +133,22 @@ I use the project to learn by building: defining the problem, breaking concepts 
 
 ---
 
+## Resolute Quant — A market research terminal (work in progress)
+
+**[Visit the project site](https://subashgauchan16.github.io/Resolute-Quant/)** · [View the source code](https://github.com/subashgauchan16/Resolute-Quant)
+
+*Work in progress. The terminal runs on your own computer and places no orders. The project site is a summary and shows no market data.*
+
+Resolute Quant is a personal terminal for studying crypto, stocks, indices and FX. All market data passes through a local Python backend that validates it, and bad provider values are dropped and counted rather than repaired.
+
+I use the project to learn how a dependable market data system works, then how to test forecasts honestly. Stages have written acceptance checks, and failures are published with the results. AI tools support development, and I set the goals, review the changes and decide what ships.
+
+**Current status:** the terminal works, with two acceptance checks still open. The multi-chart dashboard is not built, and no predictive model or backtest exists yet. Research is paused until a data source whose terms allow model work is agreed.
+
+**What this project demonstrates:** data validation, system integration, test design, reading provider terms before using data, and transparent reporting of limitations.
+
+---
+
 ## 1. Starbucks Nepal — Market-entry and affordability analysis
 
 **Tools:** Excel · Strategic analysis · Macroeconomic research
