@@ -133,26 +133,6 @@ I use the project to learn by building: defining the problem, breaking concepts 
 
 ---
 
-## Resolute Quant — A market research terminal (work in progress)
-
-**[Read the case study](https://subashgauchan16.github.io/SubashGauchan-Data-Analytics-Portfolio/projects/resolute-quant/)** · [Visit the project site](https://subashgauchan16.github.io/Resolute-Quant/) · [View the source code](https://github.com/subashgauchan16/Resolute-Quant)
-
-*Work in progress. The terminal runs on your own computer and places no orders. The project site is a summary and shows no market data.*
-
-Resolute Quant is a personal terminal for studying crypto, stocks, indices and FX. All market data passes through a local Python backend that validates it, and bad provider values are dropped and counted rather than repaired.
-
-I use the project to learn how a dependable market data system works, then how to test forecasts honestly. Stages have written acceptance checks, and failures are published with the results. AI tools support development, and I set the goals, review the changes and decide what ships.
-
-**Current status:** the terminal works, with two acceptance checks still open. The multi-chart dashboard is not built, and no predictive model or backtest exists yet. Research is paused until a data source whose terms allow model work is agreed.
-
-**Where it is going:** predictive models first, then agent bots on paper trading only. Neither exists yet. Real execution would come only after separate approval, and it is not built.
-
-**Why it matters to me:** I am working towards a career in corporate finance and teaching myself quantitative finance independently. This project turns volatility, costs, risk limits and overfitting into problems I have to solve, and builds the validation and audit habits finance teams rely on.
-
-**What this project demonstrates:** data validation, system integration, test design, reading provider terms before using data, and transparent reporting of limitations.
-
----
-
 ## 1. Starbucks Nepal — Market-entry and affordability analysis
 
 **Tools:** Excel · Strategic analysis · Macroeconomic research
@@ -415,6 +395,44 @@ This is an **exploratory prototype**, not a validated trading strategy. The repo
 **Conclusion:** The current evaluation does not demonstrate a reliable predictive edge or investment profitability. This project demonstrates an analytical workflow and critical model evaluation—not investment advice.
 
 **Full HTML report:** [Walk-Forward Forecast Review](https://subashgauchan16.github.io/SubashGauchan-Data-Analytics-Portfolio/projects/forecasting/walk-forward-review.html) — the charts and key insights above are also visible directly in this README without opening the report.
+
+## Resolute Quant — A market research terminal (work in progress)
+
+**[Read the case study](https://subashgauchan16.github.io/SubashGauchan-Data-Analytics-Portfolio/projects/resolute-quant/)** · [Visit the project site](https://subashgauchan16.github.io/Resolute-Quant/) · [View the source code](https://github.com/subashgauchan16/Resolute-Quant)
+
+*Work in progress. The terminal runs on your own computer and places no orders. The project site is a summary and shows no market data.*
+
+Resolute Quant is a personal terminal for studying crypto, stocks, indices and FX. All market data passes through a local Python backend that validates it, and bad provider values are dropped and counted rather than repaired.
+
+I use the project to learn how a dependable market data system works, then how to test forecasts honestly. Stages have written acceptance checks, and failures are published with the results. AI tools support development, and I set the goals, review the changes and decide what ships.
+
+### What it shows right now
+
+*These screenshots show the real interface running on **simulated data**: the instruments are fictional and the prices are generated, because the data providers' terms do not allow their data to be displayed publicly. The numbers are not real prices.*
+
+![Resolute Quant monitoring view with simulated data: watchlist, candlestick chart, order book, trade tape and session statistics](./site/assets/img/rq/terminal-crypto.webp)
+
+**The live monitoring view.** The watchlist is on the left, with the price chart, volume and 20-period moving average in the centre. The order book and trade tape are on the right, and session statistics run along the bottom.
+
+![Resolute Quant company view with simulated data: a fictional company with a daily chart, profile, news and key statistics](./site/assets/img/rq/terminal-markets.webp)
+
+**The company and markets view.** Stocks, indices and currencies replace the order book with a company profile and news. Timeframes run from one minute to one month, offered only where the provider really supplies them. The company and headlines shown are placeholders.
+
+![Resolute Quant after its data stops, with simulated data: red status badges, an offline note and dimmed prices](./site/assets/img/rq/terminal-offline.webp)
+
+**When the data stops.** Status badges turn red, a note says what to do, and last known prices dim so they do not read as current. The page recovers without a reload when the backend returns. The dashed line is a saved price alert.
+
+### Status and direction
+
+**Current status:** the terminal works, with two acceptance checks still open. The multi-chart dashboard is not built, and no predictive model or backtest exists yet. Research is paused until a data source whose terms allow model work is agreed.
+
+**Where it is going:** predictive models first, then agent bots on paper trading only. Neither exists yet. Real execution would come only after separate approval, and it is not built.
+
+**Why it matters to me:** I am working towards a career in corporate finance and teaching myself quantitative finance independently. This project turns volatility, costs, risk limits and overfitting into problems I have to solve, and builds the validation and audit habits finance teams rely on.
+
+**What this project demonstrates:** data validation, system integration, test design, reading provider terms before using data, and transparent reporting of limitations.
+
+---
 
 ## 5. Green Motion — Operations analysis and improvement proposal
 
