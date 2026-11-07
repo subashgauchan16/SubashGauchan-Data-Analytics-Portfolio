@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="../../assets/css/site-v3-editorial.css">
   <link rel="stylesheet" href="../../assets/css/page.css">
   <link rel="stylesheet" href="../../assets/css/folio.css">
+  <link rel="stylesheet" href="../../assets/css/rq-method.css">
   <link rel="stylesheet" href="../../assets/css/resolute-quant.css">
   <link rel="canonical" href="https://subashgauchan16.github.io/SubashGauchan-Data-Analytics-Portfolio/projects/resolute-quant/">
   <meta property="og:type" content="website">
@@ -33,7 +34,7 @@
 <div class="bar"><div class="wrap">
   <span class="brand">RESOLUTE QUANT</span>
   <nav class="rail" aria-label="Chapters">
-    <a href="#top">Overview</a><a href="#screens">The terminal</a><a href="#threed">3D view</a><a href="#next">What comes next</a><a href="#why">Why it matters</a><a href="#limits">Limits</a>
+    <a href="#top">Overview</a><a href="#screens">The terminal</a><a href="#threed">3D view</a><a href="#next">What comes next</a><a href="#method">How it is run</a><a href="#built">How it is built</a><a href="#why">Why it matters</a><a href="#limits">Limits</a>
   </nav>
 </div><div class="prog" id="prog"></div></div>
 
@@ -179,10 +180,132 @@
   </div>
 </section>
 
+<section id="method" class="rqm">
+  <p class="eyebrow">04 · How it is run</p>
+  <h2 class="reveal">Stage-gate, PDCA and Disciplined Agile</h2>
+    <p class="rqm-sub">I run this project with the frameworks I learned on my BSc in Applied Management, applied to software. A stage-gate process decides whether the project continues, and with what. Inside each stage the work moves in short PDCA cycles: plan, do, check, act. Disciplined Agile joins the two, keeping the process light where the risk is low, and strict wherever data rights, models or money are involved.</p>
+
+    <h3 class="rqm-h">Every iteration is one PDCA cycle</h3>
+    <div class="rqm-pdca reveal">
+      <svg class="rqm-wheel" viewBox="0 0 240 240" role="img" aria-label="The PDCA cycle: plan, do, check and act, repeated in every iteration.">
+        <path class="rqm-base" d="M126.42 28.22A92 92 0 0 1 211.78 113.58"/>
+        <path class="rqm-base" d="M211.78 126.42A92 92 0 0 1 126.42 211.78"/>
+        <path class="rqm-base" d="M113.58 211.78A92 92 0 0 1 28.22 126.42"/>
+        <path class="rqm-base" d="M28.22 113.58A92 92 0 0 1 113.58 28.22"/>
+        <path class="rqm-fill" pathLength="1" d="M126.42 28.22A92 92 0 0 1 211.78 113.58"/>
+        <path class="rqm-fill k1" pathLength="1" d="M211.78 126.42A92 92 0 0 1 126.42 211.78"/>
+        <path class="rqm-fill k2" pathLength="1" d="M113.58 211.78A92 92 0 0 1 28.22 126.42"/>
+        <path class="rqm-fill k3" pathLength="1" d="M28.22 113.58A92 92 0 0 1 113.58 28.22"/>
+        <text class="rqm-letter" x="162.4" y="77.6">P</text>
+        <text class="rqm-letter k1" x="162.4" y="162.4">D</text>
+        <text class="rqm-letter k2" x="77.6" y="162.4">C</text>
+        <text class="rqm-letter k3" x="77.6" y="77.6">A</text>
+        <text class="rqm-hub" x="120" y="114">one iteration,</text>
+        <text class="rqm-hub" x="120" y="130">one to two weeks</text>
+        <g class="rqm-orbit"><circle cx="120" cy="28" r="6"/></g>
+      </svg>
+      <ol class="rqm-steps">
+        <li><span>P</span><div><b>Plan.</b> Write the goal and the tests before any code.</div></li>
+        <li class="k1"><span>D</span><div><b>Do.</b> Build in small steps, on a separate branch.</div></li>
+        <li class="k2"><span>C</span><div><b>Check.</b> Run every test, compare the result with the plan, and label the evidence.</div></li>
+        <li class="k3"><span>A</span><div><b>Act.</b> Keep what worked, or fix it and go round again.</div></li>
+      </ol>
+    </div>
+
+    <h3 class="rqm-h">Nine stages, each closed by a gate</h3>
+    <p class="rqm-sub">After the foundation, two tracks run side by side. Both must pass before paper trading starts. Gates, not dates, decide progress.</p>
+    <div class="rqm-map reveal">
+      <div class="rqm-phase">
+        <p class="rqm-phase-name">Inception</p>
+        <div class="rqm-row">
+          <div class="rqm-node"><span>S1</span>Discovery and charter</div>
+          <i class="rqm-gate" style="--i:0"><b></b><em>G1</em></i>
+          <div class="rqm-node"><span>S2</span>Foundation</div>
+          <i class="rqm-gate" style="--i:1"><b></b><em>G2</em></i>
+        </div>
+      </div>
+      <div class="rqm-phase rqm-construction">
+        <p class="rqm-phase-name">Construction, two tracks in parallel</p>
+        <div class="rqm-track">
+          <span class="rqm-track-name">Research</span>
+          <div class="rqm-row">
+            <i class="rqm-gate rqm-plain" style="--i:1.5"></i>
+            <div class="rqm-node"><span>S3</span>Data and rights</div>
+            <i class="rqm-gate" style="--i:2"><b></b><em>G3</em></i>
+            <div class="rqm-node"><span>S4</span>Research harness</div>
+            <i class="rqm-gate" style="--i:3"><b></b><em>G4</em></i>
+            <div class="rqm-node"><span>S5</span>Models and validation</div>
+            <i class="rqm-gate" style="--i:4"><b></b><em>G5</em></i>
+          </div>
+        </div>
+        <div class="rqm-track">
+          <span class="rqm-track-name">Platform</span>
+          <div class="rqm-row">
+            <i class="rqm-gate rqm-plain" style="--i:1.5"></i>
+            <div class="rqm-node"><span>S6</span>Agents and interface</div>
+            <i class="rqm-gate" style="--i:2.5"><b></b><em>G6</em></i>
+            <div class="rqm-node"><span>S7</span>Deployment and operations</div>
+            <i class="rqm-gate" style="--i:4"><b></b><em>G7</em></i>
+          </div>
+        </div>
+      </div>
+      <div class="rqm-phase">
+        <p class="rqm-phase-name">Transition, once both tracks pass</p>
+        <div class="rqm-row">
+          <i class="rqm-gate rqm-plain" style="--i:4.5"></i>
+          <div class="rqm-node"><span>S8</span>Paper trading</div>
+          <i class="rqm-gate" style="--i:5"><b></b><em>G8</em></i>
+          <div class="rqm-node"><span>S9</span>Controlled launch</div>
+          <i class="rqm-gate" style="--i:6"><b></b><em>G9</em></i>
+        </div>
+      </div>
+    </div>
+    <p class="rqm-note">After the last gate, the project keeps operating and improving in the same PDCA cycles.</p>
+
+    <h3 class="rqm-h">What can happen at a gate</h3>
+    <ul class="rqm-outcomes reveal">
+      <li style="--i:0"><b>Go</b>On to the next stage.</li>
+      <li class="cond" style="--i:1"><b>Conditional go</b>On, with named conditions to close.</li>
+      <li class="hold" style="--i:2"><b>Hold</b>Wait for an outside blocker.</li>
+      <li class="recycle" style="--i:3"><b>Recycle</b>Back to the stage that caused the fault.</li>
+      <li class="kill" style="--i:4"><b>Kill</b>Stop, and record why.</li>
+    </ul>
+    <ul class="rqm-rules">
+      <li>Pass marks are fixed before the work starts, and never changed after the results are seen.</li>
+      <li>A fault goes back to the stage that caused it, and every later stage that used it is checked again.</li>
+      <li>Procurement is gated too. Nothing is bought, licensed or signed before the gate that needs it, and I approve each item myself.</li>
+    </ul>
+    <div class="note reveal"><strong>The outline only.</strong> The full plan stays private. Its last stage, a controlled live launch, would need its own approval, risk limits and a tested kill switch. Nothing in the plan authorises trading.</div>
+</section>
+
+<section id="built" class="rqm">
+  <p class="eyebrow">05 · How it is built</p>
+  <h2 class="reveal">Python at the centre</h2>
+    <p class="rqm-sub">Python sits at the centre. It's the only code that talks to the data providers, so everything on screen has passed its checks.</p>
+    <div class="rqm-pipe reveal">
+      <div class="rqm-box"><small>Sources</small><b>Coinbase Exchange and Yahoo Finance</b><span>Market data, for personal research use</span></div>
+      <i class="rqm-flow" style="--i:0"></i>
+      <div class="rqm-box rqm-core"><small>Backend</small><b>Python</b><span>Fetches and validates every value, and drops and counts bad ones</span></div>
+      <i class="rqm-flow" style="--i:1"></i>
+      <div class="rqm-box"><small>Delivery</small><b>HTTP and a live stream</b><span>Served only to this computer</span></div>
+      <i class="rqm-flow" style="--i:2"></i>
+      <div class="rqm-box"><small>Screen</small><b>Browser terminal</b><span>JavaScript modules and Lightweight Charts</span></div>
+      <i class="rqm-flow rqm-down" style="--i:1"></i>
+      <div class="rqm-box rqm-wip"><small>In progress</small><b>Native desktop app</b><span>C++20 and Qt 6, with the same Python embedded and SQLite for research storage</span></div>
+    </div>
+    <div class="rqm-tools reveal">
+      <div class="rqm-toolrow"><span>Languages</span><ul><li>Python</li><li>JavaScript</li><li>C++20</li><li>SQL</li></ul></div>
+      <div class="rqm-toolrow"><span>Libraries</span><ul><li>Lightweight Charts</li><li>Qt 6</li><li>SQLite</li></ul></div>
+      <div class="rqm-toolrow"><span>Testing</span><ul><li>Python unit tests</li><li>End-to-end checks in Edge</li><li>Qt tests</li></ul></div>
+      <div class="rqm-toolrow"><span>Workflow</span><ul><li>Git and GitHub</li><li>GitHub Pages</li><li>Claude Code</li></ul></div>
+    </div>
+</section>
+
 <section id="why">
-  <p class="eyebrow">04 · Why this matters to me</p>
+  <p class="eyebrow">06 · Why this matters to me</p>
   <h2 class="reveal">Learning finance by building something that has to hold up</h2>
   <p class="lead reveal">I am working towards a career in corporate finance, and I am teaching myself quantitative finance independently. This project is how I connect the two.</p>
+  <p class="lead reveal">The name comes from Resoluters, a clothing brand I started when I was about&nbsp;16. Resoluter was my own word for someone who is resolute: a person who decides, stays patient and follows through. Resolute Quant carries that attitude into markets.</p>
   <ul class="rq-list rq-why reveal">
     <li><b>It makes the theory practical.</b> Volatility, transaction costs, risk limits and overfitting become problems I have to solve, not only terms I have read about.</li>
     <li><b>It builds habits finance teams rely on.</b> Validating data, keeping an audit trail and recording what failed all matter as much in a finance function as they do here.</li>
@@ -193,7 +316,7 @@
 </section>
 
 <section id="limits">
-  <p class="eyebrow">05 · Verification and limits</p>
+  <p class="eyebrow">07 · Verification and limits</p>
   <h2 class="reveal">What this does not show</h2>
   <ul class="rq-list rq-why reveal">
     <li>No predictive model or backtest exists, so there is no evidence of any predictive edge or profit.</li>
@@ -253,10 +376,13 @@ function start(){if(started)return;started=true;mount(mode)}
 if('IntersectionObserver' in window){var o=new IntersectionObserver(function(es){if(es[0].isIntersecting){o.disconnect();start()}},{rootMargin:'200px'});o.observe(host)}else start();
 window.__sg3d=function(){return {started:started,mode:mode,source:cur&&cur.source(),nogl:host.classList.contains('nogl')}};
 
+/* The PDCA, gate and pipeline loops pause while their section is off screen. */
+if('IntersectionObserver' in window){var idle=new IntersectionObserver(function(es){es.forEach(function(e){e.target.classList.toggle('rqm-idle',!e.isIntersecting)})});$$('.rqm').forEach(function(s){idle.observe(s)})}
+
 /* reveal, rail, progress */
 var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.remove('pre');io.unobserve(e.target)}})},{threshold:.1}):null;
 $$('.reveal').forEach(function(n){if(io&&!reduce){var r=n.getBoundingClientRect();if(r.top>innerHeight){n.classList.add('pre');io.observe(n)}}});
-var links=$$('.rail a'),secs=['top','screens','threed','next','why','limits'].map(function(id){return document.getElementById(id)}),prog=$('#prog');
+var links=$$('.rail a'),secs=['top','screens','threed','next','method','built','why','limits'].map(function(id){return document.getElementById(id)}),prog=$('#prog');
 function onScroll(){var y=scrollY+innerHeight*.35,on=0;secs.forEach(function(s,i){if(s&&s.offsetTop<=y)on=i});links.forEach(function(a,i){a.classList.toggle('on',i===on)});var h=document.documentElement.scrollHeight-innerHeight;prog.style.width=(h>0?Math.min(100,scrollY/h*100):0)+'%'}
 addEventListener('scroll',onScroll,{passive:true});onScroll();
 })();
