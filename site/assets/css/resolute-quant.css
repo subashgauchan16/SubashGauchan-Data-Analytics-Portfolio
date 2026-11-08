@@ -28,3 +28,11 @@
 .rq-details{margin-top:12px}
 .rq-details summary{cursor:pointer;color:#e8b84e}
 @media(prefers-reduced-motion:reduce){.rq-logo i{display:none}}
+
+/* How it is run and built: the shared rq-method.css component in the portfolio's colours. */
+.gm-folio .rqm{--rqm-gold:#e9bd59;--rqm-hi:#ffe4a0;--rqm-ink:#f1f1e9;--rqm-mute:#a4b2b1;--rqm-line:rgba(178,211,202,.19);--rqm-dim:rgba(178,211,202,.14);
+  --rqm-panel:linear-gradient(145deg,rgba(17,31,34,.95),rgba(9,17,19,.94));--rqm-glow:#e9bd59;--rqm-display:'Playfair Display',Georgia,serif}
+.gm-folio .rqm .rqm-sub{max-width:64ch}
+.gm-folio .rqm .rqm-h{font-weight:500;letter-spacing:-.01em;margin:3rem 0 .6rem}
+.gm-folio .rqm-gate b{background:#071013}
+.gm-folio .rqm-steps li,.gm-folio .rqm-node,.gm-folio .rqm-box,.gm-folio .rqm-outcomes li,.gm-folio .rqm-toolrow li{font-size:15px}
