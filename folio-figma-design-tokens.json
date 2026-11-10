@@ -1,0 +1,487 @@
+{
+  "source": "Figma file VkWMPoWkkwW66YucWTkB4O - Subash Gauchan - Analyst portfolio (left canvas)",
+  "extracted_via": "mcp__figma__use_figma",
+  "session_id": "bfaee185-e651-4e74-a212-bd15c357c833",
+  "pages_analyzed": [
+    "0:1 Page 1"
+  ],
+  "typography": {
+    "primary_font": "Inter",
+    "primary_weights": [
+      "Light",
+      "Regular",
+      "Medium",
+      "Semi Bold",
+      "Bold"
+    ],
+    "secondary_fonts": [
+      {
+        "name": "Roboto Mono",
+        "usage": "code/terminal elements, data labels"
+      },
+      {
+        "name": "Kavoon",
+        "usage": "monogram/logo accent"
+      },
+      {
+        "name": "Inria Serif",
+        "usage": "subtitle/brand accent"
+      },
+      {
+        "name": "Nanum Brush Script",
+        "usage": "handwritten greeting accent"
+      }
+    ],
+    "sizes_px": [
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      20,
+      21,
+      24,
+      25,
+      26.67,
+      27,
+      28,
+      29,
+      32,
+      36,
+      44,
+      48,
+      58,
+      64,
+      72,
+      80,
+      86.67,
+      98
+    ],
+    "key_hierarchy": [
+      {
+        "text": "Hero headline",
+        "font": "Inter",
+        "weight": "Medium",
+        "size": "98px",
+        "color": "#252723"
+      },
+      {
+        "text": "Section heading",
+        "font": "Inter",
+        "weight": "Medium",
+        "size": "58px",
+        "color": "#252723"
+      },
+      {
+        "text": "Major heading",
+        "font": "Inter",
+        "weight": "Medium",
+        "size": "48px",
+        "color": "#252723"
+      },
+      {
+        "text": "Category label (eyebrow)",
+        "font": "Roboto Mono",
+        "weight": "Regular",
+        "size": "8-11px",
+        "color": "#71736b"
+      },
+      {
+        "text": "Body text",
+        "font": "Inter",
+        "weight": "Regular",
+        "size": "16-21px",
+        "color": "#71736b"
+      },
+      {
+        "text": "Caption/meta",
+        "font": "Inter",
+        "weight": "Regular",
+        "size": "10-13px",
+        "color": "#71736b"
+      },
+      {
+        "text": "Navigation links",
+        "font": "Inter",
+        "weight": "Regular",
+        "size": "13-15px",
+        "color": "#252723"
+      }
+    ]
+  },
+  "colors": {
+    "palette": [
+      {
+        "hex": "#252723",
+        "role": "primary background",
+        "rgb": [
+          0.145,
+          0.153,
+          0.137
+        ]
+      },
+      {
+        "hex": "#141218",
+        "role": "deep dark background",
+        "rgb": [
+          0.078,
+          0.071,
+          0.094
+        ]
+      },
+      {
+        "hex": "#020024",
+        "role": "dark blue-black bg",
+        "rgb": [
+          0.008,
+          0.0,
+          0.141
+        ]
+      },
+      {
+        "hex": "#020019",
+        "role": "dark blue-black bg variant",
+        "rgb": [
+          0.008,
+          0.0,
+          0.098
+        ]
+      },
+      {
+        "hex": "#252923",
+        "role": "dark bg variant",
+        "rgb": [
+          0.145,
+          0.161,
+          0.137
+        ]
+      },
+      {
+        "hex": "#F5F3ED",
+        "role": "light text / card bg",
+        "rgb": [
+          0.961,
+          0.953,
+          0.929
+        ]
+      },
+      {
+        "hex": "#FFCC00",
+        "role": "gold accent bright",
+        "rgb": [
+          1.0,
+          0.8,
+          0.0
+        ]
+      },
+      {
+        "hex": "#B69437",
+        "role": "gold accent warm",
+        "rgb": [
+          0.714,
+          0.58,
+          0.216
+        ]
+      },
+      {
+        "hex": "#E8CE76",
+        "role": "light gold accent",
+        "rgb": [
+          0.91,
+          0.808,
+          0.463
+        ]
+      },
+      {
+        "hex": "#E5A000",
+        "role": "orange accent",
+        "rgb": [
+          0.902,
+          0.627,
+          0.0
+        ]
+      },
+      {
+        "hex": "#B98500",
+        "role": "dark gold stroke",
+        "rgb": [
+          0.726,
+          0.522,
+          0.0
+        ]
+      },
+      {
+        "hex": "#FDBF05",
+        "role": "bright orange stroke",
+        "rgb": [
+          0.992,
+          0.749,
+          0.02
+        ]
+      },
+      {
+        "hex": "#71736B",
+        "role": "secondary text gray",
+        "rgb": [
+          0.443,
+          0.451,
+          0.42
+        ]
+      },
+      {
+        "hex": "#484C43",
+        "role": "dark sage text",
+        "rgb": [
+          0.282,
+          0.298,
+          0.263
+        ]
+      },
+      {
+        "hex": "#A6AC9D",
+        "role": "sage gray",
+        "rgb": [
+          0.651,
+          0.675,
+          0.616
+        ]
+      },
+      {
+        "hex": "#B6BAAC",
+        "role": "light sage stroke",
+        "rgb": [
+          0.714,
+          0.73,
+          0.675
+        ]
+      },
+      {
+        "hex": "#D6D7CD",
+        "role": "light gray stroke",
+        "rgb": [
+          0.84,
+          0.843,
+          0.804
+        ]
+      },
+      {
+        "hex": "#EBECE5",
+        "role": "very light off-white",
+        "rgb": [
+          0.922,
+          0.925,
+          0.898
+        ]
+      },
+      {
+        "hex": "#EEE7CF",
+        "role": "creamy beige bg",
+        "rgb": [
+          0.933,
+          0.906,
+          0.812
+        ]
+      },
+      {
+        "hex": "#F9F8F4",
+        "role": "very light cream bg",
+        "rgb": [
+          0.976,
+          0.973,
+          0.957
+        ]
+      },
+      {
+        "hex": "#F8F8F8",
+        "role": "very light gray stroke",
+        "rgb": [
+          0.973,
+          0.973,
+          0.973
+        ]
+      },
+      {
+        "hex": "#FFFFFF",
+        "role": "pure white",
+        "rgb": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "hex": "#000000",
+        "role": "pure black",
+        "rgb": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    ],
+    "subash_palette": {
+      "background": [
+        "#252723",
+        "#141218",
+        "#020024",
+        "#020019",
+        "#252923"
+      ],
+      "text_primary": [
+        "#252723",
+        "#F5F3ED"
+      ],
+      "text_secondary": [
+        "#71736b",
+        "#484C43"
+      ],
+      "accent_gold": [
+        "#B69437",
+        "#E8CE76",
+        "#FFCC00",
+        "#E5A000"
+      ],
+      "border_stroke": [
+        "#D6D7CD",
+        "#B6BAAC",
+        "#F8F8F8"
+      ],
+      "card_bg": [
+        "#F5F3ED",
+        "#EBECE5",
+        "#F9F8F4",
+        "#FFFFFF"
+      ]
+    }
+  },
+  "layout": {
+    "container_width": "1440px",
+    "content_width": "1280px",
+    "navigation_height": "112px",
+    "gutter": "80px",
+    "shadows": "NONE - no effects found on any frame elements",
+    "corner_radii": {
+      "buttons": "4px",
+      "cards_kpi": "4px",
+      "category_tags": "4px",
+      "dashboard_frames": "8px",
+      "step_markers": "100px (circular)",
+      "process_stages": "4px"
+    },
+    "component_heights": {
+      "buttons": 49,
+      "category_tags": 25,
+      "kpi_cards": 127,
+      "process_stages": 73,
+      "step_markers": 40
+    }
+  },
+  "components": {
+    "button": {
+      "width": 175,
+      "height": 49,
+      "corner_radius": "4px",
+      "has_shadow": false,
+      "has_border": false
+    },
+    "category_tag": {
+      "width": 194,
+      "height": 25,
+      "corner_radius": "4px",
+      "has_shadow": false
+    },
+    "kpi_card": {
+      "width": 396,
+      "height": 127,
+      "corner_radius": "4px",
+      "has_shadow": false
+    },
+    "dashboard_frame": {
+      "width": 1280,
+      "height": 637,
+      "corner_radius": "8px",
+      "has_shadow": false
+    },
+    "process_stage": {
+      "width": 263,
+      "height": 73,
+      "corner_radius": "4px"
+    },
+    "step_marker": {
+      "width": 40,
+      "height": 40,
+      "corner_radius": "100px"
+    }
+  },
+  "key_sections": [
+    {
+      "name": "Introduction",
+      "id": "8:5315",
+      "width": 1440,
+      "height": 833
+    },
+    {
+      "name": "Navigation",
+      "id": "8:5316",
+      "width": 1280,
+      "height": 112
+    },
+    {
+      "name": "Hero content",
+      "id": "8:5328",
+      "width": 1280,
+      "height": 654
+    },
+    {
+      "name": "About Subash",
+      "id": "8:5367",
+      "width": 1440,
+      "height": 653
+    },
+    {
+      "name": "Project concept index",
+      "id": "8:5388"
+    },
+    {
+      "name": "Banking customer analysis",
+      "id": "8:5448"
+    },
+    {
+      "name": "Financial performance analysis",
+      "id": "8:5532"
+    },
+    {
+      "name": "Business operations analysis",
+      "id": "8:5624"
+    },
+    {
+      "name": "Analytical approach",
+      "id": "8:5764"
+    },
+    {
+      "name": "Skills and learning focus",
+      "id": "8:5822"
+    },
+    {
+      "name": "Education and career direction",
+      "id": "8:5884"
+    },
+    {
+      "name": "Contact and footer",
+      "id": "8:5908"
+    }
+  ],
+  "extraction_notes": {
+    "effects": "No effects (shadows, blurs, etc.) were found on any frame elements. The Figma design uses a flat, shadow-free aesthetic.",
+    "padding": "Auto-layout padding properties were not directly extracted. Spacing is inferred from frame positions in metadata XML.",
+    "responsive": "No responsive constraints extracted. Figma constraints are not exposed via the Plugin API used.",
+    "stroke_widths": "Stroke width values not extracted (only stroke colors captured).",
+    "line_height": "Line height properties were not available via the Plugin API for TEXT nodes in this extraction."
+  }
+}

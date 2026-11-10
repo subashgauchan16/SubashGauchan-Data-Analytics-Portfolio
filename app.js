@@ -32,8 +32,8 @@ class GoldScene3D {
     this.opts = Object.assign({
       particleCount: 120,
       geomCount: 8,
-      goldTone: 0xd9b074,
-      deepTone: 0x0d141c,
+      goldTone: 0xB69437,
+      deepTone: 0x252723,
       interactive: true,
     }, opts);
     this.objects = [];
@@ -61,23 +61,23 @@ class GoldScene3D {
 
     // Lighting — gold-tinted
     const hemi = new THREE.HemisphereLight(
-      new THREE.Color(this.opts.goldTone).getStyle() === '#d9b074' ? 0xd9b074 : 0xffffff,
-      0x0d141c, 0.8
+      new THREE.Color(this.opts.goldTone).getStyle() === '#b69437' ? 0xB69437 : 0xffffff,
+      0x252723, 0.8
     );
     hemi.position.set(0, 20, 0);
     this.scene.add(hemi);
 
-    const dirLight = new THREE.DirectionalLight(0xd4af37, 0.8);
+    const dirLight = new THREE.DirectionalLight(0xB98500, 0.8);
     dirLight.position.set(-10, 20, 10);
     dirLight.castShadow = true;
     this.scene.add(dirLight);
 
-    const dirLight2 = new THREE.DirectionalLight(0xd9b074, 0.4);
+    const dirLight2 = new THREE.DirectionalLight(0xB69437, 0.4);
     dirLight2.position.set(10, -10, -10);
     this.scene.add(dirLight2);
 
     // Ambient
-    this.scene.add(new THREE.AmbientLight(0x404040, 0.6));
+    this.scene.add(new THREE.AmbientLight(0x404030, 0.6));
 
     // Particles
     this._createParticles();
@@ -113,7 +113,7 @@ class GoldScene3D {
 
     for (let i = 0; i < count; i++) {
       const material = new THREE.MeshBasicMaterial({
-        color: Math.random() > 0.7 ? this.opts.goldTone : 0x86d6df,
+        color: Math.random() > 0.7 ? this.opts.goldTone : 0xE8CE76,
         transparent: true,
         opacity: Math.random() * 0.5 + 0.2,
       });
@@ -156,7 +156,7 @@ class GoldScene3D {
         roughness: 0.18,
         transparent: true,
         opacity: 0.85,
-        emissive: 0x86d6df,
+        emissive: 0xE8CE76,
         emissiveIntensity: 0.15,
       });
 
