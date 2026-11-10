@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071013">
+  <title>Walk-forward forecast review | Subash Gauchan</title>
+  <meta name="description" content="Walk-forward review of a 20-day forecast: yearly error, directional accuracy and the latest forecast against typical error.">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/site-v2.css">
+  <link rel="stylesheet" href="../../assets/css/site-v3-editorial.css">
+  <link rel="stylesheet" href="../../assets/css/page.css">
+  <link rel="stylesheet" href="../../assets/css/folio.css">
+  
+<style>.wf-title{font-size:clamp(44px,6vw,80px);margin:18px 0}.wf-title em{color:var(--gold)}.cc .cv text{font:12px var(--mono);fill:#9db0aa}</style>
+</head>
+<body data-page="folio" id="top">
+  <a class="skip" href="#main">Skip to content</a>
+  <div id="progress"></div>
+  <div class="tip" id="tip" role="status"></div>
+  <header class="site-nav"><a aria-label="Subash Gauchan home" class="brand" href="../../"><span class="brand-mark">SG</span><span class="brand-name">SUBASH <b>GAUCHAN</b></span></a><button aria-expanded="false" aria-label="Toggle navigation" class="menu-toggle">☰</button><nav class="nav-links" aria-label="Main"><a href="../../">Home</a><a href="../../#about">About</a><a class="is-current" aria-current="page" href="../">Projects</a><a href="../../skills/">Skills</a><a href="../../analytics/">Analytics</a><a href="../../cv/">CV</a><a class="nav-contact" href="../../#contact">Let's talk <span>↗</span></a></nav></header>
+  <div class="crumbbar"><div class="crumb"><a href="../">Projects</a> / <a href="./">AI-assisted forecasting</a> / Walk-forward review</div></div>
+<main id="main">
+<div class="gm-folio">
+<div class="wrap" id="top">
+<section id="overview" style="padding-top:56px">
+  <p class="eyebrow">Supporting evidence · Exploratory prototype · Not a trading signal</p>
+  <h1 class="wf-title">Rebuilt forecast, <em>tested year by year</em></h1>
+  <p class="lead">The model predicts the 20-day change in price and is re-trained and tested one year at a time from 2015 to 2026, so every test year is unseen data. A Ridge regression on nine features against a rolling baseline.</p>
+  <div class="legend2"><span><i style="background:var(--gold)"></i>Baseline (average move)</span><span><i style="background:var(--good)"></i>Ridge model</span></div>
+</section>
+<section id="error">
+  <div class="cc"><h3>Average error of the 20-day forecast, by test year</h3><p class="cap">Mean absolute error of the predicted 20-day return, in percentage points. Lower is better. The two lines sit almost on top of each other, and both spike in 2020.</p><svg class="cv" id="c1" viewBox="0 0 900 280" role="img" aria-label="Line chart of yearly forecast error for the baseline and Ridge model"></svg></div>
+</section>
+<section id="direction">
+  <div class="cc"><h3>Share of 20-day moves called in the right direction, by test year</h3><p class="cap" id="dirCap">Higher is better. The baseline always says "up", so its score is simply how often markets rose.</p><svg class="cv" id="c2" viewBox="0 0 900 280" role="img" aria-label="Line chart of yearly direction accuracy for the baseline and Ridge model, with a 50 percent line"></svg></div>
+  <div class="note"><strong>Open reconciliation item.</strong> The original write-up says the model beats the baseline on direction only in 2018 and 2022. The yearly values on this page give <span id="dirYears"></span>. Until the definitions are checked, neither count should carry the argument. See the <a href="./#reconcile">reconciliation section</a>.</div>
+</section>
+<section id="latest">
+  <div class="cc"><h3>Latest 20-day forecast against typical error</h3><p class="cap">Forecast change from the close on 14 October 2026. The shaded band is the model's typical error for that instrument. Every forecast is far smaller than the typical error, so none of them is a usable directional call on its own.</p><svg class="cv" id="c3" viewBox="0 0 900 300" role="img" aria-label="Forecast 20-day change per instrument with typical error band"></svg></div>
+</section>
+<section id="instruments">
+  <div class="cc"><h3>Results by instrument, all test years</h3><div class="tw"><table id="tb"></table></div>
+  <p class="small" style="margin-top:12px">Average 20-day error in percentage points of price. BP and Shell are in pence on the London Stock Exchange, and the other five are index points. BP prices look dividend-adjusted and may be more volatile.</p></div>
+  <div class="note"><strong>Status.</strong> Exploratory prototype. Nothing here demonstrates a reliable predictive edge or investment profitability, and nothing here is investment advice.</div>
+</section>
+</div>
+</div>
+</main>
+  <nav class="pager" aria-label="More case studies">
+    <a href="./"><small>← Back</small><b>AI-assisted forecasting</b></a>
+    <a class="next" href="../"><small>All →</small><b>All projects</b></a>
+  </nav>
+<section class="contact-band" id="contact"><div class="wrap contact-inner"><div><p class="eyebrow">OPEN TO ENTRY-LEVEL · INTERNSHIP · GRADUATE OPPORTUNITIES</p><h2>Let’s make sense<br>of <em>something real.</em></h2><p>Data analysis · Business analysis · BI · Operations</p></div><div class="contact-actions"><a class="btn btn-gold" href="mailto:thakalidenil@gmail.com">Email me <span>↗</span></a><a class="text-link" href="https://www.linkedin.com/in/subash-gauchan16/" rel="noreferrer" target="_blank">Find me on LinkedIn <span>↗</span></a></div><div class="contact-glow"></div></div></section>
+  <footer class="site-footer"><a class="brand" href="../../"><span class="brand-mark">SG</span><span class="brand-name">SUBASH <b>GAUCHAN</b></span></a><span>Data · Business · Technology</span><span>© <span id="yr">2026</span> Subash Gauchan · Exploratory prototype. No validated predictive edge or profitability is claimed.</span><a href="#top">Back to top ↑</a></footer>
+    <button class="top" id="totop" aria-label="Back to top">↑</button>
+  <script>
+(function(){
+var D={"years":["2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"],"maeB":[4.4,4.86,2.59,3.58,3.02,7.87,3.63,5.06,3.76,2.91,3.47,4.11],"maeR":[4.57,4.7,2.7,3.59,3.36,7.98,3.95,4.8,3.6,2.71,3.41,3.84],"dirB":[54,58,57,55,59,53,58,53,58,57,60,59],"dirR":[52,57,60,61,58,48,55,63,58,56,61,55],"fc":[{"n":"FTSE 100","p":1.0},{"n":"DAX","p":-0.4},{"n":"Nasdaq 100","p":1.8},{"n":"S&P 500","p":2.1},{"n":"Nikkei 225","p":-1.2},{"n":"Shell","p":0.7},{"n":"BP","p":-0.9}],"per":{"FTSE 100":{"mb":4.6,"mr":4.2},"DAX":{"mb":4.3,"mr":4.0},"Nasdaq 100":{"mb":4.8,"mr":4.1},"S&P 500":{"mb":4.7,"mr":4.3},"Nikkei 225":{"mb":4.9,"mr":4.5},"Shell":{"mb":5.1,"mr":4.8},"BP":{"mb":5.4,"mr":4.9}}};
+var GOLD='#e9bd59',MINT='#9ee4c5',GRID='rgba(178,211,202,.16)',MUTED='#9db0aa',BAD='#e58f7e';
+var tip=document.getElementById('tip');
+function show(e,t){tip.textContent=t;tip.style.opacity=1;tip.style.left=Math.min(e.clientX+12,innerWidth-230)+'px';tip.style.top=(e.clientY+12)+'px'}
+function hide(){tip.style.opacity=0}
+function bind(s){s.querySelectorAll('[data-t]').forEach(function(p){p.addEventListener('mousemove',function(e){show(e,p.dataset.t)});p.addEventListener('mouseleave',hide);p.addEventListener('focus',function(){var r=p.getBoundingClientRect();show({clientX:r.left,clientY:r.top},p.dataset.t)});p.addEventListener('blur',hide)})}
+function line(id,A,B,lo,hi,ticks,fmt,ref){
+  var s=document.getElementById(id),W=900,H=280,L=56,R=16,T=14,Bm=36,pw=W-L-R,ph=H-T-Bm,n=D.years.length,h='';
+  var x=function(i){return L+pw*i/(n-1)},y=function(v){return T+ph-(v-lo)/(hi-lo)*ph};
+  ticks.forEach(function(t){h+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+y(t)+'" y2="'+y(t)+'" stroke="'+GRID+'"/><text x="'+(L-8)+'" y="'+(y(t)+4)+'" text-anchor="end">'+fmt(t)+'</text>'});
+  D.years.forEach(function(yr,i){h+='<text x="'+x(i)+'" y="'+(H-12)+'" text-anchor="middle">'+yr+'</text>'});
+  if(ref!=null)h+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+y(ref)+'" y2="'+y(ref)+'" stroke="'+BAD+'" stroke-dasharray="5 4"/><text x="'+(W-R)+'" y="'+(y(ref)-6)+'" text-anchor="end">Coin flip 50%</text>';
+  [[B,GOLD,'Baseline'],[A,MINT,'Ridge']].forEach(function(z){var S=z[0],c=z[1],nm=z[2];
+    h+='<path d="'+S.map(function(v,i){return (i?'L':'M')+x(i)+','+y(v)}).join('')+'" fill="none" stroke="'+c+'" stroke-width="2.5" stroke-linejoin="round"/>';
+    S.forEach(function(v,i){h+='<circle cx="'+x(i)+'" cy="'+y(v)+'" r="4" fill="'+c+'"/><circle cx="'+x(i)+'" cy="'+y(v)+'" r="12" fill="transparent" tabindex="0" data-t="'+D.years[i]+': '+nm+' '+fmt(v,1)+'"/>'});
+  });
+  s.innerHTML=h;bind(s);
+}
+line('c1',D.maeR,D.maeB,2,9,[2,4,6,8],function(v,d){return v.toFixed(d?2:0)+' pp'});
+line('c2',D.dirR,D.dirB,35,75,[40,50,60,70],function(v,d){return v.toFixed(0)+'%'},50);
+var wins=D.years.filter(function(_,i){return D.dirR[i]>D.dirB[i]});
+document.getElementById('dirYears').textContent=wins.length+' years ('+wins.join(', ')+')';
+(function(){
+  var s=document.getElementById('c3'),W=900,H=300,L=130,R=20,T=14,B=34,pw=W-L-R,ph=H-T-B,m=D.fc.length,lo=-8,hi=8,rh=ph/m,h='';
+  var x=function(v){return L+(v-lo)/(hi-lo)*pw};
+  [-8,-4,0,4,8].forEach(function(t){h+='<line x1="'+x(t)+'" x2="'+x(t)+'" y1="'+T+'" y2="'+(T+ph)+'" stroke="'+(t?GRID:MUTED)+'"/><text x="'+x(t)+'" y="'+(H-12)+'" text-anchor="middle">'+(t>0?'+':'')+t+'%</text>'});
+  D.fc.forEach(function(f,i){var cy=T+rh*i+rh/2,e=D.per[f.n].mr,c=f.p>=0?MINT:GOLD;
+    h+='<rect x="'+x(-e)+'" y="'+(cy-11)+'" width="'+(x(e)-x(-e))+'" height="22" rx="4" fill="rgba(178,211,202,.13)"/><text x="'+(L-10)+'" y="'+(cy+4)+'" text-anchor="end" style="fill:#d7e3dc;font-size:13px">'+f.n+'</text>';
+    var x0=x(0),x1=x(f.p);
+    h+='<rect x="'+Math.min(x0,x1)+'" y="'+(cy-6)+'" width="'+Math.max(Math.abs(x1-x0),2)+'" height="12" rx="3" fill="'+c+'" tabindex="0" data-t="'+f.n+': forecast '+(f.p>0?'+':'')+f.p+'% over 20 days, typical error \u00b1'+e+' pp"/>';
+  });
+  s.innerHTML=h;bind(s);
+})();
+document.getElementById('tb').innerHTML='<thead><tr><th>Instrument</th><th>Baseline error</th><th>Ridge error</th><th>Forecast, next 20 days</th></tr></thead><tbody>'+D.fc.map(function(f){return '<tr><td>'+f.n+'</td><td>'+D.per[f.n].mb.toFixed(1)+' pp</td><td>'+D.per[f.n].mr.toFixed(1)+' pp</td><td>'+(f.p>0?'+':'')+f.p.toFixed(1)+'%</td></tr>'}).join('')+'</tbody>';
+})();
+  </script>
+  <script src="../../assets/js/shell.js"></script>
+</body>
+</html>

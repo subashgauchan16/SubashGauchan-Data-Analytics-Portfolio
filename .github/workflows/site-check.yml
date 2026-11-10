@@ -1,0 +1,21 @@
+# Checks the site on feature branches and pull requests. It never deploys:
+# no Pages permissions, no upload-pages-artifact, no deploy-pages.
+name: Site check (no deployment)
+
+on:
+  push:
+    branches-ignore: ["main"]
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Check links, assets, contacts and published file types
+        run: python3 tools/check_site.py site

@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071013">
+  <title>AI-assisted forecasting | Subash Gauchan</title>
+  <meta name="description" content="A Ridge regression tested year by year against a simple baseline on 20-day price changes, with 3D charts, open reconciliation items and stated limits.">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/site-v2.css">
+  <link rel="stylesheet" href="../../assets/css/site-v3-editorial.css">
+  <link rel="stylesheet" href="../../assets/css/page.css">
+  <link rel="stylesheet" href="../../assets/css/folio.css">
+  
+</head>
+<body data-page="folio" id="top">
+  <a class="skip" href="#main">Skip to content</a>
+  <div id="progress"></div>
+  <div class="tip" id="tip" role="status"></div>
+  <header class="site-nav"><a aria-label="Subash Gauchan home" class="brand" href="../../"><span class="brand-mark">SG</span><span class="brand-name">SUBASH <b>GAUCHAN</b></span></a><button aria-expanded="false" aria-label="Toggle navigation" class="menu-toggle">☰</button><nav class="nav-links" aria-label="Main"><a href="../../">Home</a><a href="../../#about">About</a><a class="is-current" aria-current="page" href="../">Projects</a><a href="../../skills/">Skills</a><a href="../../analytics/">Analytics</a><a href="../../cv/">CV</a><a class="nav-contact" href="../../#contact">Let's talk <span>↗</span></a></nav></header>
+  <div class="crumbbar"><div class="crumb"><a href="../">Projects</a> / AI-assisted forecasting</div></div>
+<main id="main">
+<div class="gm-folio">
+<div class="bar"><div class="wrap">
+  <span class="brand">FORECASTING FOLIO</span>
+  <nav class="rail" aria-label="Chapters">
+    <a href="#top">Overview</a><a href="#method">Method</a><a href="#results">Results</a><a href="#threed">3D view</a><a href="#reconcile">Reconcile</a><a href="#next">Next 20 days</a><a href="#limits">Limits</a>
+  </nav>
+</div><div class="prog" id="prog"></div></div>
+
+<div class="wrap" id="top">
+<header class="hero">
+  <div>
+    <p class="eyebrow">Exploratory prototype · Not a trading signal</p>
+    <h1>AI-assisted forecasting<em class="gold">Ridge against a simple baseline</em></h1>
+    <p class="sub">Can a Ridge regression beat a rolling-average baseline at forecasting the 20-day price change? Tested year by year, 2015 to 2026, on seven markets. The answer so far: not reliably.</p>
+    <div class="btns"><a class="btn solid" href="#method">Step through the test</a><a class="btn" href="#limits">Read the limits</a></div>
+    <p style="margin:18px 0 0"><span class="tag ill">Exploratory prototype</span> <span class="tag warn">Not investment advice</span></p>
+  </div>
+  <div class="stage" aria-hidden="true">
+    <div class="orbit"><i></i><i></i><i></i><i></i><i></i><b style="--a:0deg"></b><b style="--a:90deg"></b><b style="--a:180deg"></b><b style="--a:270deg"></b></div>
+    <div class="core">TRAIN · FORECAST<br>TEST</div>
+  </div>
+</header>
+</div>
+
+<div class="wrap">
+<section id="overview">
+  <p class="eyebrow">At a glance</p>
+  <h2 class="reveal">A careful test, and a modest result.</h2>
+  <p class="lead reveal">The target is the 20-trading-day change in price. Ridge uses nine features. The baseline is a rolling average move. Results are unaudited and the data is from the write-up and the Walk-Forward Forecast Review in the repository.</p>
+  <div class="facts reveal">
+    <div class="fact"><b>12</b><span>Yearly test folds, 2015 to 2026</span></div>
+    <div class="fact"><b>7</b><span>Instruments</span></div>
+    <div class="fact"><b>20</b><span>Trading-day horizon</span></div>
+    <div class="fact"><b>9</b><span>Ridge features</span></div>
+  </div>
+</section>
+
+<section id="method">
+  <p class="eyebrow">01 · Walk-forward method</p>
+  <h2 class="reveal">The model never sees the year it is tested on</h2>
+  <p class="lead reveal">Move the slider. Gold years are available for training, the raised green year is the test, dashed years are still in the future.</p>
+  <div class="yr reveal">
+    <div class="yrhead"><span class="big" id="yrBig">2020</span><label for="yr" class="small">Test year</label></div>
+    <input id="yr" type="range" min="2015" max="2026" step="1" value="2020" aria-describedby="yrCap">
+  </div>
+  <div class="wfrow reveal"><div class="wfin" id="wf"></div></div>
+  <div class="wfleg"><span class="a">Used to train</span><span class="b">Test year</span><span class="c">Future, unseen</span></div>
+  <p class="small" id="yrCap" aria-live="polite" style="margin-top:14px"></p>
+</section>
+
+<section id="results">
+  <p class="eyebrow">02 · Results by year</p>
+  <h2 class="reveal">The two lines sit almost on top of each other</h2>
+  <p class="lead reveal">Error is similar every year and both spike in 2020. Direction is where the baseline and the model trade places. The columns follow the year you chose above.</p>
+  <div class="duo reveal">
+    <div><h3>Forecast error (pp, lower is better)</h3><div class="pillbox" id="maeBox" style="min-height:300px"></div></div>
+    <div><h3>Directional accuracy (%, higher is better)</h3><div class="pillbox" id="dirBox" style="min-height:300px"></div></div>
+  </div>
+  <p class="insight" id="insight" aria-live="polite"></p>
+  <div class="duo reveal" style="margin-top:34px">
+    <div><svg class="chart" id="maeChart" viewBox="0 0 560 260" role="img" aria-label="Mean absolute error by test year, baseline and Ridge"></svg><div class="legend2"><span><i style="background:var(--gold)"></i>Baseline</span><span><i style="background:var(--good)"></i>Ridge</span></div></div>
+    <div><svg class="chart" id="dirChart" viewBox="0 0 560 260" role="img" aria-label="Directional accuracy by test year, baseline and Ridge, with 50 percent coin-flip line"></svg><div class="legend2"><span><i style="background:var(--gold)"></i>Baseline</span><span><i style="background:var(--good)"></i>Ridge</span></div></div>
+  </div>
+  <div class="vs three reveal" style="margin-top:30px" id="tally"></div>
+</section>
+
+<section id="threed">
+  <p class="eyebrow">03 · The same results in 3D</p>
+  <h2 class="reveal">Twelve test years, two models</h2>
+  <p class="lead reveal">Drag to rotate and scroll to zoom. Gold bars are the baseline, green bars are Ridge, and the white cube marks 2020. In the direction view the translucent plane is the 50% coin-flip line.</p>
+  <div class="segctl reveal" id="glMode" role="group" aria-label="3D chart"><button type="button" aria-pressed="true" data-m="mae">Forecast error</button><button type="button" aria-pressed="false" data-m="dir">Directional accuracy</button></div>
+  <div class="gl3 reveal" id="gl" role="img" aria-label="Interactive 3D bar chart of yearly results, baseline against Ridge">
+    <span class="glbadge" id="glBadge">Forecast error · percentage points · lower is better</span>
+    <span class="glhint">Drag to rotate · scroll to zoom</span>
+    <div class="glfall">The 3D view needs WebGL, which this browser is not providing. The 2D charts above show exactly the same data.</div>
+  </div>
+  <p class="srcline">Models built in Blender from the yearly values in the review page and exported as GLB, then rendered here. Fallback: the bars are rebuilt from the same numbers if the model file cannot load.</p>
+</section>
+
+<section id="reconcile">
+  <p class="eyebrow">04 · Open reconciliation items</p>
+  <h2 class="reveal">The headline and the yearly table do not yet agree</h2>
+  <p class="lead reveal">A good review checks its own numbers. The headline directional accuracy puts Ridge well behind the baseline. The simple average of the twelve yearly values puts them level.</p>
+  <div class="tw reveal"><table><thead><tr><th>Metric</th><th>Headline in the write-up</th><th>Average of the 12 yearly values</th></tr></thead><tbody id="recon"></tbody></table></div>
+  <div class="note reveal"><strong>Three numbers, three conflicts.</strong> Direction: the write-up says Ridge wins in only two years, the yearly table shows four. Instruments: the review page and the README chart list different seven-instrument sets with different latest forecasts. Both agree on the conclusion that forecasts sit inside typical error.</div>
+  <div class="note reveal"><strong>Why it matters.</strong> The error figures line up, but the direction figures point to opposite conclusions. A pooled score can differ from a simple average of yearly scores, so this may be a weighting or definition issue. Until it is reconciled, neither direction figure should carry the argument.</div>
+</section>
+
+<section id="next">
+  <p class="eyebrow">05 · Latest forecast, 14 October 2026 close</p>
+  <h2 class="reveal">Every forecast sits inside the typical error</h2>
+  <p class="lead reveal">The marker is the forecast change over the next 20 days. The shaded band is the model's typical error for that instrument. Where the marker stays well inside the band, the forecast is not a usable call on its own.</p>
+  <div class="inst reveal" id="inst"></div>
+  <div class="segctl reveal" id="instSrc" role="group" aria-label="Forecast source" style="margin-top:18px"><button type="button" aria-pressed="true" data-m="rev">Review page</button><button type="button" aria-pressed="false" data-m="rd">README chart</button></div>
+  <p class="small" id="instNote" style="margin-top:0"></p>
+  <p class="small" style="margin-top:12px">BP and Shell prices are in pence on the London Stock Exchange. The other five are index points. BP prices look dividend-adjusted and may be more volatile. Errors are in percentage points, from all test years.</p>
+</section>
+
+<section id="limits">
+  <p class="eyebrow">06 · Verification and limits</p>
+  <h2 class="reveal">What this does not show</h2>
+  <div class="waste reveal" id="lim"></div>
+  <div class="note reveal"><strong>Status.</strong> Exploratory prototype. The evaluation does not demonstrate a reliable predictive edge or investment profitability, and nothing here is investment advice.</div>
+  <div class="note reveal"><strong>Sources.</strong> The <a href="walk-forward-review.html">walk-forward review page</a> with the yearly values, the <a href="https://github.com/denilthaks/SubashtheAnalyst/blob/main/docs/AI-Assisted-Financial-Forecasting.md" target="_blank" rel="noopener noreferrer">AI-assisted forecasting write-up</a>, and the forecast charts in the <a href="https://github.com/denilthaks/SubashtheAnalyst" target="_blank" rel="noopener noreferrer">repository</a>.</div>
+</section>
+</div>
+
+</div>
+</main>
+  <nav class="pager" aria-label="More case studies">
+    <a href="../starbucks-nepal/"><small>← Previous</small><b>Starbucks in Nepal</b></a>
+    <a class="next" href="../"><small>Back →</small><b>All projects</b></a>
+  </nav>
+  <section class="contact-band" id="contact"><div class="wrap contact-inner"><div><p class="eyebrow">OPEN TO ENTRY-LEVEL · INTERNSHIP · GRADUATE OPPORTUNITIES</p><h2>Let’s make sense<br>of <em>something real.</em></h2><p>Data analysis · Business analysis · BI · Operations</p></div><div class="contact-actions"><a class="btn btn-gold" href="mailto:thakalidenil@gmail.com">Email me <span>↗</span></a><a class="text-link" href="https://www.linkedin.com/in/subash-gauchan16/" rel="noreferrer" target="_blank">Find me on LinkedIn <span>↗</span></a></div><div class="contact-glow"></div></div></section>
+  <footer class="site-footer"><a class="brand" href="../../"><span class="brand-mark">SG</span><span class="brand-name">SUBASH <b>GAUCHAN</b></span></a><span>Data · Business · Technology</span><span>© <span id="yr">2026</span> Subash Gauchan · Exploratory prototype. No validated predictive edge or profitability is claimed.</span><a href="#top">Back to top ↑</a></footer>
+  <button class="top" id="totop" aria-label="Back to top">↑</button>
+  <script src="../../assets/js/charts.js"></script>
+  <script src="../../assets/js/forecast-3d.js"></script>
+  <script>
+(function(){
+document.documentElement.classList.add('js');
+var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+var NS='http://www.w3.org/2000/svg';function sv(t,a,p){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+
+var Y=[2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026];
+var mB=[4.40,4.86,2.59,3.58,3.02,7.87,3.63,5.06,3.76,2.91,3.47,4.11];
+var mR=[4.57,4.70,2.70,3.59,3.36,7.98,3.95,4.80,3.60,2.71,3.41,3.84];
+var dB=[54,58,57,55,59,53,58,53,58,57,60,59];
+var dR=[52,57,60,61,58,48,55,63,58,56,61,55];
+var mean=function(a){return a.reduce(function(x,y){return x+y},0)/a.length};
+
+/* pair of 3D pillars that update with the year */
+function pair(host,max,dec,unit){
+  host.innerHTML='';var wrap=el('div','pilwrap');host.appendChild(wrap);
+  var H=host.clientWidth<420?150:210,out=[];
+  [['Baseline','c-gold'],['Ridge','c-green']].forEach(function(d){
+    var c=el('div','pcol'),sc=el('div','pscene');sc.style.height=(H+60)+'px';
+    var p=el('div','pil '+d[1]);p.innerHTML='<i class="f"></i><i class="r"></i><i class="t"></i>';sc.appendChild(p);
+    var l=el('div','plab'),b=el('b',null,'');l.appendChild(b);l.appendChild(document.createTextNode(d[0]));c.appendChild(sc);c.appendChild(l);wrap.appendChild(c);out.push([p,b]);
+  });
+  return function(a,b){[a,b].forEach(function(v,i){out[i][0].style.height=(v/max*H)+'px';out[i][1].textContent=v.toFixed(dec)+unit})};
+}
+var upMae=pair($('#maeBox'),9,2,' pp'),upDir=pair($('#dirBox'),100,0,'%');
+
+/* walk-forward tiles */
+var wf=$('#wf'),tiles=Y.map(function(y){var t=el('button','wft',String(y));t.type='button';t.addEventListener('click',function(){$('#yr').value=y;setYear(y)});wf.appendChild(t);return t});
+
+/* charts */
+function chart(svg,A,B,min,max,ticks,ref,dec){
+  var L=40,R=548,T=14,Bt=226,x=function(i){return L+i*(R-L)/(Y.length-1)},y=function(v){return Bt-(v-min)/(max-min)*(Bt-T)};
+  ticks.forEach(function(t){sv('line',{x1:L,x2:R,y1:y(t),y2:y(t),class:'gl'},svg);var tx=sv('text',{x:L-6,y:y(t)+3,'text-anchor':'end'},svg);tx.textContent=t});
+  if(ref!=null){sv('line',{x1:L,x2:R,y1:y(ref),y2:y(ref),stroke:'var(--bad)','stroke-dasharray':'4 4','stroke-width':1.2},svg);var rt=sv('text',{x:R,y:y(ref)-4,'text-anchor':'end'},svg);rt.textContent='Coin flip 50%'}
+  Y.forEach(function(yr,i){if(i%2===0||i===Y.length-1){var t=sv('text',{x:x(i),y:Bt+18,'text-anchor':'middle'},svg);t.textContent=yr}});
+  [[A,'var(--gold)'],[B,'var(--good)']].forEach(function(s){sv('polyline',{points:s[0].map(function(v,i){return x(i)+','+y(v)}).join(' '),fill:'none',stroke:s[1],'stroke-width':2.2,'stroke-linejoin':'round'},svg);
+    s[0].forEach(function(v,i){sv('circle',{cx:x(i),cy:y(v),r:3,fill:s[1]},svg)})});
+  var mk=sv('line',{x1:0,x2:0,y1:T,y2:Bt,stroke:'var(--fg)','stroke-width':1,'stroke-dasharray':'3 3',opacity:.7},svg);
+  return function(i){mk.setAttribute('x1',x(i));mk.setAttribute('x2',x(i))};
+}
+var mk1=chart($('#maeChart'),mB,mR,2,9,[2,4,6,8],null),mk2=chart($('#dirChart'),dB,dR,40,70,[40,50,60,70],50);
+
+function setYear(yr){
+  var i=Y.indexOf(yr);$('#yrBig').textContent=yr;
+  tiles.forEach(function(t,k){t.className='wft '+(k<i?'tr':k===i?'te':'fu')});
+  upMae(mB[i],mR[i]);upDir(dB[i],dR[i]);mk1(i);mk2(i);
+  $('#yrCap').textContent=(i===0?'No earlier test year exists in this view; training uses earlier data. ':'Trained on all data before '+yr+'. ')+'Forecasts '+yr+' without having seen it.';
+  var dm=mR[i]-mB[i],dd=dR[i]-dB[i];
+  $('#insight').textContent=yr+': Ridge error '+mR[i].toFixed(2)+' pp against '+mB[i].toFixed(2)+' for the baseline ('+(Math.abs(dm)<0.005?'level':dm<0?'Ridge lower by '+Math.abs(dm).toFixed(2):'Ridge higher by '+dm.toFixed(2))+'). Direction '+dR[i]+'% against '+dB[i]+'% ('+(dd===0?'tied':dd>0?'Ridge ahead by '+dd+' points':'baseline ahead by '+Math.abs(dd)+' points')+').';
+}
+$('#yr').addEventListener('input',function(e){setYear(+e.target.value)});
+
+/* tally */
+var maeWins=0,dirWins=0,dirTies=0,dirLoss=0;Y.forEach(function(_,i){if(mR[i]<mB[i])maeWins++;if(dR[i]>dB[i])dirWins++;else if(dR[i]===dB[i])dirTies++;else dirLoss++});
+[['Error','Ridge had the lower error in '+maeWins+' of 12 years and the baseline in '+(12-maeWins)+'. Practically a draw.'],
+ ['Direction','Ridge was ahead in '+dirWins+' years, tied in '+dirTies+' and behind in '+dirLoss+'. It is level or worse in most years.'],
+ ['The baseline','It always says "up", so its direction score is how often markets rose.']].forEach(function(t){var c=el('div','vcard');c.appendChild(el('h4',null,t[0]));c.appendChild(el('p',null,t[1]));$('#tally').appendChild(c)});
+
+/* reconcile */
+[['Return error (Ridge / baseline)','4.09 / 4.10','pp: '+mean(mR).toFixed(2)+' / '+mean(mB).toFixed(2)],
+ ['Directional accuracy (Ridge / baseline)','52.94% / 57.68%',mean(dR).toFixed(1)+'% / '+mean(dB).toFixed(1)+'%'],
+ ['Price error (Ridge / baseline)','251.67 / 251.96','No yearly values published'],
+ ['Years Ridge beats baseline on direction','2 (write-up names 2018 and 2022)',dirWins+' of 12 in the yearly table']].forEach(function(r){var tr=el('tr');r.forEach(function(c){tr.appendChild(el('td',null,c))});$('#recon').appendChild(tr)});
+
+/* instruments (two published sources) */
+var SRC={
+ rev:{note:'Source: Walk-Forward Forecast Review page. Typical error is the Ridge model\u2019s average error for each instrument, all test years.',rows:[['FTSE 100',4.2,1.0],['DAX',4.0,-0.4],['Nasdaq 100',4.1,1.8],['S&P 500',4.3,2.1],['Nikkei 225',4.5,-1.2],['Shell',4.8,0.7],['BP',4.9,-0.9]]},
+ rd:{note:'Source: forecast-vs-typical-error chart in the README. The shaded error widths were read from the chart, so treat them as approximate.',rows:[['BP',6.05,-0.43],['FTSE 100',2.69,0.28],['FTSE 250',2.64,0.29],['FTSE All-Share',3.11,0.37],['Nasdaq Composite',4.61,0.85],['S&P 500',3.46,0.51],['Shell',5.73,-1.06]]}
+};
+function renderInst(k){
+  var host=$('#inst');host.innerHTML='';$('#instNote').textContent=SRC[k].note;
+  SRC[k].rows.forEach(function(r){
+    var row=el('div','irow');row.appendChild(el('h4',null,r[0]));
+    var b=el('div','band'),SC=6.5;b.appendChild(el('i','mid'));var e=el('i','err');e.style.left=(50-r[1]/SC*50)+'%';e.style.width=(r[1]/SC*100)+'%';b.appendChild(e);
+    var m=el('i','mk');m.style.left=(50+r[2]/SC*50)+'%';b.appendChild(m);b.setAttribute('role','img');b.setAttribute('aria-label',r[0]+' forecast '+(r[2]>0?'+':'')+r[2]+' percent, typical error plus or minus '+r[1]+' points');
+    row.appendChild(b);var n=el('div','num');n.appendChild(document.createTextNode((r[2]>0?'+':'')+r[2].toFixed(2)+'% forecast'));n.appendChild(el('small',null,'\u00b1'+r[1].toFixed(1)+' pp typical error'));row.appendChild(n);host.appendChild(row);
+  });
+}
+[].forEach.call(document.querySelectorAll('#instSrc button'),function(btn){btn.addEventListener('click',function(){[].forEach.call(document.querySelectorAll('#instSrc button'),function(x){x.setAttribute('aria-pressed','false')});btn.setAttribute('aria-pressed','true');renderInst(btn.dataset.m)})});
+renderInst('rev');
+
+/* limits */
+[['Small sample','Twelve yearly folds is too few for statistical significance.'],
+ ['Limited features','Nine features. Market regimes and events are not captured.'],
+ ['Definitions','Target and metric definitions and units still need independent checking.'],
+ ['Overlapping windows','Whether 20-day windows overlap, and whether every model uses identical test observations, is unconfirmed.'],
+ ['Price adjustments','Treatment of corporate actions, dividends and adjusted prices is unconfirmed.'],
+ ['2026 is partial','The latest test year is incomplete, so its figures will move.'],
+ ['Unnamed inputs','The yearly tables do not say which instrument they cover, and the features and hyperparameters are not listed on the review page.'],
+ ['Reproducibility','The walk-forward procedure needs an independent rerun.']].forEach(function(r){
+  var b=el('button','flip');b.type='button';b.setAttribute('aria-pressed','false');b.setAttribute('aria-label',r[0]+'. Show detail.');
+  var f=el('div','face'),k=el('div','face back');f.appendChild(el('h3',null,r[0]));f.appendChild(el('span','hint','Tap to read'));
+  k.appendChild(el('span','hint','To verify'));k.appendChild(el('h3',null,r[0]));k.appendChild(el('p',null,r[1]));
+  b.appendChild(f);b.appendChild(k);b.addEventListener('click',function(){b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')==='true'?'false':'true')});$('#lim').appendChild(b);
+});
+
+setYear(2020);
+
+/* reveal, rail, progress */
+var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.remove('pre');io.unobserve(e.target)}})},{threshold:.1}):null;
+$$('.reveal').forEach(function(n){if(io&&!reduce){var r=n.getBoundingClientRect();if(r.top>innerHeight){n.classList.add('pre');io.observe(n)}}});
+var links=$$('.rail a'),secs=['top','method','results','threed','reconcile','next','limits'].map(function(id){return document.getElementById(id)}),prog=$('#prog');
+function onScroll(){var y=scrollY+innerHeight*.35,on=0;secs.forEach(function(s,i){if(s&&s.offsetTop<=y)on=i});links.forEach(function(a,i){a.classList.toggle('on',i===on)});var h=document.documentElement.scrollHeight-innerHeight;prog.style.width=(h>0?Math.min(100,scrollY/h*100):0)+'%'}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+var stage=$('.stage');
+if(!reduce)addEventListener('pointermove',function(e){var x=(e.clientX/innerWidth-.5)*16,y=(e.clientY/innerHeight-.5)*16;stage.style.transform='rotateX('+(-y)+'deg) rotateY('+x+'deg)'},{passive:true});
+})();
+</script>
+  <script>
+(function(){
+var $=function(s){return document.querySelector(s)};
+var Y=['2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025','2026'];
+var mB=[4.40,4.86,2.59,3.58,3.02,7.87,3.63,5.06,3.76,2.91,3.47,4.11],mR=[4.57,4.70,2.70,3.59,3.36,7.98,3.95,4.80,3.60,2.71,3.41,3.84];
+var dB=[54,58,57,55,59,53,58,53,58,57,60,59],dR=[52,57,60,61,58,48,55,63,58,56,61,55];
+var MODES={
+ mae:{glb:'../../assets/models/forecast-chart.glb',a:mB,b:mR,minV:0,maxV:7.98,refV:0,showRef:false,fmt:function(v){return v.toFixed(2)+' pp'},badge:'Forecast error \u00b7 percentage points \u00b7 lower is better'},
+ dir:{glb:'../../assets/models/forecast-dir-chart.glb',a:dB,b:dR,minV:40,maxV:70,refV:50,showRef:true,fmt:function(v){return v+'%'},badge:'Directional accuracy \u00b7 per cent \u00b7 higher is better \u00b7 plane = 50%'}
+};
+var host=$('#gl'),cur=null,mode='mae',started=false;
+function mount(m){
+  if(cur){cur.dispose();cur=null}
+  host.classList.remove('nogl');
+  var c=MODES[m];$('#glBadge').textContent=c.badge;
+  try{cur=window.SG3D.mount(host,{glb:c.glb,years:Y,a:c.a,b:c.b,aName:'Baseline',bName:'Ridge',fmt:c.fmt,minV:c.minV,maxV:c.maxV,refV:c.refV,showRef:c.showRef,hmax:4})}
+  catch(e){host.classList.add('nogl')}
+}
+[].forEach.call(document.querySelectorAll('#glMode button'),function(btn){btn.addEventListener('click',function(){[].forEach.call(document.querySelectorAll('#glMode button'),function(x){x.setAttribute('aria-pressed','false')});btn.setAttribute('aria-pressed','true');mode=btn.dataset.m;if(started)mount(mode)})});
+function start(){if(started)return;started=true;mount(mode)}
+if('IntersectionObserver' in window){var o=new IntersectionObserver(function(es){if(es[0].isIntersecting){o.disconnect();start()}},{rootMargin:'200px'});o.observe(host)}else start();
+window.__sg3d=function(){return {started:started,mode:mode,source:cur&&cur.source(),nogl:host.classList.contains('nogl')}};
+})();
+  </script>
+  <script src="../../assets/js/shell.js"></script>
+</body>
+</html>

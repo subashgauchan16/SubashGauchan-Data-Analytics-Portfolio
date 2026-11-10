@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071013">
+  <title>Green Motion | Subash Gauchan</title>
+  <meta name="description" content="Operations analysis of a fictional e-bike manufacturer: forecasting, inventory, waste and a PDCA improvement proposal, with every limit stated.">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/site-v2.css">
+  <link rel="stylesheet" href="../../assets/css/site-v3-editorial.css">
+  <link rel="stylesheet" href="../../assets/css/page.css">
+  <link rel="stylesheet" href="../../assets/css/folio.css">
+  
+</head>
+<body data-page="folio" id="top">
+  <a class="skip" href="#main">Skip to content</a>
+  <div id="progress"></div>
+  <div class="tip" id="tip" role="status"></div>
+  <header class="site-nav"><a aria-label="Subash Gauchan home" class="brand" href="../../"><span class="brand-mark">SG</span><span class="brand-name">SUBASH <b>GAUCHAN</b></span></a><button aria-expanded="false" aria-label="Toggle navigation" class="menu-toggle">☰</button><nav class="nav-links" aria-label="Main"><a href="../../">Home</a><a href="../../#about">About</a><a class="is-current" aria-current="page" href="../">Projects</a><a href="../../skills/">Skills</a><a href="../../analytics/">Analytics</a><a href="../../cv/">CV</a><a class="nav-contact" href="../../#contact">Let's talk <span>↗</span></a></nav></header>
+  <div class="crumbbar"><div class="crumb"><a href="../">Projects</a> / Green Motion</div></div>
+<main id="main">
+<div class="gm-folio">
+<div class="bar"><div class="wrap">
+  <span class="brand">GREEN MOTION FOLIO</span>
+  <nav class="rail" aria-label="Chapters">
+    <a href="#top">Overview</a><a href="#system">System</a><a href="#linked">Linked failures</a><a href="#inventory">Inventory</a><a href="#waste">Wastes</a><a href="#pdca">PDCA</a><a href="#proof">Proof</a><a href="#limits">Limits</a>
+  </nav>
+</div><div class="prog" id="prog"></div></div>
+
+<div class="wrap" id="top">
+<header class="hero">
+  <div>
+    <p class="eyebrow">Applied Operation Management · BPP University</p>
+    <h1>Green Motion<em class="gold">Forecasting, inventory and continuous improvement</em></h1>
+    <p class="sub">An operations analysis of a fictional UK e-bike manufacturer. Weak forecasting is the upstream failure. Inventory imbalance and three kinds of waste follow from it. PDCA turns a Lime benchmark into three recommendations.</p>
+    <div class="btns"><a class="btn solid" href="#linked">See how the failures connect</a><a class="btn" href="#pdca">Go to the recommendations</a></div>
+    <p style="margin:18px 0 0"><span class="tag ill">Fictional company</span> <span class="tag warn">No measured improvement claimed</span></p>
+  </div>
+  <div class="stage" aria-hidden="true">
+    <div class="orbit"><i></i><i></i><i></i><i></i><i></i><b style="--a:0deg"></b><b style="--a:90deg"></b><b style="--a:180deg"></b><b style="--a:270deg"></b></div>
+    <div class="core">FORECAST<br>STOCK · FLOW</div>
+  </div>
+</header>
+</div>
+
+<div class="wrap">
+<section id="overview">
+  <p class="eyebrow">At a glance</p>
+  <h2 class="reveal">One upstream cause, five performance objectives hit.</h2>
+  <p class="lead reveal">Green Motion plans for 40% year-on-year demand growth but forecasts with manual spreadsheets. The report argues that fixing forecasting first relieves pressure on inventory, production flow and cost.</p>
+  <div class="facts reveal">
+    <div class="fact"><b>40%</b><span>Planned YoY demand growth</span></div>
+    <div class="fact"><b>5</b><span>Performance objectives affected</span></div>
+    <div class="fact"><b>3</b><span>Core wastes: inventory, waiting, overproduction</span></div>
+    <div class="fact"><b>3</b><span>Recommendations</span></div>
+  </div>
+</section>
+
+<section id="system">
+  <p class="eyebrow">Task 1 · The supply network</p>
+  <h2 class="reveal">Where the plan and the reality part ways</h2>
+  <p class="lead reveal">Select a stage of the network. The plan describes the intention, the reality is what the case shows, and the barrier is why the two differ.</p>
+  <div class="slabs reveal" id="slabs" role="group" aria-label="Supply network stage"></div>
+  <div class="panel reveal" id="slabDetail" aria-live="polite"></div>
+  <div class="note reveal"><strong>Why the usual input-transformation-output view is not enough.</strong> It shows what enters and leaves the factory but not why flow becomes unstable. At Green Motion, demand information enters before any material is bought, so a weak forecast destabilises everything after it.</div>
+</section>
+
+<section id="linked">
+  <p class="eyebrow">Task 1 and 2 · Two interlinked challenges</p>
+  <h2 class="reveal">Forecasting is the cause. Inventory is the consequence.</h2>
+  <p class="lead reveal">Trace the chain, or click any step. Each caption follows the report's reasoning.</p>
+  <div class="chain reveal" id="chain"></div>
+  <p class="cap" id="chainCap" aria-live="polite"></p>
+  <div class="btns" style="margin-bottom:56px"><button class="btn" id="chainPlay" type="button">Pause</button></div>
+
+  <h3 class="reveal" style="font-size:1.8rem;margin-bottom:14px">The 4 Vs, one challenge at a time</h3>
+  <div class="tabs" id="vTabs" role="group" aria-label="Challenge"></div>
+  <div class="vs" id="vGrid"></div>
+  <p class="small" style="margin-top:12px" id="vPerf"></p>
+
+  <h3 class="reveal" style="font-size:1.8rem;margin:56px 0 14px">Five performance objectives and the KPI that tracks each</h3>
+  <div class="tw reveal"><table><thead><tr><th>Objective</th><th>Inventory imbalance</th><th>Weak forecasting and unstable planning</th><th>KPI</th></tr></thead><tbody id="perf"></tbody></table></div>
+</section>
+
+<section id="inventory">
+  <p class="eyebrow">Task 2 · Inventory and capacity</p>
+  <h2 class="reveal">Having more stock is not the same as having the right stock</h2>
+  <p class="lead reveal">Frames pile up while controllers and sensors run out, so the line stops anyway. The report classifies this as misalignment with the production constraint, not a shortage of stock overall.</p>
+  <div class="inv reveal">
+    <div>
+      <div class="scene" aria-hidden="true"><div class="floor" id="floor"></div></div>
+      <div class="legend"><span>Frames in stock</span><span class="s">Controllers and sensors missing</span></div>
+    </div>
+    <div class="rag">
+      <div><b class="hi">High</b><h4>Frames</h4><p>Excess stock ties up working capital because frames cannot become bikes without the electronics.</p></div>
+      <div><b class="hi">High</b><h4>Controllers and sensors</h4><p>Shortages stop assembly and make operators wait.</p></div>
+      <div><b class="hi">Higher</b><h4>Batteries</h4><p>Shortage can interrupt assembly, and battery quality issues also feed defects.</p></div>
+      <p class="small">The classification is the author's indicative judgement on a fictional case, not calculated from SKU data.</p>
+    </div>
+  </div>
+
+  <div class="calc reveal">
+    <div>
+      <h3 style="font-size:1.8rem;margin-bottom:14px">What 40% growth asks of procurement</h3>
+      <p class="small" style="margin-top:0">A hypothetical, as in the report. It starts at Brompton's reported 2024 unit sales of 84,899 and compares the 40% forecast with the demand that actually arrives. Change either input.</p>
+      <div class="field"><label for="base">Annual units before growth</label><input id="base" type="number" min="1000" max="500000" step="1000" value="84899"></div>
+      <div class="field"><label for="act">Actual demand change: <span id="actLbl">+20%</span></label><input id="act" type="range" min="-20" max="40" step="1" value="20"></div>
+    </div>
+    <div>
+      <div class="bars">
+        <div class="bar2"><span>Planned build at +40% <em id="plan"></em></span><div class="track"><i id="planBar"></i></div></div>
+        <div class="bar2"><span>Actual demand <em id="actual"></em></span><div class="track"><i class="act" id="actBar"></i></div></div>
+      </div>
+      <p class="out" id="calcOut" aria-live="polite"></p>
+      <p class="small">The report notes that comparable scale would mean roughly 110,000 to 119,000 units, an extra 31,412 to 33,960. The figures are an illustration, not Green Motion data.</p>
+    </div>
+  </div>
+</section>
+
+<section id="waste">
+  <p class="eyebrow">Task 2 · TIMWOODS</p>
+  <h2 class="reveal">Eight wastes, one shared root</h2>
+  <p class="lead reveal">Tap a card to see the operational consequence. The report's main analysis centres on inventory, waiting and overproduction, and the appendix covers all eight.</p>
+  <div class="chips" id="wChips" role="group" aria-label="Filter wastes"></div>
+  <div class="waste reveal" id="wasteGrid"></div>
+  <div class="note reveal"><strong>Reading across the cards.</strong> Several wastes come from the same instability. Weak forecasting feeds overproduction and excess inventory, and shortages create waiting. So waste reduction should start with the planning process, not with each waste on its own.</div>
+</section>
+
+<section id="pdca">
+  <p class="eyebrow">Task 3 and 4 · Benchmark and PDCA</p>
+  <h2 class="reveal">From a Lime benchmark to three recommendations</h2>
+  <p class="lead reveal">Select a phase, or click the plate, and the ring turns to it.</p>
+  <div class="pdca reveal">
+    <div class="car"><div class="ring" id="ring">
+      <button class="plate" data-i="0" aria-label="Plan">Plan<small>Benchmark</small></button>
+      <button class="plate" data-i="1" aria-label="Do">Do<small>Recommend</small></button>
+      <button class="plate" data-i="2" aria-label="Check">Check<small>Measure</small></button>
+      <button class="plate" data-i="3" aria-label="Act">Act<small>Standardise</small></button>
+    </div></div>
+    <div>
+      <div class="steps" id="steps" role="group" aria-label="PDCA phase"></div>
+      <div class="detail" id="detail" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="bm reveal">
+    <h3 style="font-size:1.8rem;margin-bottom:8px">Plan in detail: Green Motion against Lime</h3>
+    <p class="small" style="margin-top:0">Lime is a digital benchmark. Its shared-micromobility model differs from manufacturing, so the lesson is its information integration and data-led allocation. The report does not claim Lime uses centralised procurement.</p>
+    <div class="steps" id="bmSteps" role="group" aria-label="Benchmarking step"></div>
+    <div class="bmrow" id="bmRow"></div>
+  </div>
+</section>
+
+<section id="proof">
+  <p class="eyebrow">Proof, not assumption</p>
+  <h2 class="reveal">How an improvement would actually be shown</h2>
+  <p class="lead reveal">PDCA, the 4Vs and TIMWOODS structure an investigation, but a framework alone does not demonstrate an improvement. This is the loop the analysis holds itself to, and the measures that would settle it.</p>
+  <ol class="flow reveal" id="flow"></ol>
+  <div class="branch reveal">
+    <div class="y"><b>Yes, performance improved</b>Standardise the change and monitor it, then continue the improvement cycle.</div>
+    <div class="n"><b>No, it did not</b>Review the assumptions, revise the intervention and return to step 02 to measure again.</div>
+  </div>
+  <h3 class="reveal" style="font-size:1.5rem;margin-bottom:16px">Measures that would decide it</h3>
+  <div class="kpis reveal" id="proofKpis"></div>
+  <p class="small" style="margin-top:12px">Which measures apply depends on the data available. Forecast error is usually expressed as MAPE, mean absolute percentage error.</p>
+  <div class="note reveal"><strong>What is not claimed.</strong> This coursework reports no measured productivity improvement. The 40% growth plan, the stock positions and the Lime comparison are analytical inputs and illustrations, not results.</div>
+</section>
+
+<section id="limits">
+  <p class="eyebrow">Verification and limits</p>
+  <h2 class="reveal">What this analysis does and does not show</h2>
+  <div class="note reveal"><strong>A fictional case.</strong> Green Motion is a course case, so the inventory classification and the Brompton comparison are hypothetical. Brompton is a real comparator, and the report does not claim it has the same failures. The analysis proposes measures and reports no measured improvement.</div>
+  <div class="src reveal"><p><strong>Selected sources</strong></p><ul>
+    <li>Ali (2021), <a href="https://www.netsuite.com/portal/resource/articles/financial-management/6-reasons-to-move-away-from-demand-forecasting-in-spreadsheets.shtml" target="_blank" rel="noopener">6 reasons to move away from demand forecasting in spreadsheets</a>, Oracle NetSuite</li>
+    <li>Gagliordi (2023), <a href="https://www.oracle.com/uk/analytics/spreadsheet-risks/" target="_blank" rel="noopener">10 common spreadsheet risks and solutions</a>, Oracle</li>
+    <li>Gartside (2022), <a href="https://rowtonstraining.com/the-4vs-the-4-dimensions-of-operations/" target="_blank" rel="noopener">The 4 Vs of operations</a></li>
+    <li>Garvey (2019), <a href="https://www.peoplegoal.com/blog/what-are-the-five-performance-objectives/" target="_blank" rel="noopener">5 key performance objectives</a></li>
+    <li>Neutron Holdings (2026), <a href="https://www.sec.gov/Archives/edgar/data/1699963/000162828026044471/neutronholdingsinc-sx1a1.htm" target="_blank" rel="noopener">Form S-1/A for Lime's parent company</a>, SEC</li>
+    <li>Brompton (2024), <a href="https://find-and-update.company-information.service.gov.uk/company/01261512/filing-history" target="_blank" rel="noopener">Filing history</a>, Companies House</li>
+    <li>Mendoza (2022), <a href="https://sixsigmadsi.com/what-is-benchmarking/" target="_blank" rel="noopener">What is benchmarking?</a></li>
+    <li>Slack, Brandon-Jones and Burgess (2022), Operations Management, Pearson</li></ul></div>
+  <div class="note reveal"><strong>About the author.</strong> Subash Gauchan, BSc (Hons) Applied Management at BPP University, building a data and operations analyst portfolio. More projects are on <a href="https://github.com/denilthaks/SubashtheAnalyst" target="_blank" rel="noopener">GitHub</a>.</div>
+</section>
+</div>
+
+</div>
+</main>
+  <nav class="pager" aria-label="More case studies">
+    <a href="../"><small>← Back</small><b>All projects</b></a>
+    <a class="next" href="../online-store/"><small>Next →</small><b>Online store dashboard</b></a>
+  </nav>
+  <section class="contact-band" id="contact"><div class="wrap contact-inner"><div><p class="eyebrow">OPEN TO ENTRY-LEVEL · INTERNSHIP · GRADUATE OPPORTUNITIES</p><h2>Let’s make sense<br>of <em>something real.</em></h2><p>Data analysis · Business analysis · BI · Operations</p></div><div class="contact-actions"><a class="btn btn-gold" href="mailto:thakalidenil@gmail.com">Email me <span>↗</span></a><a class="text-link" href="https://www.linkedin.com/in/subash-gauchan16/" rel="noreferrer" target="_blank">Find me on LinkedIn <span>↗</span></a></div><div class="contact-glow"></div></div></section>
+  <footer class="site-footer"><a class="brand" href="../../"><span class="brand-mark">SG</span><span class="brand-name">SUBASH <b>GAUCHAN</b></span></a><span>Data · Business · Technology</span><span>© <span id="yr">2026</span> Subash Gauchan · Fictional case. No measured productivity improvement is claimed.</span><a href="#top">Back to top ↑</a></footer>
+  <button class="top" id="totop" aria-label="Back to top">↑</button>
+  <script src="../../assets/js/charts.js"></script>
+  <script>
+(function(){
+document.documentElement.classList.add('js');
+var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function fmt(n){return Math.round(n).toLocaleString('en-GB')}
+
+/* ---------- Supply network ---------- */
+var NET=[
+ {k:'Upstream',s:'Input',t:'Raw materials, suppliers',p:'Stable supplier relationships and reliable material supply.',r:'Weak forecasting and unstable planning.',b:'Manual forecasting creates inaccurate purchasing and production decisions.'},
+ {k:'Focal',s:'Transformation',t:'Manufacturing units',p:'Maintain quality and respond to 40% year-on-year demand.',r:'Inefficient factory layout, inventory imbalance and frequent machine breakdowns.',b:'Excess frames and component shortages reduce flow and tie up working capital.'},
+ {k:'Downstream',s:'Output',t:'Product finalisation',p:'Deliver consistent quality during growth.',r:'High defect rates in battery units.',b:'Unplanned downtime and quality failures disrupt output.'},
+ {k:'Bottom line',s:'Result',t:'Customer and market',p:'Customer retention and UK market growth.',r:'Lower profit margin and more vulnerability to new entrants.',b:'Interconnected failures weaken profitability and responsiveness.'}
+];
+var slabs=$('#slabs'),sd=$('#slabDetail');
+function setNet(i){
+  $$('.slab',slabs).forEach(function(b,k){b.setAttribute('aria-pressed',String(k===i))});
+  var n=NET[i];sd.innerHTML='';
+  sd.appendChild(el('p','eyebrow',n.k+' · '+n.t));
+  var r=el('div','rows');r.style.marginTop='16px';
+  [['Planned strategy',n.p],['Reality',n.r],['Challenge and barrier',n.b]].forEach(function(x){var d=el('div');d.appendChild(el('h4',null,x[0]));d.appendChild(el('p',null,x[1]));r.appendChild(d)});
+  sd.appendChild(r);
+}
+NET.forEach(function(n,i){var b=el('button','slab');b.type='button';b.appendChild(el('small',null,n.s));b.appendChild(el('h3',null,n.k));b.addEventListener('click',function(){setNet(i)});slabs.appendChild(b)});
+setNet(0);
+
+/* ---------- Cause chain ---------- */
+var CH=[
+ ['Manual spreadsheet forecast','Demand, stock and supplier flow are not visible in real time.','Forecasting is done by hand in spreadsheets, so planners cannot see real-time demand, stock levels or supplier flow time.'],
+ ['Wrong purchase quantities','Some parts over-bought, others under-bought.','Inaccurate forecasts push procurement to buy too many frames and too few electronic components.'],
+ ['Excess and shortage together','Frames pile up. Controllers and sensors run out.','Excess frames tie up working capital while shortages of controllers and sensors interrupt production.'],
+ ['Waste appears','Inventory, waiting, overproduction.','Operators wait for parts, some models are overproduced beyond demand, and schedules keep changing.'],
+ ['Margin and flexibility suffer','Lower profit, more exposure to new entrants.','All five performance objectives are hit, and the business is more vulnerable to competitors.']
+];
+var chain=$('#chain'),cap=$('#chainCap'),cIdx=0,cTimer=null,play=$('#chainPlay');
+CH.forEach(function(c,i){var b=el('button','node');b.type='button';b.appendChild(el('h3',null,c[0]));b.appendChild(el('p',null,c[1]));b.addEventListener('click',function(){stopChain();showChain(i)});chain.appendChild(b)});
+function showChain(i){cIdx=i;$$('.node',chain).forEach(function(n,k){n.classList.toggle('on',k===i);n.classList.toggle('past',k<i)});cap.textContent=CH[i][2]}
+function startChain(){stopChain();cTimer=setInterval(function(){showChain((cIdx+1)%CH.length)},2600);play.textContent='Pause'}
+function stopChain(){if(cTimer){clearInterval(cTimer);cTimer=null}play.textContent='Trace the chain'}
+play.addEventListener('click',function(){cTimer?stopChain():startChain()});
+showChain(0);if(!reduce)startChain();else stopChain();
+
+/* ---------- 4 Vs ---------- */
+var VS={
+ 'Inventory imbalance':{perf:'Performance affected: quality and dependability.',v:[
+  ['Volume','40% year-on-year demand growth, but production has not kept pace. Volume pressure is rising.'],
+  ['Variety','Several e-bike models widen the range of components, so electronic components run short.'],
+  ['Variation','Excess frame stock alongside short electronics disrupts production continuity.'],
+  ['Visibility','Little visibility of supplier inventory, component availability and warehouse stock weakens replenishment.']]},
+ 'Weak forecasting':{perf:'Performance affected: dependability, flexibility and cost.',v:[
+  ['Volume','Fast, unplanned growth exposes weak forecasting.'],
+  ['Variety','A wider range makes demand harder to forecast for each SKU.'],
+  ['Variation','Spreadsheet forecasts overproduce some models and leave others short, creating bottlenecks and unstable schedules.'],
+  ['Visibility','Limited view of real-time demand, stock and supplier flow time reduces planning accuracy.']]}
+};
+var vt=$('#vTabs'),vg=$('#vGrid');
+function setV(name){
+  $$('button',vt).forEach(function(b){b.setAttribute('aria-pressed',String(b.textContent===name))});
+  vg.innerHTML='';VS[name].v.forEach(function(v){var c=el('div','vcard');c.appendChild(el('h4',null,v[0]));c.appendChild(el('p',null,v[1]));vg.appendChild(c)});
+  $('#vPerf').textContent=VS[name].perf;
+}
+Object.keys(VS).forEach(function(n){var b=el('button',null,n);b.type='button';b.addEventListener('click',function(){setV(n)});vt.appendChild(b)});
+setV('Inventory imbalance');
+
+/* ---------- Performance table ---------- */
+[['Quality','Shortage of critical components disrupts normal production and risks inconsistent output.','Unstable schedules increase disruption, errors and rework.','Defect rate, rework rate'],
+ ['Speed','Electronic-component shortages delay assembly and lengthen lead time.','Forecast revisions change schedules and slow the response.','Production lead time, cycle time'],
+ ['Dependability','Stock-outs make planned production and delivery dates hard to achieve.','Unstable schedules weaken delivery commitments.','On-time delivery rate'],
+ ['Flexibility','Excess stock of the wrong components limits response to product-mix changes.','Poor demand visibility limits adapting production to demand.','Changeover time, response time to demand change'],
+ ['Cost','Excess inventory adds holding cost, and shortages bring emergency purchasing and overtime.','Forecast errors create waste and inefficient use of resources.','Inventory holding cost, cost per unit']
+].forEach(function(r){var tr=el('tr');r.forEach(function(c){tr.appendChild(el('td',null,c))});$('#perf').appendChild(tr)});
+
+/* ---------- Inventory scene ---------- */
+var fl=$('#floor');
+for(var i=0;i<12;i++){var x=18+(i%4)*52,y=20+Math.floor(i/4)*52;
+  var b=el('div','box');b.style.left=x+'px';b.style.top=y+'px';b.innerHTML='<i></i><i></i><i></i>';fl.appendChild(b);
+  if(i%3===0){var b2=el('div','box lv2');b2.style.left=x+'px';b2.style.top=y+'px';b2.innerHTML='<i></i><i></i><i></i>';fl.appendChild(b2)}}
+for(var j=0;j<4;j++){var s=el('div','slot');s.style.left=(228+(j%2)*52)+'px';s.style.top=(20+Math.floor(j/2)*52)+'px';fl.appendChild(s)}
+
+/* ---------- Calculator ---------- */
+var base=$('#base'),act=$('#act');
+function calc(){
+  var b=Math.max(0,+base.value||0),a=+act.value,plan=b*1.4,actual=b*(1+a/100),gap=plan-actual,max=Math.max(plan,actual,1);
+  $('#actLbl').textContent=(a>=0?'+':'')+a+'%';
+  $('#plan').textContent=fmt(plan)+' units';$('#actual').textContent=fmt(actual)+' units';
+  $('#planBar').style.width=(plan/max*100)+'%';$('#actBar').style.width=(actual/max*100)+'%';
+  var o=$('#calcOut');o.innerHTML='';
+  if(gap>0.5){o.appendChild(document.createTextNode('If procurement follows the forecast, about '));o.appendChild(el('strong',null,fmt(gap)+' units'));o.appendChild(document.createTextNode(' of frames, work in progress and finished goods would be built or bought without demand to absorb them, tying up working capital.'))}
+  else{o.appendChild(document.createTextNode('Demand matches the forecast: procurement of about '));o.appendChild(el('strong',null,fmt(plan-b)+' extra units'));o.appendChild(document.createTextNode(' is needed, which is the scale the plan asks of suppliers and the line.'))}
+}
+base.addEventListener('input',calc);act.addEventListener('input',calc);calc();
+
+/* ---------- TIMWOODS ---------- */
+var W=[
+ ['T','Transportation','Unnecessary movement from layout inefficiency.','Longer internal movement and delay.',0],
+ ['I','Inventory','Excess frames and other slow-moving stock.','Working capital tied up.',1],
+ ['M','Motion','Inefficient movement around the production process.','Reduced productivity.',0],
+ ['W','Waiting','Electronic-component shortages and machine downtime.','Production delays.',1],
+ ['O','Overproduction','Production based on inaccurate growth forecasts.','Excess stock.',1],
+ ['O','Overprocessing','Repeated adjustments and recovery activities.','Increased operational effort.',0],
+ ['D','Defects','Battery quality issues.','Rework and quality risk.',0],
+ ['S','Skills','Limited use of workforce knowledge and digital capabilities.','Reduced improvement potential.',0]
+];
+var wg=$('#wasteGrid'),wc=$('#wChips'),cards=[];
+W.forEach(function(w){
+  var b=el('button','flip');b.type='button';b.setAttribute('aria-pressed','false');b.setAttribute('aria-label',w[1]+'. Show the operational consequence.');
+  var f=el('div','face'),back=el('div','face back');
+  f.appendChild(el('div','ltr',w[0]));var h=el('div');h.appendChild(el('h3',null,w[1]));h.appendChild(el('p','small',w[2]));f.appendChild(h);
+  if(w[4])f.appendChild(el('span','core3','Core'));
+  back.appendChild(el('span','hint','Operational consequence'));back.appendChild(el('h3',null,w[1]));back.appendChild(el('p',null,w[3]));
+  b.appendChild(f);b.appendChild(back);b.dataset.core=w[4];
+  b.addEventListener('click',function(){b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')==='true'?'false':'true')});
+  wg.appendChild(b);cards.push(b);
+});
+[['All eight',0],['Core three',1]].forEach(function(c,i){var b=el('button',null,c[0]);b.type='button';b.setAttribute('aria-pressed',String(i===0));
+  b.addEventListener('click',function(){$$('button',wc).forEach(function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');cards.forEach(function(k){k.classList.toggle('dim',c[1]===1&&k.dataset.core!=='1')})});wc.appendChild(b)});
+
+/* ---------- PDCA ---------- */
+var PD=[
+ {n:'Plan',t:'Benchmark against Lime',l:'Use Lime as a digital benchmark for information flow, then pick what to learn from it.',i:[['Problem','Inventory imbalance and weak forecasting.'],['Benchmark','Lime combines hardware, software, data and tech-enabled operations.'],['Learning','Connect demand, inventory and production information.']]},
+ {n:'Do',t:'Three recommendations',l:'Practical changes drawn from the benchmark and the inventory diagnosis.',i:[['1. Integrate planning in an ERP/MRP system','Link demand forecasts, inventory records and production planning, replacing manual spreadsheets.'],['2. Differentiated inventory control and Kanban','Reorder-point controls and safety stock for controllers and sensors. Kanban where demand signals are reliable. Review excess frames.'],['3. Data-led workload and capacity planning','Use forecasts and production constraints to find bottlenecks and prioritise resources, with a pilot around the controller and sensor assembly step.']]},
+ {n:'Check',t:'Measure against the objectives',l:'New systems do not improve performance by themselves, so the KPIs decide whether waste is falling.',i:[['Forecast accuracy','Is planning getting closer to actual demand?'],['Stock-out frequency','Are shortages stopping the line less often?'],['Inventory holding cost','Is excess stock costing less?'],['Production lead time','Is flow faster?'],['On-time delivery','Are delivery commitments being kept?']]},
+ {n:'Act',t:'Standardise or adjust',l:'Results decide the next move, so the recommendations are never one-off fixes.',i:[['If results improve','Standardise the successful processes across the operation.'],['If KPIs stay below target','Review forecasting assumptions, inventory controls and workload plans, then adjust.']]}
+];
+var ring=$('#ring'),steps=$('#steps'),detail=$('#detail');
+function setPhase(i){
+  ring.style.transform='rotateY('+(-i*90)+'deg)';
+  $$('button',steps).forEach(function(b,k){b.setAttribute('aria-pressed',String(k===i))});
+  var p=PD[i];detail.innerHTML='';detail.appendChild(el('h3',null,p.n+': '+p.t));detail.appendChild(el('p','lede',p.l));
+  var ul=el('ul');p.i.forEach(function(x){var li=el('li');li.appendChild(el('b',null,x[0]));li.appendChild(el('span',null,x[1]));ul.appendChild(li)});detail.appendChild(ul);
+}
+PD.forEach(function(p,i){var b=el('button',null,p.n);b.type='button';b.addEventListener('click',function(){setPhase(i)});steps.appendChild(b)});
+$$('.plate').forEach(function(b){b.addEventListener('click',function(){setPhase(+b.dataset.i)})});
+function fitRing(){var w=$('.car').clientWidth;ring.style.setProperty('--r',Math.round(Math.min(150,Math.max(90,w*0.42)))+'px')}
+fitRing();addEventListener('resize',fitRing);setPhase(0);
+
+/* Benchmark steps */
+var BM=[
+ ['Problem identification','Inventory imbalance and forecasting.','Platform combines proprietary hardware, software, data and tech-enabled operations.','Benchmark the information flow.'],
+ ['Select','Needs resource allocation to follow demand.','Technology optimises resource allocation and operating cost against demand.','Use Lime as a digital benchmark.'],
+ ['Collect','Manual spreadsheet for operational data.','Rider app data and vehicle telemetry support demand forecasting. IoT monitors location, health and operational metrics.','Integrate operational data.'],
+ ['Analyse','Weak demand and supply forecast.','Predictive demand and machine learning guide fleet placement, task priority and resource allocation.','Improve inventory and production alignment.'],
+ ['Improve','Better ERP and MRP adoption.','Real-time operational tracking.','Connect demand, inventory and production.'],
+ ['Monitor','Periodic review.','Real-time monitoring with GPS tracking and feedback.','Establish continuous KPI feedback.']
+];
+var bs=$('#bmSteps'),br=$('#bmRow');
+function setBm(i){
+  $$('button',bs).forEach(function(b,k){b.setAttribute('aria-pressed',String(k===i))});
+  br.innerHTML='';[['Green Motion',BM[i][1]],['Lime',BM[i][2]],['Key learning',BM[i][3]]].forEach(function(x){var c=el('div','vcard');c.appendChild(el('h4',null,x[0]));c.appendChild(el('p',null,x[1]));br.appendChild(c)});
+}
+BM.forEach(function(b,i){var x=el('button',null,b[0]);x.type='button';x.addEventListener('click',function(){setBm(i)});bs.appendChild(x)});
+setBm(0);
+
+/* ---------- reveal, rail, progress ---------- */
+var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.remove('pre');io.unobserve(e.target)}})},{threshold:.1}):null;
+$$('.reveal').forEach(function(n){if(io&&!reduce){var r=n.getBoundingClientRect();if(r.top>innerHeight){n.classList.add('pre');io.observe(n)}}});
+var links=$$('.rail a'),secs=['top','system','linked','inventory','waste','pdca','proof','limits'].map(function(id){return document.getElementById(id)}),prog=$('#prog');
+function onScroll(){
+  var y=scrollY+innerHeight*.35,on=0;secs.forEach(function(s,i){if(s&&s.offsetTop<=y)on=i});
+  links.forEach(function(a,i){a.classList.toggle('on',i===on)});
+  var h=document.documentElement.scrollHeight-innerHeight;prog.style.width=(h>0?Math.min(100,scrollY/h*100):0)+'%';
+}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+var stage=$('.stage');
+if(!reduce)addEventListener('pointermove',function(e){var x=(e.clientX/innerWidth-.5)*16,y=(e.clientY/innerHeight-.5)*16;stage.style.transform='rotateX('+(-y)+'deg) rotateY('+x+'deg)'},{passive:true});
+})();
+</script>
+  <script>
+(function(){
+var G=window.SGC,$=function(s){return document.querySelector(s)};
+[['Identify the imbalance','Spot where stock, flow or cost is out of line.'],['Measure demand, capacity and resources','Establish the baseline before changing anything.'],['Investigate forecasting, scheduling and waste','Test the likely causes with the 4Vs and TIMWOODS.'],['Prioritise root causes','Rank them so the effort goes where it matters.'],['Plan a targeted intervention','One change with a defined owner and measure.'],['Implement a controlled change','Small enough to attribute any effect to it.'],['Measure the operational KPIs','Compare against the baseline from step 02.'],['Did performance improve?','The answer decides what happens next.']].forEach(function(x,i){
+  var li=G.el('li',i===7?'dec':'');li.appendChild(G.el('b',null,x[0]));li.appendChild(G.el('span',null,x[1]));$('#flow').appendChild(li)});
+[['Utilisation','How much of capacity is used'],['Forecast error','Gap between plan and demand, e.g. MAPE'],['Turnaround time','From order to finished bike'],['Resource imbalance','Excess stock against shortages']].forEach(function(x){
+  var d=G.el('div','kpi');d.appendChild(G.el('b',null,x[0]));d.appendChild(G.el('span',null,x[1]));d.querySelector('b').style.fontSize='1.35rem';$('#proofKpis').appendChild(d)});
+var links=[].slice.call(document.querySelectorAll('.rail a')),ids=['top','system','linked','inventory','waste','pdca','proof','limits'];
+})();
+  </script>
+  <script src="../../assets/js/shell.js"></script>
+</body>
+</html>

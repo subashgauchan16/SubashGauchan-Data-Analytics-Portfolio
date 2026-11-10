@@ -3,6 +3,8 @@
 
 > A hands-on portfolio exploring business intelligence, sales and KPI analysis, market-entry research, operational improvement, AI workflow controls, and exploratory financial forecasting. Built through independent learning alongside a BSc (Hons) Applied Management degree, with project methods, findings, and limitations documented transparently.
 
+**Website:** [denilthaks.github.io/SubashtheAnalyst](https://denilthaks.github.io/SubashtheAnalyst/) · **Repository layout:** `site/` is the published website; `data/` holds the source workbooks, `docs/` the audit and reconciliation notes, and `source/` the 3D chart build. Only `site/` is deployed. The previous version of the site is kept on the `archive/legacy-v1` branch.
+
 **Connect with me on LinkedIn:** [Subash Gauchan](https://www.linkedin.com/in/subash-gauchan16/)
 
 <p align="center">
@@ -46,6 +48,24 @@ My approach combines business understanding with practical analytics. I use Exce
 My projects explore commercial performance, market-entry strategy, operational improvement and the responsible use of AI workflows. I aim to go beyond reporting what happened by asking why it may have happened and what to do next.
 
 **Career interests:** Data Analysis · Business Analysis · Business Intelligence · Operations Analysis · Research Analysis
+
+
+## Learning by building: my approach to AI-assisted development
+
+I am largely self-taught, and AI-assisted development has become one of the ways I learn. I sometimes call it *vibe coding*, but I do not see the process as simply asking an AI tool to generate code and accepting whatever comes back. I start with a problem, explain the context, work through the logic, build a practical solution, and then test where it works and where it falls short.
+
+For example, I am building [CurioTrail](https://denilthaks.github.io/CURIO/#/), a story-driven learning game that turns concepts such as SQL, Python, Excel and KPI analysis into interactive challenges. I learn by experimenting with ideas and building things I can use to practise them. AI tools can accelerate implementation, but I remain responsible for checking the behaviour, understanding the decisions I can explain, and being clear about limitations.
+
+That approach connects with how I think about analysis: begin with a real problem, gather context, reason through possible solutions, test assumptions and improve the result. Analysts cannot prevent every business problem, but they can help identify risks earlier, investigate root causes and support better-informed decisions before issues become more costly.
+
+**What I am practising:**
+- **Problem framing:** define what needs to be solved and why it matters.
+- **Logical decomposition:** break an idea into inputs, rules, outputs and edge cases.
+- **Testing and iteration:** challenge assumptions, investigate failures and improve the solution.
+- **Responsible AI use:** use AI to accelerate work without treating its output as automatically correct.
+- **Learning through application:** turn abstract concepts into tools and exercises I can experiment with.
+
+I do not claim to have written every line of every AI-assisted project from scratch. My aim is to be transparent about the tools I use, understand the system's key logic and limitations, and demonstrate my contribution through the problem definition, decisions, testing and improvements.
 
 ## Analytical approach
 
@@ -97,10 +117,25 @@ gantt
 
 ## Featured projects
 
+## CurioTrail — A story-driven learning game
+
+**[▶ Play CurioTrail directly](https://denilthaks.github.io/CURIO/#/)** · [View the source code](https://github.com/denilthaks/CURIO)
+
+*Best viewed on a modern browser; this prototype is still being iterated. A verified project screenshot will be added when one is available.*
+
+CurioTrail is an AI-assisted, self-directed learning project that turns technical concepts into interactive challenges. It is designed to help non-technical learners practise SQL, Python, Excel formulas and KPI analysis through a game-style experience rather than only reading explanations.
+
+I use the project to learn by building: defining the problem, breaking concepts into logic, experimenting with implementation, testing behaviour and improving the experience. AI tools support parts of development, but I do not treat generated output as automatically correct. I aim to understand the key logic, verify what I can and document limitations honestly.
+
+**What this project demonstrates:** product thinking, learning-by-building, structured problem-solving, iterative testing and transparent AI-assisted development.
+
+> **Try it:** Open the live game above. The prototype is a work in progress; rendering performance can vary by device and graphics hardware.
+
+---
+
 ## 1. Starbucks Nepal — Market-entry and affordability analysis
 
-**Tools:** Excel · Strategic analysis · Macroeconomic researchStarbucks_img
-![My Mobile Screenshot](IMG_8065.jpeg)
+**Tools:** Excel · Strategic analysis · Macroeconomic research
 
 ### Business question
 
@@ -119,7 +154,7 @@ The project workbook contains a separate GDP-per-capita proxy; this is not a mea
 - Starbucks FY2025 Form 10-K — consult the annual report for detailed disclosures.
 
 The official FY2025 results report **40,990 stores** at fiscal year-end, **US$37.2 billion in consolidated net revenue**, and a **7.9% GAAP operating margin**, down **710 basis points year over year**. These are global corporate figures; they do not establish Nepal-specific demand, affordability or commercial viability.
-![Starbucks FY2025 global metrics: store count, net revenue and GAAP operating margin](./charts/starbucks-fy2025-metrics.svg)
+![Starbucks FY2025 global metrics: store count, net revenue and GAAP operating margin](./site/assets/charts/starbucks-fy2025-metrics.svg)
 
 **Macroeconomic proxies:**
 - Nepal GDP per capita (current US$) — World Bank / country data: https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=NP
@@ -192,13 +227,13 @@ This was my first data analytics dashboard, built while independently learning E
 | Gross revenue | £1,264,761.96 |
 | Net revenue from delivered orders | £242,600.32 |
 | Average order value | £1,053.97 |
-| Highest-sales quarter | £145,412.78 |
+| Highest-sales quarter | 2024 Q2: £145,590.79 (the original dashboard showed £145,412.78, the 2023 Q1 value) |
 | Highest product revenue | Chairs: approximately £195.6K |
 | Lowest product gross revenue | Phones: approximately £151.7K |
 | Lowest product net revenue | Desks: approximately £24.2K |
-| Highest-performing channel shown | Email marketing |
+| Leading channel | Instagram by gross order value (£275,285); Email by delivered value (£64,554). The original dashboard showed Email only |
 
-These are the figures displayed in the original dashboard. The underlying source data, metric definitions and calculations have not been independently re-audited as part of this README update, so the results should be treated as the project's reported outputs rather than verified business accounts.
+These figures were recomputed from the 1,200 orders in the workbook in October 2026; the two rows the original dashboard got wrong are corrected above. Amounts are shown in £ because the workbook formats them that way; it has no currency field, and it is a practice dataset rather than business accounts.
 
 ### What I learned
 
@@ -261,13 +296,13 @@ These are potential actions suggested by exploratory analysis, not proven causes
 
 ### Data quality and reporting limitations
 
-Year-level reporting needs reconciliation before it can support reliable trend conclusions. Grouping the raw `Date` field gives recorded revenue of 8.96m (2011), 9.18m (2012), 15.24m (2013), 14.15m (2014), 20.02m (2015) and 17.71m (2016). However, the workbook's annual pivot summary reverses the 2011 and 2012 labels and does not exactly match the raw-date aggregation for 2013. One transaction is dated **1906-09-02** despite the stated 2011–2016 reporting period, and **5,354 values** in the `Year` column are stored as dates rather than year numbers.
+Year-level reporting needs reconciliation before it can support reliable trend conclusions. Grouping the raw `Date` field gives recorded revenue of 8.96m (2011), 9.18m (2012), 15.24m (2013), 14.15m (2014), 20.02m (2015) and 17.71m (2016). However, the workbook's annual pivot summary reverses the 2011 and 2012 labels and does not exactly match the raw-date aggregation for 2013. **2014 and 2016 contain January–July records only**, so full-year comparisons involving those years (including an apparent 2016 decline) are not like-for-like. One transaction is dated **1906-09-02** despite the stated 2011–2016 reporting period, and **5,354 values** in the `Year` column are stored as dates rather than year numbers.
 
 The source currency, formal definition of `Profit`, duplicate-record handling and annual date logic have not been independently verified. The profit-to-revenue ratios are calculated descriptive measures, not independently verified accounting margins. The annual figures should be treated as diagnostic comparisons until the reporting logic is reconciled.
 
 **Next steps:** reconcile date fields and annual summaries; confirm financial measure definitions; validate the dashboard calculations; and drill into country-by-category performance to test which product and cost-management strategies are supported by the data.
 
-See the [workbook data-quality audit](./workbook_data_quality_audit.md) for the detailed review.
+See the [workbook data-quality audit](./docs/workbook_data_quality_audit.md) for the detailed review and the [conservative remediation workflow](./docs/sales_data_quality_review.md) for a documented, non-destructive approach to investigating the date anomalies.
 
 **What this project demonstrates:** Excel-based KPI analysis, financial performance comparison, heatmap interpretation, product-mix analysis, data-quality investigation and commercially focused problem framing.
 
@@ -330,19 +365,19 @@ Can a Ridge regression model improve on a simple baseline when forecasting the 2
 
 ### Forecast error over time
 
-![Yearly 20-day return forecast MAE comparing Ridge regression and the baseline](./charts/forecast-return-mae.svg)
+![Yearly 20-day return forecast MAE comparing Ridge regression and the baseline](./site/assets/charts/forecast-return-mae.svg)
 
 The error lines largely overlap, with both models' errors rising sharply in 2020. Ridge does not show a consistent, meaningful improvement over the baseline.
 
 ### Directional accuracy over time
 
-![Yearly directional accuracy comparing Ridge regression and the baseline](./charts/forecast-directional-accuracy.svg)
+![Yearly directional accuracy comparing Ridge regression and the baseline](./site/assets/charts/forecast-directional-accuracy.svg)
 
 The model beats the baseline in only two test years in the report. Overall, Ridge's directional accuracy is lower than the baseline's, so the forecast should not be treated as a reliable market-direction signal.
 
 ### Latest forecast versus typical error
 
-![Latest 20-day forecast changes compared with typical model error by instrument](./charts/forecast-vs-typical-error.svg)
+![Latest 20-day forecast changes compared with typical model error by instrument](./site/assets/charts/forecast-vs-typical-error.svg)
 
 The reported forecast moves are small relative to typical model error. This weak signal-to-error comparison is another reason not to interpret these outputs as actionable trading recommendations.
 
@@ -359,7 +394,7 @@ This is an **exploratory prototype**, not a validated trading strategy. The repo
 
 **Conclusion:** The current evaluation does not demonstrate a reliable predictive edge or investment profitability. This project demonstrates an analytical workflow and critical model evaluation—not investment advice.
 
-**Full HTML report:** [Walk-Forward Forecast Review](./Walk-Forward-Forecast-Review.html) — the charts and key insights above are also visible directly in this README without opening the report.
+**Full HTML report:** [Walk-Forward Forecast Review](https://denilthaks.github.io/SubashtheAnalyst/projects/forecasting/walk-forward-review.html) — the charts and key insights above are also visible directly in this README without opening the report.
 
 ## 5. Green Motion — Operations analysis and improvement proposal
 
@@ -465,7 +500,7 @@ The project files included here do not verify every original calculation. The fo
 
 Monthly affordability estimates and sales growth percentages are withheld because their inputs or calculations have not been sufficiently verified. The preliminary 2011 and 2016 endpoint values, 37.8% Profit-to-Revenue ratio and 72.5% Bikes revenue share should be treated as workbook-derived exploratory results, not independently validated financial measures. In particular, the ratio is not labelled gross margin, and no source currency is assumed.
 
-See the [workbook data-quality audit](./workbook_data_quality_audit.md) for the sales-data limitations. Starbucks FY2025 corporate metrics are linked in the project section above and describe the global business, not Nepal-specific market demand.
+See the [workbook data-quality audit](./docs/workbook_data_quality_audit.md) for the sales-data limitations. Starbucks FY2025 corporate metrics are linked in the project section above and describe the global business, not Nepal-specific market demand.
 
 ---
 

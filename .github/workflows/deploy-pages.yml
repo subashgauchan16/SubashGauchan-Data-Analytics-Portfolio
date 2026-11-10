@@ -1,3 +1,16 @@
+# The only production deployment for https://denilthaks.github.io/SubashtheAnalyst/
+#
+# Owner: this workflow. It publishes the site/ folder and nothing else, so the workbooks
+# in data/ and the notes in docs/ are never part of the website.
+# (They are still public in this repository; a folder name is not a security boundary.)
+#
+# Requires: Settings → Pages → Build and deployment → Source = "GitHub Actions".
+# With "Deploy from a branch", GitHub also runs its own pages-build-deployment job, which
+# would publish the repository root through Jekyll and race this workflow.
+#
+# Retired: .github/workflows/static.yml (same trigger, same concurrency group, so the two
+# cancelled each other) and the inert root pages.yml. Both are kept on the archive/legacy-v1
+# branch under reference/deploy-history/.
 name: Deploy static portfolio to GitHub Pages
 
 on:
@@ -23,12 +36,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      - name: Check the site before publishing
+        run: python3 tools/check_site.py site
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: site
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

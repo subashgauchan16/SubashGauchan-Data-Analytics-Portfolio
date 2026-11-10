@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<header class="sg-sitebar"><a aria-label="Subash Gauchan home" class="sg-brand" href="../../"><span class="sg-mark">SG</span><span class="sg-name">SUBASH <b>GAUCHAN</b></span></a><button aria-expanded="false" aria-label="Toggle navigation" class="sg-toggle" type="button">☰</button><nav aria-label="Main"><a href="../../">Home</a><a href="../../#about">About</a><a class="is-current" aria-current="page" href="../">Projects</a><a href="../../skills/">Skills</a><a href="../../analytics/">Analytics</a><a href="../../cv/">CV</a><a class="sg-contact" href="../../#contact">Let's talk ↗</a></nav></header><div class="sg-crumb"><a href="../">Projects</a> / DAX Guideway</div>
+
+<title>DAX Guideway | Subash Gauchan</title><link href="../../favicon.svg" rel="icon" type="image/svg+xml"/><meta name="theme-color" content="#071013"/><meta name="description" content="Subash DAX Guideway: an interactive path through Power BI visuals, DAX, data modelling, lakehouses and sharing, with a seven-round exam."/><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Manrope:wght@500;600;700&amp;display=swap" rel="stylesheet"/><style id="sg-sitebar-css">
+/* Site shell for this standalone page: same look as the V2 nav, scoped under .sg-sitebar so it cannot affect the guide's own styles. */
+.sg-sitebar{position:relative;z-index:60;height:70px;padding:0 max(20px,calc((100vw - 1320px)/2));display:flex;align-items:center;justify-content:space-between;gap:16px;background:rgba(7,13,16,.96);border-bottom:1px solid rgba(178,211,202,.19);font-family:'Manrope',system-ui,sans-serif;box-sizing:border-box}
+.sg-sitebar *{box-sizing:border-box}
+/* The decorative hero orb extends past the viewport on phones; clip (not hidden) keeps the guide's sticky nav working. */
+html,body{overflow-x:clip}
+.sg-sitebar a{color:#b6c1bf;text-decoration:none}
+.sg-sitebar .sg-brand{display:flex;align-items:center;gap:10px;white-space:nowrap}
+.sg-sitebar .sg-mark{width:36px;height:36px;display:grid;place-items:center;border:1px solid #e9bd59;border-radius:9px;color:#e9bd59;font:500 13px 'DM Mono',monospace}
+.sg-sitebar .sg-name{font:500 12px 'DM Mono',monospace;letter-spacing:.07em;color:#f1f1e9}.sg-sitebar .sg-name b{color:#e9bd59;font-weight:500}
+.sg-sitebar nav{display:flex;align-items:center;gap:clamp(14px,2.2vw,30px)}
+.sg-sitebar nav a{font-size:14px;transition:color .2s}.sg-sitebar nav a:hover,.sg-sitebar nav a.is-current{color:#e9bd59}
+.sg-sitebar .sg-contact{border:1px solid rgba(233,189,89,.58);border-radius:999px;padding:7px 13px;color:#e9bd59}
+.sg-sitebar .sg-toggle{display:none;color:#e9bd59;border:1px solid rgba(178,211,202,.19);background:transparent;border-radius:8px;padding:6px 10px;font:inherit;cursor:pointer}
+.sg-crumb{background:#07100f;border-bottom:1px solid rgba(178,211,202,.12);padding:9px max(20px,calc((100vw - 1320px)/2));font:12px 'DM Mono',monospace;letter-spacing:.06em;color:#8fa8a1}.sg-crumb a{color:#e9bd59;text-decoration:none}
+.sg-sitefoot{padding:28px max(20px,calc((100vw - 1320px)/2));border-top:1px solid rgba(178,211,202,.19);display:flex;flex-wrap:wrap;gap:14px 28px;justify-content:space-between;font:12px 'DM Mono',monospace;color:#8fa8a1;background:#07100f}.sg-sitefoot a{color:#e9bd59;text-decoration:none}
+@media(max-width:760px){.sg-sitebar{height:64px}.sg-sitebar .sg-toggle{display:block}.sg-sitebar nav{display:none;position:absolute;top:63px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;padding:14px 18px 20px;background:#081114;border-bottom:1px solid rgba(178,211,202,.19)}.sg-sitebar nav.is-open{display:flex}.sg-sitebar nav a{padding:11px 4px;border-bottom:1px solid #ffffff0b}.sg-sitebar .sg-contact{margin-top:10px;text-align:center}}
+</style>
+<meta content="cover" name="claude:viewport-fit-sides"/>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;1,6..96,500&amp;family=Instrument+Sans:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<style>
+/* Layout concept: one long gilded "guideway" scroll. Sticky rail nav, hero with sweeping gold title, then lab-style sections ending in a multi-round exam. */
+:root{
+  --ink:#08070a;
+  --ink-2:#0e0c09;
+  --panel:#14110a;
+  --panel-2:#1b160c;
+  --line:#33290f;
+  --gold:#e8bb4a;
+  --gold-hi:#fff3bd;
+  --gold-lo:#8f6a1a;
+  --text:#f1e9d2;
+  --muted:#aa9d7c;
+  --good:#7fd6a0;
+  --bad:#ee8a72;
+  --f-display:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
+  --f-body:"Instrument Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{
+  background:var(--ink);color:var(--text);font-family:var(--f-body);font-size:16px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:0 40px;margin:0;overflow-x:hidden;
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--ink);z-index:40}
+#dust{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.page{position:relative;z-index:1;max-width:1120px;margin:0 auto}
+a{color:var(--gold)}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;line-height:1.08;margin:0;text-wrap:balance}
+h2{font-size:clamp(2rem,5vw,3.2rem)}
+h3{font-size:1.35rem}
+p{margin:0}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.lede{color:var(--muted);max-width:62ch;font-size:1.05rem}
+.gold-text{
+  background:linear-gradient(100deg,#8a6a1c 0%,#f6dc83 22%,#fff8d6 38%,#d6a73a 52%,#8a6a1c 70%,#f6dc83 86%,#8a6a1c 100%);
+  background-size:260% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;
+  animation:sweep 6s linear infinite;
+}
+@keyframes sweep{from{background-position:130% 0}to{background-position:-130% 0}}
+@keyframes rise{from{opacity:0;transform:translateY(18px);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(232,187,74,.35)}50%{box-shadow:0 0 0 10px rgba(232,187,74,0)}}
+@keyframes flow{to{stroke-dashoffset:-24}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:41;display:flex;align-items:center;gap:20px;padding:12px 0;background:linear-gradient(var(--ink) 70%,rgba(8,7,10,0));}
+.brand{font-family:var(--f-display);font-weight:700;font-size:1.05rem;white-space:nowrap;display:flex;align-items:center;gap:10px}
+.brand i{display:inline-block;width:12px;height:12px;background:linear-gradient(135deg,var(--gold-hi),var(--gold-lo));transform:rotate(45deg);animation:pulse 3s infinite}
+.links{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;min-width:0;flex:1;justify-content:flex-end}
+.links::-webkit-scrollbar{display:none}
+.links a{color:var(--muted);text-decoration:none;font-size:.86rem;padding:6px 12px;border-radius:99px;white-space:nowrap;border:1px solid transparent;transition:.25s}
+.links a:hover,.links a.on{color:var(--gold-hi);border-color:var(--line);background:var(--panel)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+/* hero */
+.hero{padding-block:clamp(40px,8vw,88px) clamp(32px,6vw,64px);display:grid;gap:26px;position:relative}
+.hero h1{font-size:clamp(3rem,10.5vw,7.6rem);letter-spacing:-.02em;animation:rise 1s .1s both}
+.hero .eyebrow{animation:rise .8s both}
+.hero .lede{animation:rise 1s .3s both;font-size:1.15rem}
+.cta{display:flex;flex-wrap:wrap;gap:12px;animation:rise 1s .45s both}
+.btn{font:inherit;font-weight:600;font-size:.95rem;padding:12px 22px;border-radius:10px;border:1px solid var(--gold-lo);color:var(--gold-hi);background:transparent;cursor:pointer;text-decoration:none;position:relative;overflow:hidden;transition:.25s;display:inline-block}
+.btn.solid{background:linear-gradient(120deg,#a67a1e,#f1cd6a 45%,#b98a25);color:#1a1204;border-color:transparent}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.5) 50%,transparent 65%);transform:translateX(-120%);transition:transform .7s}
+.btn:hover::after{transform:translateX(120%)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px -12px rgba(232,187,74,.6)}
+.ribbon{display:flex;flex-wrap:wrap;gap:8px;animation:rise 1s .6s both}
+.ribbon a{font-family:var(--f-mono);font-size:.76rem;color:var(--muted);text-decoration:none;border:1px solid var(--line);padding:6px 12px;border-radius:99px;transition:.25s;background:rgba(20,17,10,.6)}
+.ribbon a:hover{color:var(--gold-hi);border-color:var(--gold-lo)}
+.ribbon b{color:var(--gold);font-weight:500;margin-right:6px}
+.orb{position:absolute;right:-6%;top:6%;width:min(46vw,420px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(255,243,189,.28),rgba(232,187,74,.08) 40%,transparent 70%);filter:blur(6px);pointer-events:none;z-index:-1}
+
+/* sections */
+section{padding-block:clamp(44px,7vw,84px);display:grid;gap:28px;border-top:1px solid var(--line)}
+.head{display:grid;gap:12px}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+.card{background:linear-gradient(160deg,var(--panel-2),var(--panel));border:1px solid var(--line);border-radius:14px;padding:22px;position:relative;overflow:hidden;min-width:0;transition:border-color .3s,transform .3s}
+.card:hover{border-color:var(--gold-lo)}
+.card.shine::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 40%,rgba(255,236,160,.09) 50%,transparent 60%);transform:translateX(-100%);transition:transform .9s;pointer-events:none}
+.card.shine:hover::after{transform:translateX(100%)}
+.glow{border:1px solid transparent;background:linear-gradient(var(--panel),var(--panel)) padding-box,linear-gradient(120deg,var(--gold-lo),var(--gold-hi),var(--gold-lo),var(--gold),var(--gold-lo)) border-box;background-size:100% 100%,300% 300%;animation:borderMove 7s linear infinite}
+@keyframes borderMove{to{background-position:0 0,300% 0}}
+.tag{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid var(--line);padding:3px 9px;border-radius:99px;display:inline-block}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;font-size:.86rem;color:var(--muted);background:var(--panel);border:1px solid var(--line);padding:7px 14px;border-radius:99px;cursor:pointer;transition:.2s}
+.chip:hover{color:var(--gold-hi);border-color:var(--gold-lo)}
+.chip[aria-pressed="true"],.chip.on{color:#1a1204;background:linear-gradient(120deg,#b88b27,#f4d273);border-color:transparent;font-weight:600}
+code,pre{font-family:var(--f-mono);font-size:.84rem}
+pre{margin:0;background:#0a0804;border:1px solid var(--line);border-radius:10px;padding:14px;overflow-x:auto;color:#f3e3b0;line-height:1.55}
+.kw{color:#f4cf68}.fn{color:#ffe9a0}.cm{color:#8b7f60}
+.copy{font:inherit;font-size:.74rem;font-family:var(--f-mono);color:var(--gold);background:transparent;border:1px solid var(--line);border-radius:6px;padding:4px 10px;cursor:pointer}
+.copy:hover{border-color:var(--gold-lo);color:var(--gold-hi)}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+
+/* intro */
+.intro{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;align-items:start}
+.intro .big{font-family:var(--f-display);font-size:clamp(1.4rem,3vw,1.9rem);line-height:1.3;color:var(--gold-hi)}
+.facts{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.facts li{display:flex;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line);font-size:.95rem}
+.facts span{font-family:var(--f-mono);font-size:.72rem;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;min-width:92px;padding-top:3px}
+.journey{display:flex;flex-wrap:wrap;gap:0;align-items:stretch}
+.step{flex:1 1 140px;padding:14px 16px;border:1px solid var(--line);margin:-1px 0 0 -1px;background:var(--panel);position:relative}
+.step b{display:block;font-family:var(--f-display);color:var(--gold-hi)}
+.step span{font-size:.82rem;color:var(--muted)}
+.step.now{background:linear-gradient(160deg,#2a210d,var(--panel));border-color:var(--gold-lo);z-index:1}
+.proj{display:grid;gap:6px}
+.proj b{color:var(--gold-hi);font-family:var(--f-display);font-size:1.05rem}
+
+/* visual chooser */
+.chooser{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:center}
+#vizDraw{background:#0a0804;border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;place-items:center;min-height:200px}
+#vizDraw svg{width:100%;max-width:340px;height:auto}
+
+/* power bi mock */
+.pbi{border:1px solid var(--gold-lo);border-radius:12px;overflow:hidden;background:#f3f2f1;color:#252423;font-family:"Segoe UI",system-ui,sans-serif;font-size:12px;box-shadow:0 30px 80px -30px rgba(232,187,74,.35)}
+.pbi-top{background:#fff;border-bottom:1px solid #e1dfdd;padding:6px 12px;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.pbi-top .dots{display:flex;gap:5px}.pbi-top .dots i{width:9px;height:9px;border-radius:50%;background:#c8c6c4;display:block}
+.pbi-top span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#605e5c}
+.pbi-tabs{background:#fff;display:flex;gap:2px;padding:0 8px;border-bottom:1px solid #e1dfdd;overflow-x:auto}
+.pbi-tabs span{padding:7px 12px;color:#605e5c;white-space:nowrap}
+.pbi-tabs span.a{color:#252423;border-bottom:2px solid #f2c811;font-weight:600}
+.pbi-ribbon{background:#faf9f8;border-bottom:1px solid #e1dfdd;display:flex;gap:14px;padding:8px 12px;overflow-x:auto}
+.pbi-ribbon div{display:grid;justify-items:center;gap:3px;color:#605e5c;font-size:11px;white-space:nowrap}
+.pbi-ribbon i{width:22px;height:22px;border-radius:4px;background:linear-gradient(135deg,#f2c811,#e6a700);display:block}
+.pbi-ribbon div:nth-child(even) i{background:linear-gradient(135deg,#8a8886,#605e5c)}
+.pbi-main{display:grid;grid-template-columns:44px minmax(0,1fr) 168px 168px}
+.rail{background:#fff;border-right:1px solid #e1dfdd;display:grid;align-content:start;gap:6px;padding:8px 5px}
+.rail button{all:unset;cursor:pointer;display:grid;place-items:center;height:34px;border-radius:6px;font-size:10px;color:#605e5c;border-left:3px solid transparent;text-align:center}
+.rail button.a{background:#fdf3c4;border-left-color:#f2c811;color:#252423;font-weight:600}
+.rail button:focus-visible{outline:2px solid #b88b27}
+.canvas{padding:12px;min-height:330px;min-width:0}
+.vgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.v{background:#fff;border:1px solid #e1dfdd;border-radius:4px;padding:8px;cursor:pointer;transition:.2s;min-width:0}
+.v:hover,.v.hot{border-color:#e6a700;box-shadow:0 0 0 2px rgba(242,200,17,.5)}
+.v h4{margin:0 0 4px;font-size:11px;font-weight:600;color:#605e5c}
+.kpi{font-size:22px;font-weight:600;color:#252423}
+.kpi small{display:block;font-size:10px;color:#107c10;font-weight:400}
+.span2{grid-column:span 2}.span3{grid-column:span 3}
+.v svg{width:100%;height:auto;display:block}
+.pane{background:#fff;border-left:1px solid #e1dfdd;padding:10px;min-width:0;font-size:11px}
+.pane h5{margin:0 0 8px;font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:#605e5c}
+.vicons{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-bottom:12px}
+.vicons i{aspect-ratio:1;background:#f3f2f1;border:1px solid #e1dfdd;border-radius:3px;display:grid;place-items:center;font-style:normal;color:#605e5c;font-size:10px}
+.vicons i.a{background:#fdf3c4;border-color:#f2c811}
+.fld{display:grid;gap:3px}
+.fld div{padding:2px 4px;border-radius:3px;cursor:pointer;display:flex;gap:6px;align-items:center}
+.fld div:hover{background:#faf9f8}
+.fld .t{font-weight:600;margin-top:5px}
+.fld .m{color:#8a6a00}
+.pbi table{border-collapse:collapse;width:100%;background:#fff;font-size:11px}
+.pbi td,.pbi th{border:1px solid #e1dfdd;padding:5px 8px;text-align:left;white-space:nowrap}
+.pbi th{background:#faf9f8}
+.pbi .wrapx{overflow-x:auto}
+.tipbar{margin-top:12px;padding:12px 16px;border:1px dashed var(--gold-lo);border-radius:10px;color:var(--text);font-size:.92rem;min-height:3.4em;background:rgba(232,187,74,.05)}
+.tipbar b{color:var(--gold)}
+
+/* dax lab */
+.lab{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:20px}
+.ctrl{display:grid;gap:14px}
+.ctrl label{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.out{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.out div{background:#0a0804;border:1px solid var(--line);border-radius:10px;padding:12px}
+.out small{display:block;font-family:var(--f-mono);font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.out strong{font-family:var(--f-display);font-size:1.7rem;color:var(--gold-hi);font-variant-numeric:tabular-nums}
+.ctx{font-family:var(--f-mono);font-size:.8rem;color:var(--gold);padding:10px 12px;border:1px dashed var(--gold-lo);border-radius:8px;overflow-wrap:anywhere}
+.cook{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:14px}
+.cook .card{display:grid;gap:10px;align-content:start}
+.cook .top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.cook h3{font-size:1.1rem}
+
+/* diagrams */
+.diagram{background:#0a0804;border:1px solid var(--line);border-radius:14px;padding:12px;overflow-x:auto}
+.diagram svg{display:block;width:100%;min-width:640px;height:auto}
+.node rect{transition:.25s}
+.node:hover rect,.node.sel rect{stroke:var(--gold-hi);filter:drop-shadow(0 0 8px rgba(232,187,74,.5))}
+.node{cursor:pointer}
+.info{padding:16px 18px;border:1px solid var(--line);border-radius:12px;background:var(--panel);min-height:5.5em}
+.info b{color:var(--gold-hi);font-family:var(--f-display);font-size:1.15rem}
+.flow{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;align-items:stretch}
+.stage{font:inherit;color:var(--text);background:var(--panel);border:1px solid var(--line);margin-left:-1px;padding:16px 10px;cursor:pointer;text-align:left;position:relative;transition:.25s;display:grid;gap:4px;align-content:start;min-width:0}
+.stage b{font-family:var(--f-display);font-size:1.05rem}
+.stage span{font-size:.76rem;color:var(--muted)}
+.stage:hover{background:var(--panel-2)}
+.stage.on{background:linear-gradient(160deg,#2c230e,var(--panel));border-color:var(--gold);z-index:1}
+.stage .bar{height:3px;background:var(--line);margin-top:8px;border-radius:2px;overflow:hidden}
+.stage .bar i{display:block;height:100%;width:40%;background:linear-gradient(90deg,transparent,var(--gold-hi),transparent);animation:slide 2.2s linear infinite}
+@keyframes slide{from{transform:translateX(-120%)}to{transform:translateX(330%)}}
+.bronze{border-top:3px solid #a8692a}.silver{border-top:3px solid #b9bcc4}.gold-s{border-top:3px solid var(--gold)}
+table.cmp{border-collapse:collapse;width:100%;min-width:720px;font-size:.9rem}
+.cmp th,.cmp td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+.cmp th{background:var(--panel-2);color:var(--gold-hi);font-family:var(--f-display)}
+.cmp td:first-child{color:var(--gold);font-family:var(--f-mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em}
+.cmp tr:hover td{background:rgba(232,187,74,.04)}
+.opt{display:grid;gap:8px}
+.opt .no{color:var(--bad)}.opt .yes{color:var(--good)}
+.opt .meta{font-family:var(--f-mono);font-size:.74rem;color:var(--muted)}
+
+/* exam */
+.rounds{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:12px}
+.round{font:inherit;color:var(--text);text-align:left;cursor:pointer;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;gap:6px;transition:.25s;position:relative;overflow:hidden}
+.round:hover{border-color:var(--gold-lo);transform:translateY(-3px)}
+.round.on{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 14px 34px -18px rgba(232,187,74,.6)}
+.round .n{font-family:var(--f-mono);font-size:.7rem;color:var(--gold);letter-spacing:.14em}
+.round b{font-family:var(--f-display);font-size:1.15rem}
+.round .best{font-size:.8rem;color:var(--muted)}
+.meter{height:6px;border-radius:4px;background:var(--line);overflow:hidden}
+.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--gold-lo),var(--gold-hi));width:0;transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.exam{padding:clamp(18px,3vw,32px)}
+.qhead{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--f-mono);font-size:.76rem;color:var(--muted);margin-bottom:14px}
+.q{font-family:var(--f-display);font-size:clamp(1.25rem,2.6vw,1.7rem);line-height:1.25;margin-bottom:18px}
+.answers{display:grid;gap:10px}
+.ans{font:inherit;text-align:left;color:var(--text);background:#0a0804;border:1px solid var(--line);border-radius:10px;padding:13px 16px;cursor:pointer;transition:.2s;display:flex;gap:12px;align-items:flex-start}
+.ans i{font-style:normal;font-family:var(--f-mono);color:var(--gold);min-width:1.2em}
+.ans:hover:not(:disabled){border-color:var(--gold-lo);background:var(--panel-2);transform:translateX(4px)}
+.ans.ok{border-color:var(--good);background:rgba(127,214,160,.09)}
+.ans.bad{border-color:var(--bad);background:rgba(238,138,114,.09)}
+.ans:disabled{cursor:default}
+.why{margin-top:16px;padding:14px 16px;border-left:3px solid var(--gold);background:rgba(232,187,74,.06);border-radius:0 10px 10px 0;font-size:.95rem}
+.why b{color:var(--gold-hi)}
+.score{text-align:center;display:grid;gap:14px;justify-items:center;padding-block:12px}
+.score .num{font-family:var(--f-display);font-size:clamp(3.4rem,10vw,6rem);line-height:1}
+.missed{text-align:left;width:100%;display:grid;gap:8px}
+.missed div{padding:10px 14px;border:1px solid var(--line);border-radius:8px;font-size:.9rem}
+footer{border-top:1px solid var(--line);padding-top:24px;color:var(--muted);font-size:.86rem;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+
+@media (max-width:860px){
+  .intro,.lab,.chooser{grid-template-columns:minmax(0,1fr)}
+  .pbi-main{grid-template-columns:44px minmax(0,1fr)}
+  .pbi-main .pane{grid-column:1 / -1;border-left:0;border-top:1px solid #e1dfdd}
+  .flow{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .brand span{display:none}
+}
+@media (max-width:520px){
+  .vgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .span3{grid-column:span 2}
+  .out strong{font-size:1.3rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+<canvas aria-hidden="true" id="dust"></canvas>
+<div class="page">
+<header class="nav">
+<div class="brand"><i></i><span class="gold-text">Subash DAX Guideway</span></div>
+<nav aria-label="Sections" class="links">
+<a href="#intro">Intro</a><a href="#visuals">Visuals</a><a href="#dax">DAX lab</a><a href="#model">Modelling</a><a href="#lakehouse">Lakehouse</a><a href="#tools">Other tools</a><a href="#share">Share</a><a href="#exam">Exam</a>
+</nav>
+</header>
+<div class="hero">
+<div aria-hidden="true" class="orb"></div>
+<p class="eyebrow">Power BI · DAX · Data modelling · Lakehouse</p>
+<h1 class="gold-text">Subash DAX<br/>Guideway</h1>
+<p class="lede">A hands-on path from your first chart to star schemas, lakehouses and sharing reports with stakeholders. Learn a topic, try it in the lab, then prove it in a seven-round exam.</p>
+<div class="cta">
+<a class="btn solid" href="#visuals">Start the path</a>
+<a class="btn" href="#exam">Jump to the exam</a>
+</div>
+<div aria-label="Learning path" class="ribbon">
+<a href="#visuals"><b>R1</b>Visuals</a>
+<a href="#dax"><b>R2</b>DAX basics</a>
+<a href="#dax"><b>R3</b>DAX advanced</a>
+<a href="#model"><b>R4</b>Modelling</a>
+<a href="#lakehouse"><b>R5</b>Lakehouse</a>
+<a href="#share"><b>R6</b>Sharing</a>
+<a href="#tools"><b>R7</b>Other tools</a>
+</div>
+</div>
+<!-- INTRO -->
+<section id="intro">
+<div class="head">
+<p class="eyebrow">Who is walking this path</p>
+<h2>Meet Subash Gauchan</h2>
+</div>
+<div class="grid intro">
+<div class="grid" style="gap:18px">
+<p class="big">Five months ago I was building my first dashboard in Excel 2016 on an old Dell laptop. Now I am working through Power BI, SQL, data-quality checks and honest analysis.</p>
+<p class="lede">Subash is a BSc (Hons) Applied Management student at BPP University and a Barista Maestro at Costa Coffee in Woking, Surrey. He teaches himself analytics through hands-on projects, aiming for entry-level roles in data analysis, business analysis, business intelligence and operations analysis. He grew up in Nepal.</p>
+<p class="lede">His rule is to check whether the data can be trusted before making it look impressive, and to say plainly what the evidence does and does not show. This guide follows the same rule.</p>
+<div class="chips">
+<a class="btn" href="https://github.com/denilthaks/SubashtheAnalyst" rel="noopener" target="_blank">GitHub portfolio</a>
+<a class="btn" href="https://www.linkedin.com/in/subash-gauchan16/" rel="noopener" target="_blank">LinkedIn</a>
+</div>
+</div>
+<div class="card glow">
+<ul class="facts">
+<li><span>Studying</span>BSc (Hons) Applied Management, BPP University</li>
+<li><span>Working</span>Barista Maestro, Costa Coffee. Nominated for Costa Barista of the Year UK 2026</li>
+<li><span>Tools</span>Excel (PivotTables, lookups), Power BI, SQL basics, Python</li>
+<li><span>Methods</span>KPI reporting, PDCA, 4Vs, TIMWOODS, market-entry analysis</li>
+<li><span>Goal</span>A data analyst internship or graduate role</li>
+</ul>
+</div>
+</div>
+<div aria-label="Learning journey" class="journey">
+<div class="step"><b>Excel</b><span>PivotTables, SUMIFS, INDEX/MATCH, first dashboards</span></div>
+<div class="step"><b>Power BI</b><span>KPI dashboards and performance monitoring</span></div>
+<div class="step"><b>SQL</b><span>Fundamentals and SQLite</span></div>
+<div class="step now"><b>DAX and modelling</b><span>This guide: measures, star schemas, lakehouse</span></div>
+<div class="step"><b>Analyst role</b><span>Evidence-led decisions in banking and finance</span></div>
+</div>
+<div class="grid g3">
+<div class="card shine proj"><span class="tag">Project</span><b>Starbucks Nepal</b><p class="muted small">Market-entry and affordability analysis in Excel. A good case for a Date table, a currency measure and a fair comparison of income measures.</p></div>
+<div class="card shine proj"><span class="tag">Project</span><b>Sales Analytics</b><p class="muted small">Profit and category KPIs in PivotTables. Its audit found a record dated 1906, a perfect reason to build a clean Date dimension.</p></div>
+<div class="card shine proj"><span class="tag">Project</span><b>Walk-forward forecast review</b><p class="muted small">Ridge regression against a baseline, with a chronological split. Time intelligence in DAX rests on the same discipline.</p></div>
+</div>
+</section>
+<!-- VISUALS -->
+<section id="visuals">
+<div class="head">
+<p class="eyebrow">Round 1 · Visualisation basics</p>
+<h2>Pick the right visual, then read the workspace</h2>
+<p class="lede">Start with the question the stakeholder is asking. The question picks the chart. Choose one below.</p>
+</div>
+<div class="card chooser">
+<div class="grid" style="gap:14px">
+<div aria-label="Question type" class="chips" id="vizChips" role="group"></div>
+<div aria-live="polite" class="info" id="vizInfo"></div>
+</div>
+<div aria-hidden="true" id="vizDraw"></div>
+</div>
+<div class="head" style="margin-top:12px">
+<h3>An illustrated Power BI Desktop workspace</h3>
+<p class="lede small">This is a drawn mock of the real window, with sample numbers. Tap the parts to see what each one does, and switch between Report, Table and Model view on the left rail.</p>
+</div>
+<div class="pbi" id="pbi">
+<div class="pbi-top"><div class="dots"><i></i><i></i><i></i></div><span>Sales Dashboard.pbix — Power BI Desktop</span><span>Sign in</span></div>
+<div class="pbi-tabs"><span>File</span><span class="a">Home</span><span>Insert</span><span>Modeling</span><span>View</span><span>Help</span></div>
+<div class="pbi-ribbon">
+<div data-tip="&lt;b&gt;Get data / Transform data&lt;/b&gt; opens Power Query, where you clean and shape tables before they enter the model."><i></i>Get data</div>
+<div data-tip="&lt;b&gt;Transform data&lt;/b&gt; is Power Query (the M language). Fix types, remove duplicates and bad dates here, not in DAX."><i></i>Transform</div>
+<div data-tip="&lt;b&gt;New measure&lt;/b&gt; creates a DAX measure. Measures calculate at query time and respond to slicers."><i></i>New measure</div>
+<div data-tip="&lt;b&gt;Publish&lt;/b&gt; sends the report and its semantic model to a workspace in the Power BI service."><i></i>Publish</div>
+</div>
+<div class="pbi-main">
+<div aria-label="Views" class="rail" role="tablist">
+<button aria-selected="true" class="a" data-view="report" role="tab">Report</button>
+<button aria-selected="false" data-view="table" role="tab">Table</button>
+<button aria-selected="false" data-view="model" role="tab">Model</button>
+</div>
+<div class="canvas">
+<div class="view" id="v-report">
+<div class="vgrid">
+<div class="v" data-tip="&lt;b&gt;Card visual.&lt;/b&gt; Shows one headline number, such as [Total Sales]. Use it for KPIs.">
+<h4>Total Sales</h4><div class="kpi">£965K<small>▲ 15.1% vs LY</small></div></div>
+<div class="v" data-tip="&lt;b&gt;Card with a ratio.&lt;/b&gt; Profit Margin % = DIVIDE([Profit],[Total Sales]). Format as a percentage in the Measure tools tab.">
+<h4>Profit Margin %</h4><div class="kpi">37.8%<small>sample figure</small></div></div>
+<div class="v" data-tip="&lt;b&gt;Slicer.&lt;/b&gt; Filters every other visual on the page. It creates filter context for your DAX.">
+<h4>Year</h4><div style="display:grid;gap:3px;font-size:11px"><span style="background:#fdf3c4;padding:2px 6px;border-radius:2px">☑ 2025</span><span style="padding:2px 6px">☐ 2024</span></div></div>
+<div class="v span2" data-tip="&lt;b&gt;Line chart.&lt;/b&gt; Best for trends over time. The axis needs a proper Date column from a Date table.">
+<h4>Sales by Month</h4>
+<svg aria-label="Line chart" role="img" viewbox="0 0 300 110"><g stroke="#e1dfdd"><path d="M0 100H300M0 70H300M0 40H300M0 10H300"></path></g><path d="M5 85 L35 78 L65 80 L95 62 L125 66 L155 50 L185 54 L215 36 L245 40 L295 20" fill="none" stroke="#e6a700" stroke-width="2.5"></path><path d="M5 85 L35 78 L65 80 L95 62 L125 66 L155 50 L185 54 L215 36 L245 40 L295 20 V100 H5Z" fill="rgba(242,200,17,.2)"></path></svg></div>
+<div class="v" data-tip="&lt;b&gt;Donut chart.&lt;/b&gt; Part-to-whole with only a few slices. Too many slices become unreadable, so switch to a bar.">
+<h4>Sales by Category</h4>
+<svg aria-label="Donut chart" role="img" viewbox="0 0 100 100"><circle cx="50" cy="50" fill="none" r="30" stroke="#e1dfdd" stroke-width="14"></circle><circle cx="50" cy="50" fill="none" r="30" stroke="#e6a700" stroke-dasharray="113 188" stroke-width="14" transform="rotate(-90 50 50)"></circle><circle cx="50" cy="50" fill="none" r="30" stroke="#605e5c" stroke-dasharray="47 188" stroke-dashoffset="-113" stroke-width="14" transform="rotate(-90 50 50)"></circle></svg></div>
+<div class="v span3" data-tip="&lt;b&gt;Clustered bar chart.&lt;/b&gt; Best for comparing categories. Sort it descending so the ranking is obvious at a glance.">
+<h4>Sales by Region</h4>
+<svg aria-label="Bar chart" role="img" viewbox="0 0 400 70"><g fill="#e6a700"><rect height="11" width="330" x="0" y="4"></rect><rect fill="#f2c811" height="11" width="270" x="0" y="22"></rect><rect fill="#f2c811" height="11" width="190" x="0" y="40"></rect><rect fill="#f2c811" height="11" width="120" x="0" y="58"></rect></g></svg></div>
+</div>
+</div>
+<div class="view" hidden="" id="v-table">
+<div class="wrapx" data-tip="&lt;b&gt;Table view.&lt;/b&gt; Check the raw rows here. Look for wrong data types, blanks and impossible dates before you build anything.">
+<table><tr><th>OrderDate</th><th>Category</th><th>Quantity</th><th>SalesAmount</th></tr>
+<tr><td>2025-01-04</td><td>Bikes</td><td>2</td><td>2,340.00</td></tr>
+<tr><td>2025-01-04</td><td>Accessories</td><td>5</td><td>112.50</td></tr>
+<tr><td>2025-01-05</td><td>Clothing</td><td>3</td><td>89.97</td></tr>
+<tr><td>1906-03-12</td><td>Bikes</td><td>1</td><td>1,150.00</td></tr>
+<tr><td>2025-01-07</td><td>Bikes</td><td>1</td><td>1,210.00</td></tr></table>
+</div>
+<p style="margin-top:10px;color:#a4262c;font-size:11px">The 1906 row is an example of a data-quality signal. Investigate it in Power Query before it distorts a time chart.</p>
+</div>
+<div class="view" hidden="" id="v-model">
+<svg data-tip="&lt;b&gt;Model view.&lt;/b&gt; Tables and relationships. A good model is a star: one fact table in the middle, dimensions around it, one-to-many arrows pointing at the fact." style="width:100%;height:auto" viewbox="0 0 420 250">
+<g stroke="#8a8886" stroke-width="1.5"><path d="M95 55 L170 105M325 55 L250 105M95 195 L170 150M325 195 L250 150"></path></g>
+<g fill="#fff" stroke="#e6a700" stroke-width="1.5"><rect height="45" rx="3" width="100" x="20" y="20"></rect><rect height="45" rx="3" width="100" x="300" y="20"></rect><rect height="45" rx="3" width="100" x="20" y="185"></rect><rect height="45" rx="3" width="100" x="300" y="185"></rect><rect fill="#fdf3c4" height="65" rx="3" width="90" x="165" y="95"></rect></g>
+<g fill="#252423" font-family="Segoe UI,sans-serif" font-size="11"><text x="30" y="40">Date</text><text x="310" y="40">Product</text><text x="30" y="205">Customer</text><text x="310" y="205">Store</text><text font-weight="600" x="175" y="118">Sales (fact)</text><text fill="#605e5c" x="175" y="136">Amount, Qty</text></g>
+</svg>
+</div>
+</div>
+<div class="pane">
+<h5>Visualizations</h5>
+<div class="vicons" data-tip="&lt;b&gt;Visualizations pane.&lt;/b&gt; Pick the chart type, drop fields into Axis, Legend and Values wells, then use the Format tab for colour and labels."><i>▮</i><i class="a">▤</i><i>∿</i><i>◔</i><i>▦</i><i>123</i><i>⊞</i><i>⌖</i><i>≋</i><i>…</i></div>
+<h5>Filters</h5>
+<div class="fld" data-tip="&lt;b&gt;Filters pane.&lt;/b&gt; Set a filter on one visual, one page or every page. These also add to the filter context."><div>Year is 2025</div></div>
+</div>
+<div class="pane">
+<h5>Data</h5>
+<div class="fld" data-tip="&lt;b&gt;Data pane.&lt;/b&gt; Your tables and fields. The calculator icon marks measures, and the Σ marks columns that summarise by default.">
+<div class="t">▾ Sales</div><div>Σ Quantity</div><div>Σ SalesAmount</div>
+<div class="m">▦ Total Sales</div><div class="m">▦ Sales LY</div><div class="m">▦ YoY %</div>
+<div class="t">▾ Date</div><div>Date</div><div>Year</div><div>Month</div>
+<div class="t">▾ Product</div><div>Category</div>
+</div>
+</div>
+</div>
+</div>
+<div aria-live="polite" class="tipbar" id="tipbar"><b>Tap or hover</b> any part of the workspace above to see what it does.</div>
+</section>
+<!-- DAX -->
+<section id="dax">
+<div class="head">
+<p class="eyebrow">Rounds 2 &amp; 3 · DAX</p>
+<h2>Filter context, made visible</h2>
+<p class="lede">A DAX measure never has one answer. It answers for whatever filters surround it. Change the slicers and watch the measures recalculate. The figures are example data, in thousands.</p>
+</div>
+<div class="card lab">
+<div class="ctrl">
+<div><label>Product[Category] slicer</label><div aria-label="Category" class="chips" id="catChips" role="group"></div></div>
+<div><label>Date[Year] slicer</label><div aria-label="Year" class="chips" id="yrChips" role="group"></div></div>
+<div class="ctx" id="ctxLine"></div>
+</div>
+<div class="grid" style="gap:12px">
+<div class="out" id="daxOut"></div>
+<pre id="daxShown"></pre>
+</div>
+</div>
+<div class="grid g3">
+<div class="card shine"><span class="tag">Measure</span><h3 style="margin-top:10px">Calculates at query time</h3><p class="muted small" style="margin-top:8px">Uses the current filter context, takes no storage per row, and is the right home for totals, ratios and KPIs.</p></div>
+<div class="card shine"><span class="tag">Calculated column</span><h3 style="margin-top:10px">Calculates at refresh</h3><p class="muted small" style="margin-top:8px">Computed once per row and stored. Use it for a label or a bucket you need on an axis or slicer.</p></div>
+<div class="card shine"><span class="tag">Date table</span><h3 style="margin-top:10px">Required for time</h3><p class="muted small" style="margin-top:8px">One row per day with no gaps, marked as a date table. Time intelligence functions depend on it.</p></div>
+</div>
+<div class="head"><h3>Cookbook</h3><p class="lede small">Copy these into New measure. Rename the tables and columns to match your model.</p></div>
+<div aria-label="Cookbook filter" class="chips" id="cookChips" role="group"></div>
+<div class="cook" id="cook"></div>
+</section>
+<!-- MODEL -->
+<section id="model">
+<div class="head">
+<p class="eyebrow">Round 4 · Data modelling</p>
+<h2>Star schema or snowflake</h2>
+<p class="lede">Put numbers you add up in one fact table and descriptions you slice by in dimension tables. Click a table for details, then switch to the snowflake to see how dimensions split further.</p>
+</div>
+<div class="chips"><button aria-pressed="true" class="chip on" id="bStar">Star schema</button><button aria-pressed="false" class="chip" id="bSnow">Snowflake</button></div>
+<div class="diagram"><svg aria-label="Star schema diagram" id="schema" role="img" viewbox="0 0 900 440"></svg></div>
+<div aria-live="polite" class="info" id="schemaInfo"></div>
+<div class="grid g3">
+<div class="card"><h3>Grain first</h3><p class="muted small" style="margin-top:8px">Decide what one fact row means, for example one product on one order line. Every other choice follows from that.</p></div>
+<div class="card"><h3>One to many, one direction</h3><p class="muted small" style="margin-top:8px">Relationships run from a dimension (one) to the fact (many), and filters flow the same way. Avoid bidirectional filters unless you can explain why.</p></div>
+<div class="card"><h3>Keep facts narrow</h3><p class="muted small" style="margin-top:8px">Keys and numbers only. Move names, categories and flags into dimensions so the model stays small and fast.</p></div>
+</div>
+</section>
+<!-- LAKEHOUSE -->
+<section id="lakehouse">
+<div class="head">
+<p class="eyebrow">Round 5 · Lakehouse</p>
+<h2>From raw files to a Power BI model</h2>
+<p class="lede">A lakehouse keeps open files in a data lake and adds warehouse features such as tables and transactions on top. Click each stage to follow one example dataset through it.</p>
+</div>
+<div class="flow" id="flow"></div>
+<div aria-live="polite" class="info" id="flowInfo"></div>
+<div class="grid g3">
+<div class="card"><span class="tag">Delta</span><h3 style="margin-top:10px">Open table format</h3><p class="muted small" style="margin-top:8px">Parquet files plus a transaction log. It gives ACID updates, schema enforcement and time travel on cheap lake storage.</p></div>
+<div class="card"><span class="tag">OneLake</span><h3 style="margin-top:10px">One lake per organisation</h3><p class="muted small" style="margin-top:8px">Microsoft Fabric stores every lakehouse and warehouse in a single logical lake, so teams share one copy of the data.</p></div>
+<div class="card"><span class="tag">Direct Lake</span><h3 style="margin-top:10px">Import speed, no copy</h3><p class="muted small" style="margin-top:8px">A Fabric storage mode where the semantic model reads Delta tables from OneLake directly instead of refreshing an imported copy.</p></div>
+</div>
+</section>
+<!-- TOOLS -->
+<section id="tools">
+<div class="head">
+<p class="eyebrow">Round 7 · Transferable skills</p>
+<h2>Moving to other tools</h2>
+<p class="lede">The tools differ, the ideas do not. A clean model, clear measures and a trustworthy refresh matter everywhere. This table maps what you already know.</p>
+</div>
+<div class="diagram" style="padding:0">
+<table class="cmp">
+<tr><th>Idea</th><th>Power BI</th><th>Tableau</th><th>Looker</th><th>Qlik Sense</th><th>Apache Superset</th></tr>
+<tr><td>Model layer</td><td>Semantic model with relationships</td><td>Data source with relationships</td><td>LookML model</td><td>Associative data model</td><td>Datasets, usually on a SQL warehouse</td></tr>
+<tr><td>Calculations</td><td>DAX measures</td><td>Calculated fields and LOD expressions</td><td>LookML measures and dimensions</td><td>Expressions and set analysis</td><td>Metrics written as SQL expressions</td></tr>
+<tr><td>Data prep</td><td>Power Query (M)</td><td>Tableau Prep</td><td>SQL and upstream tools such as dbt</td><td>Data load script</td><td>SQL Lab and upstream tools</td></tr>
+<tr><td>Sharing</td><td>Workspaces and apps</td><td>Tableau Cloud or Server</td><td>Looker instance and embeds</td><td>Qlik Cloud spaces</td><td>Self-hosted dashboards and embeds</td></tr>
+</table>
+</div>
+<div class="grid g2">
+<div class="card shine"><h3>Already a lakehouse thinker?</h3><p class="muted small" style="margin-top:8px">Databricks and Snowflake solve the same storage and compute problems as Fabric. The medallion pattern (bronze, silver, gold) and the star schema in the gold layer carry across unchanged.</p></div>
+<div class="card shine"><h3>Your transfer checklist</h3><p class="muted small" style="margin-top:8px">Can you state the grain? Do you have a Date dimension? Are measures defined once and reused? Can you explain how filters flow? If yes, you can pick up a new BI tool in weeks.</p></div>
+</div>
+</section>
+<!-- SHARE -->
+<section id="share">
+<div class="head">
+<p class="eyebrow">Round 6 · Sharing with stakeholders</p>
+<h2>Getting a Power BI report in front of people</h2>
+<p class="lede">A .pbix file cannot be converted into a standalone HTML page, because the visuals need the Power BI service to query the model. You publish the report, then choose how people reach it.</p>
+</div>
+<div class="grid g3">
+<div class="card shine opt"><span class="tag">Internal</span><h3>Workspace and app</h3><p class="muted small">Publish to a workspace, then bundle pages into an app. Viewers sign in, and access follows their licence and permissions.</p><span class="meta yes">Best for company stakeholders</span></div>
+<div class="card shine opt"><span class="tag">Internal</span><h3>Secure embed</h3><p class="muted small">In the service use File, Embed report, then the secure embed code. Place the iframe in an intranet page or SharePoint. Viewers still sign in.</p><span class="meta yes">Best for intranet pages</span></div>
+<div class="card shine opt"><span class="tag">Public</span><h3>Publish to web</h3><p class="muted small">Creates a public link and iframe anyone on the internet can open. No sign-in and no security. Many organisations disable it.</p><span class="meta no">Only for data you would post publicly</span></div>
+<div class="card shine opt"><span class="tag">Static</span><h3>PDF or PowerPoint export</h3><p class="muted small">Export a snapshot for a meeting pack. Quick and offline, but not interactive and out of date as soon as the data changes.</p><span class="meta">Best for one-off reports</span></div>
+<div class="card shine opt"><span class="tag">Developers</span><h3>Power BI Embedded</h3><p class="muted small">Embeds reports in your own application with your own authentication, so customers do not need Power BI licences.</p><span class="meta">Best for customer-facing apps</span></div>
+<div class="card shine opt"><span class="tag">Portfolio</span><h3>Screenshot walkthrough</h3><p class="muted small">For a public portfolio, publish a report built on open sample data, and add annotated screenshots on a static page so recruiters see it even if the embed is blocked.</p><span class="meta yes">Best for your GitHub Pages site</span></div>
+</div>
+<div class="card">
+<div class="top" style="display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:12px"><h3>Embed snippet for your own site</h3><button class="copy" data-copy-target="embedCode">Copy</button></div>
+<pre id="embedCode">&lt;!-- Paste the URL from Power BI: File &gt; Embed report --&gt;
+&lt;iframe title="Sales Dashboard"
+  width="100%" height="640"
+  src="PASTE_YOUR_EMBED_URL_HERE"
+  frameborder="0" allowfullscreen="true"&gt;&lt;/iframe&gt;</pre>
+<p class="muted small" style="margin-top:12px">Your repository already has a GitHub Pages workflow, so you can host a page like this there. Embeds run on your own site. Some preview panes block iframes from other sites, which is why a screenshot fallback is worth keeping.</p>
+</div>
+<div class="card glow">
+<h3>Stakeholder checklist before you share</h3>
+<ul class="muted small" style="margin:12px 0 0;padding-left:20px;display:grid;gap:6px">
+<li>Does the report show confidential data? If yes, never use Publish to web.</li>
+<li>Is row-level security needed so each viewer sees only their own region or team?</li>
+<li>Is the refresh schedule set, and does the page show when data was last updated?</li>
+<li>Does every number have a clear definition on a notes page, including currency and period?</li>
+</ul>
+</div>
+</section>
+<!-- EXAM -->
+<section id="exam">
+<div class="head">
+<p class="eyebrow">The examination</p>
+<h2>Seven rounds. Prove it.</h2>
+<p class="lede">Each round has a short set of questions with the answers shuffled. You get the explanation straight away. Your best score per round is saved in this browser.</p>
+</div>
+<div class="card" style="display:grid;gap:8px">
+<div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-family:var(--f-mono);font-size:.76rem;color:var(--muted)"><span>OVERALL MASTERY</span><span id="masteryTxt">0%</span></div>
+<div class="meter"><i id="masteryBar"></i></div>
+</div>
+<div class="rounds" id="rounds"></div>
+<div aria-live="polite" class="card exam glow" id="examBox"></div>
+</section>
+<footer>
+<span>Built for Subash. Example figures are illustrative, not from real reports.</span>
+<span><a href="https://github.com/denilthaks/SubashtheAnalyst" rel="noopener" target="_blank">github.com/denilthaks/SubashtheAnalyst</a></span>
+</footer>
+</div>
+<script>
+(function(){
+'use strict';
+var $=function(s,r){return (r||document).querySelector(s)};
+var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+function sget(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function sset(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function el(tag,cls,txt){var n=document.createElement(tag);if(cls)n.className=cls;if(txt!=null)n.textContent=txt;return n}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+
+/* gold dust */
+var cv=$('#dust'),cx=cv.getContext('2d'),W=0,H=0,P=[];
+function size(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight;P=[];var n=Math.min(70,Math.floor(W/16));for(var i=0;i<n;i++){P.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.6+.3,v:Math.random()*.25+.05,a:Math.random()*.5+.15,t:Math.random()*6.28})}}
+function frame(){cx.clearRect(0,0,W,H);for(var i=0;i<P.length;i++){var p=P[i];if(!reduce){p.y-=p.v;p.t+=.02;if(p.y<-5){p.y=H+5;p.x=Math.random()*W}}var tw=.5+.5*Math.sin(p.t);cx.beginPath();cx.arc(p.x+Math.sin(p.t)*6,p.y,p.r,0,6.283);cx.fillStyle='rgba(240,200,90,'+(p.a*tw).toFixed(3)+')';cx.fill()}if(!reduce)requestAnimationFrame(frame)}
+size();frame();window.addEventListener('resize',function(){size();if(reduce)frame()});
+
+/* copy */
+function fallbackCopy(text,btn,done){var ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done()}catch(e){btn.textContent='Select and copy'}document.body.removeChild(ta)}
+function copyText(text,btn){var old=btn.textContent;var done=function(){btn.textContent='Copied';setTimeout(function(){btn.textContent=old},1400)};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,function(){fallbackCopy(text,btn,done)})}else{fallbackCopy(text,btn,done)}}
+$$('[data-copy-target]').forEach(function(b){b.addEventListener('click',function(){copyText($('#'+b.getAttribute('data-copy-target')).textContent,b)})});
+
+/* nav highlight */
+var secs=$$('section[id]'),links=$$('.links a');
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-40% 0px -55% 0px'});secs.forEach(function(s){io.observe(s)})}
+
+/* visual chooser */
+var VIS=[
+ {k:'Trend over time',v:'Line chart',w:'Lines connect points in order, so the eye reads direction and speed of change. Use a Date table on the axis.',d:'line'},
+ {k:'Compare categories',v:'Clustered bar chart',w:'Bars make lengths easy to compare. Sort descending and keep a zero baseline.',d:'bar'},
+ {k:'Part of a whole',v:'Donut or stacked bar',w:'Fine for two to five parts. With more parts, use a sorted bar instead.',d:'donut'},
+ {k:'One headline number',v:'Card or KPI visual',w:'Show the measure, its target or last-year comparison, and nothing else.',d:'card'},
+ {k:'Relationship between two measures',v:'Scatter chart',w:'Each dot is one item. Use it to spot clusters, outliers and correlation.',d:'scatter'},
+ {k:'Ranking',v:'Sorted bar with Top N',w:'Use a Top N filter on the visual and a RANKX measure if you need the rank itself.',d:'bar'}
+];
+function drawViz(t){
+ var s='<svg viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg"><g stroke="#33290f"><path d="M20 160H290M20 120H290M20 80H290M20 40H290"/></g>';
+ if(t==='line'){s+='<path d="M20 130 L65 112 L110 120 L155 80 L200 88 L245 48 L290 34 V160 H20Z" fill="rgba(232,187,74,.15)"/><path d="M20 130 L65 112 L110 120 L155 80 L200 88 L245 48 L290 34" fill="none" stroke="#e8bb4a" stroke-width="3"/>'}
+ if(t==='bar'){var h=[130,104,84,60,42];for(var i=0;i<5;i++){s+='<rect x="'+(30+i*52)+'" y="'+(160-h[i])+'" width="34" height="'+h[i]+'" fill="#e8bb4a" opacity="'+(1-i*.12)+'"/>'}}
+ if(t==='donut'){s='<svg viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg"><circle cx="150" cy="90" r="52" fill="none" stroke="#33290f" stroke-width="28"/><circle cx="150" cy="90" r="52" fill="none" stroke="#e8bb4a" stroke-width="28" stroke-dasharray="196 327" transform="rotate(-90 150 90)"/><circle cx="150" cy="90" r="52" fill="none" stroke="#8f6a1a" stroke-width="28" stroke-dasharray="82 327" stroke-dashoffset="-196" transform="rotate(-90 150 90)"/>'}
+ if(t==='card'){s='<svg viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg"><rect x="60" y="40" width="180" height="100" rx="10" fill="#14110a" stroke="#8f6a1a"/><text x="150" y="92" text-anchor="middle" font-family="Georgia,serif" font-size="38" fill="#fff3bd">£965K</text><text x="150" y="122" text-anchor="middle" font-size="13" fill="#7fd6a0">▲ 15.1% vs last year</text>'}
+ if(t==='scatter'){var pts=[[40,130],[70,118],[95,110],[120,92],[140,98],[170,70],[200,62],[225,48],[255,40],[110,128],[180,100],[240,80]];for(var j=0;j<pts.length;j++){s+='<circle cx="'+pts[j][0]+'" cy="'+pts[j][1]+'" r="6" fill="#e8bb4a" opacity=".85"/>'}}
+ return s+'</svg>'}
+var vc=$('#vizChips');
+function pickViz(i){$$('.chip',vc).forEach(function(c,j){c.setAttribute('aria-pressed',j===i?'true':'false')});var v=VIS[i];var info=$('#vizInfo');info.textContent='';var b=el('b',null,v.v);info.appendChild(b);info.appendChild(el('p','muted',v.w));$('#vizDraw').innerHTML=drawViz(v.d)}
+VIS.forEach(function(v,i){var c=el('button','chip',v.k);c.type='button';c.addEventListener('click',function(){pickViz(i)});vc.appendChild(c)});
+pickViz(0);
+
+/* power bi mock */
+var tip=$('#tipbar');
+function setTip(h){tip.innerHTML=h}
+$$('#pbi [data-tip]').forEach(function(n){var h=n.getAttribute('data-tip');n.addEventListener('mouseenter',function(){setTip(h)});n.addEventListener('click',function(){setTip(h);$$('#pbi .v').forEach(function(v){v.classList.remove('hot')});if(n.classList.contains('v'))n.classList.add('hot')})});
+$$('.rail button').forEach(function(b){b.addEventListener('click',function(){var v=b.getAttribute('data-view');$$('.rail button').forEach(function(x){var on=x===b;x.classList.toggle('a',on);x.setAttribute('aria-selected',on?'true':'false')});$$('.view').forEach(function(x){x.hidden=(x.id!=='v-'+v)});var d={report:'<b>Report view.</b> Design the pages stakeholders see.',table:'<b>Table view.</b> Inspect the loaded rows.',model:'<b>Model view.</b> Manage relationships between tables.'};setTip(d[v])})});
+
+/* dax lab */
+var D={Bikes:{2024:620,2025:710},Accessories:{2024:130,2025:150},Clothing:{2024:90,2025:105}};
+var cats=['All','Bikes','Accessories','Clothing'],yrs=[2024,2025],cat='All',yr=2025;
+function tot(c,y){var ks=c==='All'?Object.keys(D):[c];var s=0;ks.forEach(function(k){s+=D[k][y]||0});return s}
+function fmt(n){return n==null?'BLANK':'£'+n.toLocaleString('en-GB')+'K'}
+function pct(n){return n==null?'BLANK':(n*100).toFixed(1)+'%'}
+function renderLab(){
+ $$('#catChips .chip').forEach(function(c){c.setAttribute('aria-pressed',c.textContent===cat?'true':'false')});
+ $$('#yrChips .chip').forEach(function(c){c.setAttribute('aria-pressed',c.textContent===String(yr)?'true':'false')});
+ var ty=tot(cat,yr),hasLY=D.Bikes[yr-1]!=null,ly=hasLY?tot(cat,yr-1):null,yoy=ly?(ty-ly)/ly:null,share=ty/tot('All',yr);
+ $('#ctxLine').textContent='Filter context: '+(cat==='All'?'Product[Category] unfiltered':'Product[Category] = "'+cat+'"')+', Date[Year] = '+yr;
+ var out=$('#daxOut');out.textContent='';
+ [['Total Sales',fmt(ty)],['Sales LY',fmt(ly)],['YoY %',pct(yoy)],['% of Total',pct(share)]].forEach(function(p){var d=el('div');d.appendChild(el('small',null,p[0]));d.appendChild(el('strong',null,p[1]));out.appendChild(d)});
+ $('#daxShown').textContent='% of Total =\nDIVIDE(\n  [Total Sales],\n  CALCULATE([Total Sales], ALL(Product))\n)\n\n// ALL(Product) removes the category slicer from the\n// denominator, so it always sums every category\n// for the selected year.'}
+cats.forEach(function(c){var b=el('button','chip',c);b.type='button';b.addEventListener('click',function(){cat=c;renderLab()});$('#catChips').appendChild(b)});
+yrs.forEach(function(y){var b=el('button','chip',String(y));b.type='button';b.addEventListener('click',function(){yr=y;renderLab()});$('#yrChips').appendChild(b)});
+renderLab();
+
+/* cookbook */
+var COOK=[
+ {t:'Basics',n:'Total Sales',c:'Total Sales =\nSUM ( Sales[SalesAmount] )',d:'The base measure. Build every other measure on top of it.'},
+ {t:'Basics',n:'Profit Margin %',c:'Profit Margin % =\nDIVIDE ( [Profit], [Total Sales] )',d:'DIVIDE returns blank instead of an error when the denominator is zero.'},
+ {t:'Basics',n:'Unique customers',c:'Customers =\nDISTINCTCOUNT ( Sales[CustomerKey] )',d:'Counts each customer once, however many orders they placed.'},
+ {t:'Basics',n:'Revenue with a row calculation',c:'Revenue =\nSUMX ( Sales, Sales[Quantity] * Sales[UnitPrice] )',d:'SUMX iterates row by row, then adds up the results.'},
+ {t:'Time',n:'Sales last year',c:'Sales LY =\nCALCULATE (\n    [Total Sales],\n    SAMEPERIODLASTYEAR ( \'Date\'[Date] )\n)',d:'Needs a proper Date table marked as the date table.'},
+ {t:'Time',n:'Year-on-year %',c:'YoY % =\nDIVIDE ( [Total Sales] - [Sales LY], [Sales LY] )',d:'Reuses two measures, so any fix to either flows through.'},
+ {t:'Time',n:'Year to date',c:'Sales YTD =\nTOTALYTD ( [Total Sales], \'Date\'[Date] )',d:'Resets each January. Add a year-end date argument for a financial year.'},
+ {t:'Time',n:'Running total',c:'Running Total =\nCALCULATE (\n    [Total Sales],\n    FILTER (\n        ALL ( \'Date\'[Date] ),\n        \'Date\'[Date] <= MAX ( \'Date\'[Date] )\n    )\n)',d:'Removes the date filter, then adds back every date up to the current one.'},
+ {t:'Context',n:'% of total',c:'% of Total =\nDIVIDE (\n    [Total Sales],\n    CALCULATE ( [Total Sales], ALL ( Product ) )\n)',d:'Category share of all sales, whatever category is filtered.'},
+ {t:'Context',n:'Use variables',c:'Sales vs Target % =\nVAR Actual = [Total Sales]\nVAR Target = [Sales Target]\nRETURN\n    DIVIDE ( Actual - Target, Target )',d:'Variables are evaluated once, read well and are easier to debug.'},
+ {t:'Context',n:'Pull a value from the one side',c:'Category =\nRELATED ( Product[Category] )',d:'Use RELATED in a calculated column on the many side to fetch a column from the one side.'},
+ {t:'Ranking',n:'Rank categories',c:'Category Rank =\nRANKX (\n    ALL ( Product[Category] ),\n    [Total Sales],\n    ,\n    DESC\n)',d:'Ranks every category against all categories, even when one is selected.'}
+];
+var ctag='All',ck=$('#cook');
+function renderCook(){ck.textContent='';COOK.forEach(function(m){if(ctag!=='All'&&m.t!==ctag)return;var card=el('div','card shine');var top=el('div','top');var l=el('div');l.appendChild(el('span','tag',m.t));var h=el('h3',null,m.n);h.style.marginTop='8px';l.appendChild(h);top.appendChild(l);var cb=el('button','copy','Copy');cb.type='button';cb.addEventListener('click',function(){copyText(m.c,cb)});top.appendChild(cb);card.appendChild(top);card.appendChild(el('pre',null,m.c));card.appendChild(el('p','muted small',m.d));ck.appendChild(card)})}
+['All','Basics','Time','Context','Ranking'].forEach(function(t){var b=el('button','chip',t);b.type='button';b.setAttribute('aria-pressed',t==='All'?'true':'false');b.addEventListener('click',function(){ctag=t;$$('#cookChips .chip').forEach(function(c){c.setAttribute('aria-pressed',c.textContent===t?'true':'false')});renderCook()});$('#cookChips').appendChild(b)});
+renderCook();
+
+/* schema */
+var snow=false;
+var T={
+ fact:{n:'Fact_Sales',f:['SalesKey (PK)','DateKey (FK)','ProductKey (FK)','CustomerKey (FK)','StoreKey (FK)','Quantity','SalesAmount'],i:'The fact table. Grain: one row per product on one order line. It holds keys and numbers you add up, such as Quantity and SalesAmount.'},
+ date:{n:'Dim_Date',f:['DateKey (PK)','Date','Year','Month','Quarter'],i:'The Date dimension. One row per calendar day with no gaps, marked as a date table. Fixing bad dates here keeps time charts honest.'},
+ cust:{n:'Dim_Customer',f:['CustomerKey (PK)','Name','City','Segment'],i:'Who bought. Slicing by segment or city filters the fact table through the one-to-many relationship.'},
+ prod:{n:'Dim_Product',f:['ProductKey (PK)','Name','Category'],i:'What was sold. In a star schema the category sits in this same table, which is simple and fast.'},
+ prodS:{n:'Dim_Product',f:['ProductKey (PK)','Name','CategoryKey (FK)'],i:'In a snowflake the category moves to its own table. It saves a little storage, but adds a join and a harder model to read.'},
+ cat:{n:'Dim_Category',f:['CategoryKey (PK)','Category'],i:'The extra snowflake table. Filters pass from Dim_Category to Dim_Product and then to the fact table.'},
+ store:{n:'Dim_Store',f:['StoreKey (PK)','Store','Region'],i:'Where it was sold. A good place for region-level row-level security.'}
+};
+var sch=$('#schema'),sinfo=$('#schemaInfo');
+function box(k,x,y,w){var t=k==='prod'&&snow?T.prodS:T[k];var h=34+t.f.length*18;return {k:k,t:t,x:x,y:y,w:w,h:h}}
+function ns(tag,attrs){var n=document.createElementNS('http://www.w3.org/2000/svg',tag);for(var a in attrs)n.setAttribute(a,attrs[a]);return n}
+function drawSchema(){
+ sch.textContent='';
+ var fact=box('fact',360,110,190),date=box('date',40,20,150),cust=box('cust',40,260,150),prod=box('prod',640,20,150),store=box('store',640,260,150);
+ var all=[fact,date,cust,prod,store],cat=null;
+ if(snow){prod.x=600;prod.w=140;cat=box('cat',770,20,120);all.push(cat)}
+ function anchor(a,b){var ax=a.x+a.w/2,ay=a.y+a.h/2,bx=b.x+b.w/2,by=b.y+b.h/2;var sx=ax<bx?a.x+a.w:a.x,ex=ax<bx?b.x:b.x+b.w;return [sx,ay,ex,by]}
+ [[date,fact],[cust,fact],[prod,fact],[store,fact]].concat(cat?[[cat,prod]]:[]).forEach(function(p){var a=anchor(p[0],p[1]);var l=ns('line',{x1:a[0],y1:a[1],x2:a[2],y2:a[3],stroke:'#8f6a1a','stroke-width':2,'stroke-dasharray':'6 6'});if(!reduce)l.style.animation='flow 1.2s linear infinite';sch.appendChild(l);var one=ns('text',{x:a[0]+(a[0]<a[2]?6:-14),y:a[1]-6,fill:'#fff3bd','font-size':13,'font-family':'JetBrains Mono,monospace'});one.textContent='1';sch.appendChild(one);var many=ns('text',{x:a[2]+(a[0]<a[2]?-14:6),y:a[3]-6,fill:'#e8bb4a','font-size':13,'font-family':'JetBrains Mono,monospace'});many.textContent='*';sch.appendChild(many)});
+ all.forEach(function(b){var g=ns('g',{'class':'node',tabindex:0,role:'button','aria-label':b.t.n});var isF=b.k==='fact';g.appendChild(ns('rect',{x:b.x,y:b.y,width:b.w,height:b.h,rx:8,fill:isF?'#2a210d':'#14110a',stroke:isF?'#e8bb4a':'#5a4818','stroke-width':isF?2:1.5}));var h=ns('text',{x:b.x+12,y:b.y+22,fill:'#fff3bd','font-size':14,'font-weight':700,'font-family':'Bodoni Moda,Georgia,serif'});h.textContent=b.t.n;g.appendChild(h);b.t.f.forEach(function(f,i){var tx=ns('text',{x:b.x+12,y:b.y+44+i*18,fill:/\((PK|FK)\)/.test(f)?'#e8bb4a':'#d9cfb2','font-size':11,'font-family':'JetBrains Mono,monospace'});tx.textContent=f;g.appendChild(tx)});
+  var pick=function(){$$('.node',sch).forEach(function(n){n.classList.remove('sel')});g.classList.add('sel');sinfo.textContent='';sinfo.appendChild(el('b',null,b.t.n));sinfo.appendChild(el('p','muted',b.t.i))};
+  g.addEventListener('click',pick);g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();pick()}});sch.appendChild(g)});
+ sinfo.textContent='';sinfo.appendChild(el('b',null,snow?'Snowflake':'Star schema'));sinfo.appendChild(el('p','muted',snow?'Dimensions are normalised into further tables. Click Dim_Category to see what changed. Prefer a star unless you have a strong reason.':'One fact table in the centre and flat dimensions around it. Click any table to learn its role.'))}
+$('#bStar').addEventListener('click',function(){snow=false;$('#bStar').setAttribute('aria-pressed','true');$('#bStar').classList.add('on');$('#bSnow').setAttribute('aria-pressed','false');$('#bSnow').classList.remove('on');drawSchema()});
+$('#bSnow').addEventListener('click',function(){snow=true;$('#bSnow').setAttribute('aria-pressed','true');$('#bSnow').classList.add('on');$('#bStar').setAttribute('aria-pressed','false');$('#bStar').classList.remove('on');drawSchema()});
+drawSchema();
+
+/* lakehouse */
+var ST=[
+ {n:'Sources',s:'Excel, CSV, SQL, APIs',c:'',t:'Your sales workbook, a CSV export and a database table. Nothing is cleaned yet, and each source has its own quirks.'},
+ {n:'Bronze',s:'Raw, as received',c:'bronze',t:'Land the files as Delta tables with no changes, plus load time and source name. The record dated 1906 is still here, because bronze keeps the evidence.'},
+ {n:'Silver',s:'Cleaned and conformed',c:'silver',t:'Fix data types, remove duplicates, standardise names, and quarantine impossible dates such as 1906 for review. Each table is one tidy subject.'},
+ {n:'Gold',s:'Business-ready',c:'gold-s',t:'Build the star schema here: Fact_Sales plus Dim_Date, Dim_Product, Dim_Customer and Dim_Store. Add any pre-aggregated tables for heavy reports.'},
+ {n:'Semantic model',s:'Relationships and DAX',c:'',t:'Connect the gold tables, mark the Date table, define measures once such as [Total Sales] and [Sales LY], and add row-level security.'},
+ {n:'Report',s:'Power BI visuals',c:'',t:'Reports and apps read the semantic model. Analysts focus on questions, because trusted numbers are already defined upstream.'}
+];
+var fl=$('#flow'),finfo=$('#flowInfo');
+function pickStage(i){$$('.stage',fl).forEach(function(s,j){s.classList.toggle('on',i===j)});finfo.textContent='';finfo.appendChild(el('b',null,ST[i].n));finfo.appendChild(el('p','muted',ST[i].t))}
+ST.forEach(function(s,i){var b=el('button','stage '+s.c);b.type='button';b.appendChild(el('b',null,s.n));b.appendChild(el('span',null,s.s));var bar=el('div','bar');bar.appendChild(el('i'));b.appendChild(bar);b.addEventListener('click',function(){pickStage(i)});fl.appendChild(b)});
+pickStage(1);
+
+/* exam */
+var ROUNDS=[
+{n:'Visualisation basics',b:'Chart choice and the report canvas',q:[
+ {q:'Which visual is best for showing how sales change month by month?',o:['Line chart','Pie chart','Card','Slicer'],w:'A line chart connects ordered points, so trends are easy to read over time.'},
+ {q:'You need to compare exact values across many product categories. What is the clearest choice?',o:['Sorted bar chart','Donut chart with 12 slices','Scatter chart','Gauge'],w:'Bars compare lengths accurately. A donut with many slices is hard to read.'},
+ {q:'What does a slicer do?',o:['Filters the other visuals on the page','Creates a new table','Adds a relationship','Refreshes the data source'],w:'A slicer is an on-page filter that changes the filter context for other visuals.'},
+ {q:'Which visual suits a single headline number such as total sales?',o:['Card','Line chart','Matrix','Treemap'],w:'A card displays one value, usually a measure.'},
+ {q:'A user right-clicks a bar and jumps to a detail page already filtered to that category. What is this feature?',o:['Drill through','Bookmark','Conditional formatting','Q&A'],w:'Drill through passes the selected value as a filter to a target page.'}]},
+{n:'DAX fundamentals',b:'Measures, columns and context',q:[
+ {q:'What is the main difference between a measure and a calculated column?',o:['A measure calculates at query time using filter context; a column is stored per row','A measure is stored per row; a column responds to slicers','They are identical','A measure can only use text'],w:'Measures are evaluated when a visual asks for them. Calculated columns are computed at refresh and stored.'},
+ {q:'Total Sales = SUM(Sales[SalesAmount]) is best described as:',o:['A measure','A calculated column','A relationship','A parameter'],w:'It aggregates a column and returns one value per filter context, which is a measure.'},
+ {q:'Which function evaluates an expression for each row before adding the results?',o:['SUMX','SUM','DISTINCTCOUNT','DIVIDE'],w:'SUMX is an iterator. SUM only adds up one column.'},
+ {q:'Why use DIVIDE(a, b) instead of a / b?',o:['It handles a zero or blank denominator safely','It runs faster on every model','It rounds the result','It ignores filters'],w:'DIVIDE returns blank, or an alternate result you choose, instead of an error when the denominator is zero.'},
+ {q:'What is filter context?',o:['The set of filters from slicers, rows, columns and visual filters that apply to a calculation','A saved bookmark','The data type of a column','A Power Query step'],w:'Every cell in a visual has its own filter context, which is why one measure gives different answers in different places.'}]},
+{n:'DAX advanced',b:'CALCULATE, time and variables',q:[
+ {q:'What does CALCULATE do?',o:['Evaluates an expression in a modified filter context','Creates a calculated column','Sorts a table','Imports data'],w:'CALCULATE changes the filters, then evaluates the expression you give it.'},
+ {q:'What does CALCULATE([Total Sales], ALL(Product)) return?',o:['Total sales ignoring any filters on Product','Total sales for only the selected product','The number of products','An error'],w:'ALL removes the filters on the Product table, so it is the typical denominator for a percent of total.'},
+ {q:'Time intelligence functions such as TOTALYTD need what?',o:['A Date table with continuous dates, marked as the date table','A bidirectional relationship on every table','A calculated column on the fact table','A DirectQuery connection'],w:'They rely on a complete, gap-free date table related to your fact table.'},
+ {q:'SAMEPERIODLASTYEAR(Date[Date]) is normally used:',o:['Inside CALCULATE as a filter','As a visual-level filter only','To create a relationship','As a Power Query step'],w:'It returns a table of shifted dates that CALCULATE uses to modify the date filter.'},
+ {q:'What is a key benefit of VAR in DAX?',o:['It is evaluated once and makes formulas easier to read','It stores data permanently','It overrides relationships','It disables filter context'],w:'Variables avoid repeated calculation and give steps clear names.'},
+ {q:'In a calculated column on the many side, which function fetches a value from the related one side?',o:['RELATED','RELATEDTABLE','LOOKUPVALUE only','ALL'],w:'RELATED follows the relationship towards the one side and returns a single value. RELATEDTABLE goes the other way and returns a table.'}]},
+{n:'Data modelling and schemas',b:'Star, snowflake and grain',q:[
+ {q:'What does a star schema consist of?',o:['One central fact table surrounded by dimension tables','One large flat table','Many fact tables joined to each other','Only dimension tables'],w:'Facts in the middle, dimensions around them. This is the shape Power BI is optimised for.'},
+ {q:'Which relationship setup is the usual best practice?',o:['One-to-many from dimension to fact, single direction','Many-to-many everywhere','Bidirectional on every relationship','No relationships, use LOOKUPVALUE'],w:'Single-direction, one-to-many relationships keep filtering predictable and fast.'},
+ {q:'Which belongs in a fact table?',o:['Foreign keys and numeric measures such as Quantity','Customer names and addresses','Product descriptions','Colour palettes'],w:'Descriptive attributes belong in dimensions. Facts hold keys and values you aggregate.'},
+ {q:'How does a snowflake schema differ from a star schema?',o:['Dimensions are normalised into additional related tables','It has no fact table','It uses only one dimension','It cannot be used in Power BI'],w:'A snowflake splits dimensions, for example Product into Product and Category. It works, but adds joins.'},
+ {q:'What does "grain" of a fact table mean?',o:['What one row represents','The number of columns','The file size','The refresh schedule'],w:'Define the grain first, for example one product per order line, and then every column must fit it.'},
+ {q:'Why be careful with bidirectional filtering?',o:['It can create ambiguity and slow the model','It deletes data','It stops measures working','It is not allowed in Power BI'],w:'Filters flowing both ways can create ambiguous paths and unexpected results, so use it only with a clear reason.'}]},
+{n:'Lakehouse and Fabric',b:'Medallion layers and Direct Lake',q:[
+ {q:'A lakehouse combines which two ideas?',o:['Data lake flexibility and data warehouse structure','Excel and PowerPoint','OLTP and email','Reports and macros'],w:'It stores open files cheaply like a lake, and adds tables, transactions and SQL like a warehouse.'},
+ {q:'In the medallion architecture, what is the silver layer?',o:['Cleaned and conformed data','Raw data exactly as received','Final star schema only','Archived backups'],w:'Bronze is raw, silver is cleaned and standardised, gold is curated for the business.'},
+ {q:'Which open table format underpins Fabric lakehouse tables?',o:['Delta','CSV','XML','PDF'],w:'Delta adds a transaction log over Parquet files for ACID updates and time travel.'},
+ {q:'What is Direct Lake in Microsoft Fabric?',o:['A mode where the model reads Delta tables in OneLake without importing a copy','A way to email reports','A visual type','A DAX function'],w:'It gives near-Import performance without a scheduled copy of the data into the model.'},
+ {q:'What is OneLake?',o:['A single logical data lake for a whole Fabric organisation','A Power BI visual','A DAX library','A chart theme'],w:'Fabric workloads read and write to one shared logical lake, which reduces duplicate copies.'},
+ {q:'Where would you normally build the star schema in a medallion design?',o:['Gold layer','Bronze layer','Outside the lakehouse only','Inside each visual'],w:'Gold holds business-ready tables shaped for reporting, including facts and dimensions.'}]},
+{n:'Sharing with stakeholders',b:'Publishing, embedding and security',q:[
+ {q:'What does Publish to web do?',o:['Makes the report publicly accessible without sign-in','Shares only with your manager','Exports to Excel','Encrypts the model'],w:'Anyone with the link can view it, so it must never be used for confidential data.'},
+ {q:'What is the recommended way to share a report with colleagues securely?',o:['Publish to a workspace and distribute through an app with access control','Email the .pbix to everyone','Use Publish to web','Post screenshots publicly'],w:'Workspaces and apps respect permissions and licences, and keep one governed version.'},
+ {q:'Which option embeds a report on an intranet page while still requiring sign-in?',o:['Secure embed code','Publish to web','Export to PDF','Screenshot'],w:'Secure embed keeps viewers authenticated and respects their access to the report.'},
+ {q:'What does row-level security (RLS) do?',o:['Restricts which rows of data each user can see','Hides report pages','Speeds up refresh','Changes chart colours'],w:'Roles use DAX filters on tables, so a regional manager sees only their own region.'},
+ {q:'A stakeholder wants a one-off snapshot for a meeting pack. What is the simplest option?',o:['Export to PDF or PowerPoint','Power BI Embedded','Publish to web','Build a Fabric lakehouse'],w:'Exports are quick and static. They are not interactive and go stale as data changes.'}]},
+{n:'Transferable tools',b:'Moving between BI platforms',q:[
+ {q:'Which Tableau feature is closest to a DAX measure?',o:['Calculated field or LOD expression','Dashboard action','Story point','Bookmark'],w:'Calculated fields and level-of-detail expressions define reusable calculations, much as measures do.'},
+ {q:'What does Looker use to define its model layer?',o:['LookML','DAX','M','VBA'],w:'LookML defines dimensions, measures and joins in code, so it plays the role of the semantic model.'},
+ {q:'Which of these is an open-source BI tool?',o:['Apache Superset','Power BI Desktop','Tableau Desktop','Qlik Sense Enterprise'],w:'Superset is open source and connects to SQL databases and warehouses.'},
+ {q:'Which skill carries over to every BI tool?',o:['Designing a clean star-schema model','Memorising one tool\'s menu layout','Using one chart theme','Typing speed'],w:'A clear grain, tidy dimensions and well-defined measures matter in every tool.'},
+ {q:'Which tool pair solves the same lakehouse problem as Microsoft Fabric?',o:['Databricks and Snowflake','Notepad and Paint','Outlook and Teams','Word and PowerPoint'],w:'Databricks and Snowflake also provide scalable storage, compute and governed tables.'}]}
+];
+var KEY='subash-dax-best-v1',best=[];
+try{best=JSON.parse(sget(KEY)||'[]')}catch(e){best=[]}
+if(!Array.isArray(best))best=[];
+var ri=-1,qi=0,sc=0,missed=[],box2=$('#examBox');
+function saveBest(i,v){if(best[i]==null||v>best[i]){best[i]=v;sset(KEY,JSON.stringify(best))}}
+function mastery(){var s=0;ROUNDS.forEach(function(r,i){s+=(best[i]||0)/r.q.length});var p=Math.round(s/ROUNDS.length*100);$('#masteryBar').style.width=p+'%';$('#masteryTxt').textContent=p+'%'}
+function renderRounds(){var w=$('#rounds');w.textContent='';ROUNDS.forEach(function(r,i){var b=el('button','round'+(i===ri?' on':''));b.type='button';b.appendChild(el('span','n','ROUND '+(i+1)));b.appendChild(el('b',null,r.n));b.appendChild(el('span','muted small',r.b));var bs=best[i]!=null?'Best: '+best[i]+' / '+r.q.length:'Not attempted';b.appendChild(el('span','best',bs));var m=el('div','meter');var f=el('i');f.style.width=((best[i]||0)/r.q.length*100)+'%';m.appendChild(f);b.appendChild(m);b.addEventListener('click',function(){startRound(i)});w.appendChild(b)});mastery()}
+function startRound(i){ri=i;qi=0;sc=0;missed=[];renderRounds();showQ()}
+function showQ(){
+ var r=ROUNDS[ri],q=r.q[qi];box2.textContent='';
+ var h=el('div','qhead');h.appendChild(el('span',null,'ROUND '+(ri+1)+' · '+r.n.toUpperCase()));h.appendChild(el('span',null,'QUESTION '+(qi+1)+' OF '+r.q.length+' · SCORE '+sc));box2.appendChild(h);
+ var pm=el('div','meter');pm.style.marginBottom='18px';var pf=el('i');pf.style.width=(qi/r.q.length*100)+'%';pm.appendChild(pf);box2.appendChild(pm);
+ box2.appendChild(el('div','q',q.q));
+ var wrap=el('div','answers'),done=false,why=el('div'),L=['A','B','C','D','E'];
+ shuffle(q.o.map(function(t,i){return i})).forEach(function(oi,pos){
+  var b=el('button','ans');b.type='button';b.appendChild(el('i',null,L[pos]));b.appendChild(el('span',null,q.o[oi]));
+  b.addEventListener('click',function(){if(done)return;done=true;var ok=oi===0;if(ok){sc++}else{missed.push(q)}
+   $$('.ans',wrap).forEach(function(x){x.disabled=true});b.classList.add(ok?'ok':'bad');
+   if(!ok){$$('.ans',wrap).forEach(function(x){if(x.textContent.slice(1)===q.o[0])x.classList.add('ok')})}
+   why.className='why';why.textContent='';var bb=el('b',null,ok?'Correct. ':'Not quite. ');why.appendChild(bb);why.appendChild(document.createTextNode(q.w));
+   var nx=el('button','btn solid',qi+1<r.q.length?'Next question':'See result');nx.type='button';nx.style.marginTop='14px';nx.addEventListener('click',function(){qi++;if(qi<r.q.length){showQ()}else{finish()}});why.appendChild(document.createElement('br'));why.appendChild(nx);nx.focus()});
+  wrap.appendChild(b)});
+ box2.appendChild(wrap);box2.appendChild(why)}
+function finish(){
+ var r=ROUNDS[ri],p=sc/r.q.length;saveBest(ri,sc);renderRounds();box2.textContent='';
+ var s=el('div','score');s.appendChild(el('span','eyebrow','ROUND '+(ri+1)+' COMPLETE'));var n=el('div','num gold-text',sc+' / '+r.q.length);s.appendChild(n);
+ s.appendChild(el('p','lede',p>=.9?'Mastered. This round is gold.':p>=.7?'Solid. Review the misses and go again for a perfect score.':'Worth another pass. Revisit the section above, then retry.'));
+ if(missed.length){var m=el('div','missed');m.appendChild(el('b',null,'Review these'));missed.forEach(function(q){var d=el('div');d.appendChild(el('div',null,q.q));var a=el('div','muted small','Answer: '+q.o[0]+'. '+q.w);a.style.marginTop='4px';d.appendChild(a);m.appendChild(d)});s.appendChild(m)}
+ var row=el('div','cta');var rt=el('button','btn',' Retake round');rt.textContent='Retake round';rt.type='button';rt.addEventListener('click',function(){startRound(ri)});row.appendChild(rt);
+ if(ri+1<ROUNDS.length){var nx=el('button','btn solid','Next round');nx.type='button';nx.addEventListener('click',function(){startRound(ri+1)});row.appendChild(nx)}
+ s.appendChild(row);box2.appendChild(s)}
+function intro(){box2.textContent='';var s=el('div','score');s.appendChild(el('span','eyebrow','READY WHEN YOU ARE'));s.appendChild(el('h3','gold-text','Choose a round above to begin'));s.appendChild(el('p','muted','Start with Round 1 if you are new, or jump straight to the topic you want to test.'));var b=el('button','btn solid','Begin Round 1');b.type='button';b.addEventListener('click',function(){startRound(0)});s.appendChild(b);box2.appendChild(s)}
+renderRounds();intro();
+})();
+</script>
+<footer class="sg-sitefoot"><a href="../">← All projects</a><span>DAX Guideway · a learning build by Subash Gauchan</span><span><a href="mailto:thakalidenil@gmail.com">thakalidenil@gmail.com</a> · <a href="https://www.linkedin.com/in/subash-gauchan16/" rel="noopener noreferrer" target="_blank">LinkedIn</a></span></footer><script>(function(){var b=document.querySelector(".sg-toggle"),n=document.querySelector(".sg-sitebar nav");if(!b||!n)return;b.addEventListener("click",function(){var o=n.classList.toggle("is-open");b.setAttribute("aria-expanded",String(o));b.textContent=o?"×":"☰"});})();</script>
+</body></html>

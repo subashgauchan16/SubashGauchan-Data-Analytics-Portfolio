@@ -1,0 +1,38 @@
+/* page.css — small shared pieces for the case-study pages that the V2 design system (site-v2.css + site-v3-editorial.css)
+   does not already provide. Tokens are the site's own V2 tokens; the aliases below let the case-study components use them. */
+body[data-page="folio"]{
+  --bg2:var(--panel); --bg3:var(--panel2); --ivory:var(--text); --yellow:var(--gold); --gold-light:var(--gold2);
+  --ink:#0a1011; --brass:#9c6e25; --good:var(--mint); --bad:#e58f7e; --line2:rgba(178,211,202,.12); --wrap:1280px;
+  --blue:#7fb4d9; --soft:#b4c5bd;
+}
+body[data-page="folio"]{overflow-x:clip}
+.mono{font-family:var(--mono)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+.skip{position:absolute;left:16px;top:-60px;z-index:80;background:var(--gold);color:#0c1110;padding:10px 16px;border-radius:99px;font-weight:700;text-decoration:none;transition:top .2s}
+.skip:focus{top:12px}
+:focus-visible{outline:2px solid var(--gold2);outline-offset:3px;border-radius:4px}
+#progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,#8b641d,var(--gold2));box-shadow:0 0 14px rgba(233,189,89,.35);z-index:60}
+.tip{position:fixed;z-index:70;pointer-events:none;background:#f1f1e9;color:#0a1011;padding:8px 12px;border-radius:10px;font:500 13px var(--sans);line-height:1.45;opacity:0;transition:opacity .15s;max-width:240px;box-shadow:0 12px 30px rgba(0,0,0,.45)}
+.toast{height:22px;margin-top:6px;font:400 12px var(--mono);color:var(--gold);letter-spacing:.06em}
+.top{position:fixed;right:22px;bottom:22px;width:46px;height:46px;border-radius:50%;background:var(--gold);color:#0c1110;border:0;cursor:pointer;font-size:20px;opacity:0;pointer-events:none;transform:translateY(14px);transition:all .3s;z-index:45}
+.top.show{opacity:1;pointer-events:auto;transform:none}
+/* the V2 system hides .reveal until its own script marks it; the case-study pages run their own reveal logic */
+.gm-folio .reveal{opacity:1;transform:none}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+.callout{background:linear-gradient(115deg,rgba(24,64,58,.36),rgba(10,20,22,.78));border:1px solid rgba(158,228,197,.18);border-left:3px solid var(--mint);border-radius:0 14px 14px 0;padding:22px 26px;max-width:78ch;margin-top:22px;font-size:15px;color:#d7e3dc}
+.callout strong{color:var(--mint);font-weight:700}
+.callout a{color:var(--gold)}
+.repo{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.rcard{display:flex;flex-direction:column;background:linear-gradient(145deg,rgba(20,43,47,.98),rgba(8,17,21,.98));border:1px solid var(--line);border-radius:var(--radius);padding:24px;text-decoration:none;transition:transform .3s,border-color .3s}
+a.rcard:hover{transform:translateY(-6px);border-color:var(--line-hi)}
+.rcard .t{font:400 11px var(--mono);color:var(--gold);letter-spacing:.1em;margin-bottom:10px;text-transform:uppercase}
+.rcard h4{margin:0 0 10px;font:500 22px/1.25 var(--serif)}
+.rcard p{margin:0 0 18px;color:var(--soft);font-size:14px;flex:1}
+.rcard .go{font:700 13px var(--sans);color:var(--gold);display:flex;gap:8px;align-items:center}
+a.rcard:hover .go{gap:14px}
+.rcard .go.off{color:var(--dim)}
+.crumb{padding:26px 0 0;font:400 12px var(--mono);letter-spacing:.12em;color:var(--dim);text-transform:uppercase}
+.crumb a{color:var(--gold);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}}
