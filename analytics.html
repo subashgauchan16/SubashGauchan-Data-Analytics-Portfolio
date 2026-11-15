@@ -3,12 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0d141c">
+  <meta name="theme-color" content="#252723">
   <meta name="description" content="Interactive analytics dashboard — Sales performance, product mix, market analysis, and forecasting models.">
   <title>Analytics Dashboard — Subash Gauchan</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inria+Serif:wght@400;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="folio.css">
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"
           integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt"
           crossorigin="anonymous"></script>
@@ -89,19 +91,19 @@
         <div class="stagger-children" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;">
           <div class="card-3d" style="padding:24px;text-align:center;">
             <div class="metric-value" style="color:var(--ice-bright);font-family:var(--font-display);font-size:32px;font-weight:570;">$85.3M</div>
-            <div style="color:#8fa3ad;font-size:11px;text-transform:uppercase;letter-spacing:.08em;">Total revenue</div>
+            <div style="color:#71736B;font-size:11px;text-transform:uppercase;letter-spacing:.08em;">Total revenue</div>
           </div>
           <div class="card-3d" style="padding:24px;text-align:center;">
             <div class="metric-value" style="color:var(--brass);font-family:var(--font-display);font-size:32px;font-weight:570;">37.8%</div>
-            <div style="color:#8fa3ad;font-size:11px;text-transform:uppercase;letter-spacing:.08em;">Profit margin</div>
+            <div style="color:#71736B;font-size:11px;text-transform:uppercase;letter-spacing:.08em;">Profit margin</div>
           </div>
           <div class="card-3d" style="padding:24px;text-align:center;">
             <div class="metric-value" style="color:var(--ice-bright);font-family:var(--font-display);font-size:32px;font-weight:570;">72.5%</div>
-            <div style="color:#8fa3ad;font-size:11px;text-transform:uppercase;letter-spacing:.08em;">Bikes revenue share</div>
+            <div style="color:#71736B;font-size:11px;text-transform:uppercase;letter-spacing:.08em;">Bikes revenue share</div>
           </div>
           <div class="card-3d" style="padding:24px;text-align:center;">
             <div class="metric-value" style="color:var(--green);font-family:var(--font-display);font-size:32px;font-weight:570;">46.8%</div>
-            <div style="color:#8fa3ad;font-size:11px;text-transform:uppercase;letter-spacing:.08em;">Canada margin</div>
+            <div style="color:#71736B;font-size:11px;text-transform:uppercase;letter-spacing:.08em;">Canada margin</div>
           </div>
         </div>
       </div>
@@ -190,27 +192,27 @@
     document.addEventListener('DOMContentLoaded', function() {
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const layout3d = {
-        title: { text: 'Revenue · Cost · Profit by Country (3D)', font: { color: '#edf3f5' } },
+        title: { text: 'Revenue · Cost · Profit by Country (3D)', font: { color: '#F5F3ED' } },
         paper_bgcolor: 'rgba(0,0,0,0)',
         plot_bgcolor: 'rgba(0,0,0,0)',
-        font: { color: '#b6c3c9' },
+        font: { color: '#71736B' },
         scene: {
           bgcolor: 'rgba(0,0,0,0)',
-          xaxis: { title: 'Revenue (M)', gridcolor: 'rgba(217,176,116,.10)' },
-          yaxis: { title: 'Cost (M)', gridcolor: 'rgba(217,176,116,.10)' },
-          zaxis: { title: 'Profit (M)', gridcolor: 'rgba(217,176,116,.10)' }
+          xaxis: { title: 'Revenue (M)', gridcolor: 'rgba(182,148,55,.10)' },
+          yaxis: { title: 'Cost (M)', gridcolor: 'rgba(182,148,55,.10)' },
+          zaxis: { title: 'Profit (M)', gridcolor: 'rgba(182,148,55,.10)' }
         },
         margin: { t: 50, b: 10, l: 10, r: 10 }
       };
 
       // ── 3D Scatter: Country financial performance ──
       const countryData = [
-        { country: 'United States',  revenue: 27.98, cost: 16.91, profit: 11.07, color: '#d9b074' },
-        { country: 'Australia',       revenue: 21.30, cost: 13.10, profit: 8.20,  color: '#86d6df' },
-        { country: 'Canada',          revenue: 12.45, cost:  6.66, profit: 5.79,  color: '#d9b074' },
-        { country: 'Germany',         revenue:  8.75, cost:  5.20, profit: 3.55,  color: '#86d6df' },
-        { country: 'France',          revenue:  6.85, cost:  4.30, profit: 2.55,  color: '#d9b074' },
-        { country: 'UK',              revenue:  5.90, cost:  3.70, profit: 2.20,  color: '#86d6df' },
+        { country: 'United States',  revenue: 27.98, cost: 16.91, profit: 11.07, color: '#B69437' },
+        { country: 'Australia',       revenue: 21.30, cost: 13.10, profit: 8.20,  color: '#E8CE76' },
+        { country: 'Canada',          revenue: 12.45, cost:  6.66, profit: 5.79,  color: '#B69437' },
+        { country: 'Germany',         revenue:  8.75, cost:  5.20, profit: 3.55,  color: '#E8CE76' },
+        { country: 'France',          revenue:  6.85, cost:  4.30, profit: 2.55,  color: '#B69437' },
+        { country: 'UK',              revenue:  5.90, cost:  3.70, profit: 2.20,  color: '#E8CE76' },
       ];
 
       const scatterTrace = {
@@ -220,11 +222,11 @@
         mode: 'markers+text',
         text: countryData.map(d => d.country),
         textposition: 'top center',
-        textfont: { color: '#edf3f5', size: 11 },
+        textfont: { color: '#F5F3ED', size: 11 },
         marker: {
           size: countryData.map(d => d.profit * 3),
           color: countryData.map(d => d.color),
-          line: { width: 1, color: '#0d141c' },
+          line: { width: 1, color: '#252723' },
           opacity: 0.85
         },
         type: 'scatter3d'
@@ -240,18 +242,18 @@
       const profit =  [3.46, 3.38,  5.94,  5.45, 7.82,  6.91];
 
       const trendData = [
-        { x: years, y: revenue, name: 'Revenue', line: { color: '#d9b074', width: 3 } },
-        { x: years, y: cost,    name: 'Cost',    line: { color: '#86d6df', width: 3 } },
-        { x: years, y: profit,  name: 'Profit',  line: { color: '#9bd0b4', width: 3 } }
+        { x: years, y: revenue, name: 'Revenue', line: { color: '#B69437', width: 3 } },
+        { x: years, y: cost,    name: 'Cost',    line: { color: '#E8CE76', width: 3 } },
+        { x: years, y: profit,  name: 'Profit',  line: { color: '#FFCC00', width: 3 } }
       ];
 
       const trendLayout = {
-        title: { text: 'Annual financial performance (source units)', font: { color: '#edf3f5' } },
+        title: { text: 'Annual financial performance (source units)', font: { color: '#F5F3ED' } },
         paper_bgcolor: 'rgba(0,0,0,0)',
         plot_bgcolor: 'rgba(0,0,0,0)',
-        font: { color: '#b6c3c9' },
-        xaxis: { gridcolor: 'rgba(217,176,116,.10)' },
-        yaxis: { gridcolor: 'rgba(217,176,116,.10)' },
+        font: { color: '#71736B' },
+        xaxis: { gridcolor: 'rgba(182,148,55,.10)' },
+        yaxis: { gridcolor: 'rgba(182,148,55,.10)' },
         margin: { t: 50, b: 20, l: 40, r: 20 }
       };
 
@@ -266,17 +268,17 @@
         values: [72.5, 17.7, 9.8],
         labels: ['Bikes (£61.8M)', 'Accessories (£15.1M)', 'Clothing (£8.4M)'],
         type: 'pie',
-        marker: { colors: ['#d9b074', '#86d6df', '#9bd0b4'] },
+        marker: { colors: ['#B69437', '#E8CE76', '#FFCC00'] },
         textinfo: 'label+percent',
-        textfont: { color: '#edf3f5', size: 12 },
+        textfont: { color: '#F5F3ED', size: 12 },
         hole: 0.5
       }];
 
       const mixLayout = {
-        title: { text: 'Revenue by product category', font: { color: '#edf3f5' } },
+        title: { text: 'Revenue by product category', font: { color: '#F5F3ED' } },
         paper_bgcolor: 'rgba(0,0,0,0)',
         plot_bgcolor: 'rgba(0,0,0,0)',
-        font: { color: '#b6c3c9' },
+        font: { color: '#71736B' },
         margin: { t: 40, b: 10, l: 10, r: 10 }
       };
 
@@ -288,16 +290,16 @@
         y: countryData.map(d => d.country),
         orientation: 'h',
         type: 'bar',
-        marker: { color: '#d9b074' }
+        marker: { color: '#B69437' }
       }];
 
       const marketLayout = {
-        title: { text: 'Revenue by country', font: { color: '#edf3f5' } },
+        title: { text: 'Revenue by country', font: { color: '#F5F3ED' } },
         paper_bgcolor: 'rgba(0,0,0,0)',
         plot_bgcolor: 'rgba(0,0,0,0)',
-        font: { color: '#b6c3c9' },
-        xaxis: { gridcolor: 'rgba(217,176,116,.10)' },
-        yaxis: { gridcolor: 'rgba(217,176,116,.10)' },
+        font: { color: '#71736B' },
+        xaxis: { gridcolor: 'rgba(182,148,55,.10)' },
+        yaxis: { gridcolor: 'rgba(182,148,55,.10)' },
         margin: { t: 40, b: 20, l: 60, r: 20 }
       };
 
@@ -310,14 +312,14 @@
           y: [3.8, 3.9, 4.0, 4.0, 5.2, 4.3, 4.1, 4.1],
           name: 'Simple Baseline (MAE)',
           type: 'scatter', mode: 'lines+markers',
-          line: { color: '#86d6df', width: 3 }
+          line: { color: '#E8CE76', width: 3 }
         },
         {
           x: ['2016','2017','2018','2019','2020','2021','2022','2023'],
           y: [4.0, 4.1, 4.1, 4.1, 5.4, 4.5, 4.1, 4.1],
           name: 'Ridge Regression (MAE)',
           type: 'scatter', mode: 'lines+markers',
-          line: { color: '#d9b074', width: 3, dash: 'dash' }
+          line: { color: '#B69437', width: 3, dash: 'dash' }
         }
       ];
 
@@ -329,7 +331,7 @@
           name: 'Baseline (Dir. Acc.)',
           type: 'scatter', mode: 'lines+markers',
           yaxis: 'y2',
-          line: { color: '#86d6df', width: 3 }
+          line: { color: '#E8CE76', width: 3 }
         },
         {
           x: ['2016','2017','2018','2019','2020','2021','2022','2023'],
@@ -337,18 +339,18 @@
           name: 'Ridge (Dir. Acc.)',
           type: 'scatter', mode: 'lines+markers',
           yaxis: 'y2',
-          line: { color: '#d9b074', width: 3, dash: 'dash' }
+          line: { color: '#B69437', width: 3, dash: 'dash' }
         }
       ];
 
       const forecastLayout = {
-        title: { text: 'Forecast error: Ridge vs Baseline', font: { color: '#edf3f5' } },
+        title: { text: 'Forecast error: Ridge vs Baseline', font: { color: '#F5F3ED' } },
         paper_bgcolor: 'rgba(0,0,0,0)',
         plot_bgcolor: 'rgba(0,0,0,0)',
-        font: { color: '#b6c3c9' },
-        xaxis: { gridcolor: 'rgba(217,176,116,.10)' },
-        yaxis: { gridcolor: 'rgba(217,176,116,.10)', title: 'Return MAE %' },
-        yaxis2: { gridcolor: 'rgba(217,176,116,.10)', title: 'Directional Acc. %', overlaying: 'y', side: 'right' },
+        font: { color: '#71736B' },
+        xaxis: { gridcolor: 'rgba(182,148,55,.10)' },
+        yaxis: { gridcolor: 'rgba(182,148,55,.10)', title: 'Return MAE %' },
+        yaxis2: { gridcolor: 'rgba(182,148,55,.10)', title: 'Directional Acc. %', overlaying: 'y', side: 'right' },
         margin: { t: 50, b: 20, l: 50, r: 50 }
       };
 

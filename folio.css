@@ -1,0 +1,198 @@
+/* ================================================================
+   folio.css — Figma Design System Layer
+   Aligns new portfolio pages with verified Figma design tokens.
+   Loads AFTER styles.css + animations.css to override incorrect
+   variable values WITHOUT modifying the protected styles.css.
+   Source: folio-figma-design-tokens.json + folio-figma-audit.md
+   Reference: Downloads/subash-port-web/ (correct Figma-aligned impl)
+   ================================================================ */
+
+/* === Override incorrect styles.css variables with Figma-verified values === */
+:root {
+  /* Dark surfaces — Figma verified */
+  --ink: #252723;           /* Figma: primary dark bg (#252723) */
+  --ink-soft: #141218;      /* Figma: deep dark bg (#141218) */
+  --slate: #020024;         /* Figma: dark blue-black bg */
+  --slate-light: #252923;   /* Figma: dark bg variant */
+
+  /* Text — Figma verified */
+  --paper: #F5F3ED;         /* Figma: light text on dark (#F5F3ED) */
+  --muted: #71736B;         /* Figma: secondary text gray (#71736B) */
+
+  /* Gold palette — Figma verified */
+  --brass: #B69437;         /* Figma: gold accent warm — PRIMARY (#B69437) */
+  --brass-soft: #E8CE76;    /* Figma: light gold highlight (#E8CE76) */
+  --ice: #E8CE76;           /* Figma: light gold (replaces old blue accent) */
+  --ice-bright: #FFCC00;    /* Figma: gold accent bright (#FFCC00) */
+  --green: #FFCC00;         /* Figma: gold accent bright (replaces old green) */
+  --amber: #E5A000;         /* Figma: orange accent (#E5A000) */
+  --brass-stroke: #B98500;  /* Figma: dark gold stroke (#B98500) */
+
+  /* Borders — Figma verified (#D6D7CD) */
+  --line: rgba(214,215,205,.25);
+  --line-strong: rgba(214,215,205,.4);
+
+  /* Layout — Figma verified (1440px container, 1280px content) */
+  --content: 1240px;        /* Reference impl uses 1240px */
+  --radius: 4px;            /* Figma: buttons, cards, tags = 4px */
+  --radius-lg: 8px;         /* Figma: dashboard frames = 8px */
+
+  /* Typography — Figma verified */
+  --font-display: "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "Roboto Mono", ui-monospace, monospace;
+  --font-serif: "Inria Serif", Georgia, serif;
+}
+
+/* === Global overrides === */
+body {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-size-adjust: 100%;
+}
+
+html { font-family: var(--font-body); }
+
+/* Headings → Inter, all weights available via Google Fonts */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-body);
+  letter-spacing: -.02em;
+}
+
+/* Override hardcoded Segoe UI display font from styles.css */
+:root { font-family: var(--font-body); }
+
+/* === Override hardcoded section backgrounds from styles.css === */
+.site-header {
+  background: rgba(37,39,35,.9);  /* Figma #252723 with transparency */
+  border-bottom-color: var(--line);
+}
+.signal-strip { background: var(--ink-soft); }
+.about-section { background: var(--slate); }
+.project-visual { background: var(--slate); }
+.cv-sidebar { background: var(--ink-soft); }
+.cv-footnote { background: var(--ink-soft); }
+.cv-sidebar section + section { border-top-color: var(--line); }
+.site-footer { background: var(--slate); }
+
+/* === Override hardcoded gray text colors from styles.css === */
+.hero-links, .hero-intro,
+.primary-nav, .primary-nav a,
+.project-meta, .project-lede, .project-copy, .project-status,
+.signal-inner p, .signal-inner li,
+.about-body p,
+.brief-facts dt, .brief-facts dd, .brief-note,
+.visual-footnote,
+.breadcrumb, .breadcrumb a,
+.cv-contact, .cv-contact a,
+.cv-item li, .cv-list li,
+.skill-list li,
+.footer-inner,
+.cv-sidebar p,
+.sec-note, .chart-tick, .chart-unit {
+  color: var(--muted);
+}
+
+/* Override specific hardcoded light grays to Figma muted */
+.brief-facts dd,
+.project-meta,
+.signal-inner li,
+.cv-item li { color: var(--paper); }
+
+/* === Remove shadows (Figma is flat) === */
+.brief-panel {
+  box-shadow: none;
+  border-radius: 4px;
+}
+.brief-panel::before { border-radius: 4px; }
+
+.project-card:hover,
+.card-3d:hover {
+  box-shadow: none;
+  transform: translateY(-3px);
+}
+
+.button-3d:hover::after { opacity: 0; }
+
+/* === Update border radii to Figma values (4px) === */
+.project-card, .project, .project-featured, .project-visual,
+.kpi, .card, .fact, .rcard, .brief-panel, .edu-card, .detail,
+.skill, .tabs, .tab, .panel, .seg, .stack, .heat div,
+.cv-sidebar, .cv-item, .mods span {
+  border-radius: 4px !important;
+}
+
+/* Keep 8px for chart/dashboard containers */
+.sales-chart-wrap, .geo-canvas, .hero-canvas {
+  border-radius: 8px;
+}
+
+/* === Replace blue/green accents with gold === */
+.status-dot {
+  background: var(--brass);
+  box-shadow: 0 0 0 3px rgba(182,148,55,.12);
+}
+
+.wordmark-mark {
+  background: var(--brass);
+  color: var(--ink);
+  border-radius: 4px;
+}
+
+.button-primary {
+  color: var(--ink);
+  background: var(--brass);
+}
+.button-primary:hover {
+  background: var(--brass-soft);
+  color: var(--ink);
+}
+
+a:hover, .nav-contact:hover, .nav-pill:hover {
+  color: var(--brass-soft);
+}
+
+.primary-nav .nav-contact {
+  color: var(--paper);
+  border-color: var(--line-strong);
+}
+.primary-nav .nav-contact:hover {
+  color: var(--ink);
+  background: var(--brass);
+  border-color: var(--brass);
+}
+
+/* Flow recommendation — Figma gold */
+.flow-recommendation {
+  background: rgba(182,148,55,.08);
+  border-color: rgba(182,148,55,.45);
+}
+.flow-recommendation .flow-index { color: var(--brass); }
+
+/* Override chart bar colors */
+.chart-bar { fill: #B69437; }
+.chart-bar.muted-bar { fill: var(--muted); }
+.chart-bar.highlight-bar { fill: var(--brass); }
+
+/* Evidence ledger marks — Figma colors */
+.ledger-mark.calc { background: var(--brass); }
+.ledger-mark.fact { background: var(--brass-soft); }
+.ledger-mark.rec { background: var(--brass); }
+
+/* CV item markers */
+.cv-item li::marker, .cv-list li::marker { color: var(--brass); }
+.pdf-note {
+  background: rgba(182,148,55,.08);
+  border-left: 2px solid var(--brass);
+}
+
+/* Progress bar */
+#progress {
+  background: linear-gradient(90deg, var(--brass), var(--brass-soft));
+}
+
+/* === Theme color for mobile browsers ===
+   Handled via <meta> tag in each HTML page. */

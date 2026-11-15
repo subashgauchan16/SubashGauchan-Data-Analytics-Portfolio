@@ -3,6 +3,7 @@
 
 > A hands-on portfolio exploring business intelligence, sales and KPI analysis, market-entry research, operational improvement, AI workflow controls, and exploratory financial forecasting. Built through independent learning alongside a BSc (Hons) Applied Management degree, with project methods, findings, and limitations documented transparently.
 
+**Website:** [denilthaks.github.io/SubashtheAnalyst](https://denilthaks.github.io/SubashtheAnalyst/) · **Repository layout:** `site/` is the published website; `data/` holds the source workbooks, `docs/` the audit and reconciliation notes, and `source/` the 3D chart build. Only `site/` is deployed. The previous version of the site is kept on the `archive/legacy-v1` branch.
 **Website:** [subashgauchan16.github.io/SubashGauchan-Data-Analytics-Portfolio](https://subashgauchan16.github.io/SubashGauchan-Data-Analytics-Portfolio/) · **Repository layout:** `site/` is the published website; `data/` holds the source workbooks, `docs/` the audit and reconciliation notes, `source/` the 3D chart build, and `reference/` archived earlier versions. Only `site/` is deployed.
 
 **Connect with me on LinkedIn:** [Subash Gauchan](https://www.linkedin.com/in/subash-gauchan16/)

@@ -1,7 +1,7 @@
 # The only production deployment for https://subashgauchan16.github.io/SubashGauchan-Data-Analytics-Portfolio/
 #
 # Owner: this workflow. It publishes the site/ folder and nothing else, so the workbooks
-# in data/, the notes in docs/ and the archives in reference/ are never part of the website.
+# in data/ and the notes in docs/ are never part of the website.
 # (They are still public in this repository; a folder name is not a security boundary.)
 #
 # Requires: Settings → Pages → Build and deployment → Source = "GitHub Actions".
@@ -9,7 +9,8 @@
 # would publish the repository root through Jekyll and race this workflow.
 #
 # Retired: .github/workflows/static.yml (same trigger, same concurrency group, so the two
-# cancelled each other) and the inert root pages.yml. Both are kept in reference/deploy-history/.
+# cancelled each other) and the inert root pages.yml. Both are kept on the archive/legacy-v1
+# branch under reference/deploy-history/.
 name: Deploy static portfolio to GitHub Pages
 
 on:

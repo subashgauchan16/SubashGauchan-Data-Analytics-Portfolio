@@ -3,12 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0d141c">
+  <meta name="theme-color" content="#252723">
   <meta name="description" content="Subash Gauchan — Technical skills visualised with 3D analytics and proficiency dashboards.">
   <title>Skills — Subash Gauchan</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inria+Serif:wght@400;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="folio.css">
   <script type="module" src="app.js" defer></script>
   <!-- Plotly for 3D skill charts -->
   <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
@@ -226,44 +228,44 @@
         text: ['9', '8', '7', '7.5', '6', '6.5', '7', '5', '8', '6'],
         textposition: 'middle center',
         line: {
-          color: '#d9b074',
+          color: '#B69437',
           width: 3
         },
         marker: {
-          color: '#d9b074',
+          color: '#B69437',
           size: 8,
           line: {
-            color: '#0d141c',
+            color: '#252723',
             width: 2
           }
         },
         fill: 'toself',
-        fillcolor: 'rgba(217,176,116,.12)'
+        fillcolor: 'rgba(182,148,55,.12)'
       };
 
       const radarLayout = {
         title: {
           text: 'Skill Proficiency Radar',
-          font: { color: '#edf3f5', size: 16 }
+          font: { color: '#F5F3ED', size: 16 }
         },
         polar: {
           bgcolor: 'rgba(0,0,0,0)',
           radialaxis: {
             visible: true,
-            color: '#9baeb7',
-            gridcolor: 'rgba(217,176,116,.12)',
+            color: '#71736B',
+            gridcolor: 'rgba(182,148,55,.12)',
             range: [0, 10],
-            tickfont: { color: '#9baeb7' }
+            tickfont: { color: '#71736B' }
           },
           angularaxis: {
-            color: '#9baeb7',
-            gridcolor: 'rgba(217,176,116,.12)',
-            tickfont: { color: '#9baeb7', size: 11 }
+            color: '#71736B',
+            gridcolor: 'rgba(182,148,55,.12)',
+            tickfont: { color: '#71736B', size: 11 }
           }
         },
         paper_bgcolor: 'rgba(0,0,0,0)',
         plot_bgcolor: 'rgba(0,0,0,0)',
-        font: { color: '#edf3f5' },
+        font: { color: '#F5F3ED' },
         showlegend: false,
         margin: { t: 40, b: 20, l: 20, r: 20 }
       };
@@ -285,26 +287,26 @@
         y: ['Excel', 'Python', 'SQL', 'Power BI', 'Tableau', 'Looker Studio', 'Statistics', 'Forecasting', 'Data Cleaning', 'Process Analysis'],
         orientation: 'h',
         marker: {
-          color: ['#d9b074', '#d9b074', '#d9b074', '#d9b074', '#d9b074', '#d9b074', '#d9b074', '#d9b074', '#d9b074', '#d9b074'],
+          color: ['#B69437', '#B69437', '#B69437', '#B69437', '#B69437', '#B69437', '#B69437', '#B69437', '#B69437', '#B69437'],
         }
       };
 
       const barLayout = {
         title: {
           text: 'Skill Proficiency (%)',
-          font: { color: '#edf3f5', size: 16 }
+          font: { color: '#F5F3ED', size: 16 }
         },
         paper_bgcolor: 'rgba(0,0,0,0)',
         plot_bgcolor: 'rgba(0,0,0,0)',
-        font: { color: '#edf3f5' },
+        font: { color: '#F5F3ED' },
         xaxis: {
-          gridcolor: 'rgba(217,176,116,.12)',
-          color: '#9baeb7',
+          gridcolor: 'rgba(182,148,55,.12)',
+          color: '#71736B',
           range: [0, 100]
         },
         yaxis: {
-          gridcolor: 'rgba(217,176,116,.12)',
-          color: '#9baeb7',
+          gridcolor: 'rgba(182,148,55,.12)',
+          color: '#71736B',
           tickfont: { size: 11 }
         },
         margin: { t: 40, b: 20, l: 20, r: 20 },
@@ -314,7 +316,7 @@
       Plotly.newPlot('skills-bar', [barTrace], barLayout, { responsive: true });
 
       // Animate bars on load
-      barTrace.marker.color = ['#d9b074', '#d9b074', '#d9b074', '#d9b074', '#d9b074', '#d9b074', '#d9b074', '#d9b074', '#d9b074', '#d9b074'];
+      barTrace.marker.color = ['#B69437', '#B69437', '#B69437', '#B69437', '#B69437', '#B69437', '#B69437', '#B69437', '#B69437', '#B69437'];
     });
   </script>
 </body>
