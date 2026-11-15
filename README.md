@@ -4,6 +4,7 @@
 > A hands-on portfolio exploring business intelligence, sales and KPI analysis, market-entry research, operational improvement, AI workflow controls, and exploratory financial forecasting. Built through independent learning alongside a BSc (Hons) Applied Management degree, with project methods, findings, and limitations documented transparently.
 
 **Website:** [denilthaks.github.io/SubashtheAnalyst](https://denilthaks.github.io/SubashtheAnalyst/) · **Repository layout:** `site/` is the published website; `data/` holds the source workbooks, `docs/` the audit and reconciliation notes, and `source/` the 3D chart build. Only `site/` is deployed. The previous version of the site is kept on the `archive/legacy-v1` branch.
+**Website:** [subashgauchan16.github.io/SubashGauchan-Data-Analytics-Portfolio](https://subashgauchan16.github.io/SubashGauchan-Data-Analytics-Portfolio/) · **Repository layout:** `site/` is the published website; `data/` holds the source workbooks, `docs/` the audit and reconciliation notes, `source/` the 3D chart build, and `reference/` archived earlier versions. Only `site/` is deployed.
 
 **Connect with me on LinkedIn:** [Subash Gauchan](https://www.linkedin.com/in/subash-gauchan16/)
 
@@ -11,7 +12,7 @@
   <img src="https://img.shields.io/badge/Portfolio-Analytics%20%26%20Business%20Insight-17365D?style=for-the-badge&logo=github" alt="Analytics and Business Insight Portfolio" />
   <a href="https://www.linkedin.com/in/subash-gauchan16/"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
   <a href="mailto:thakalidenil@gmail.com"><img src="https://img.shields.io/badge/Email-Contact-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
-  <a href="https://github.com/denilthaks"><img src="https://img.shields.io/badge/GitHub-Projects-181717?style=for-the-badge&logo=github" alt="GitHub" /></a>
+  <a href="https://github.com/subashgauchan16"><img src="https://img.shields.io/badge/GitHub-Projects-181717?style=for-the-badge&logo=github" alt="GitHub" /></a>
 </p>
 
 ---
@@ -54,7 +55,7 @@ My projects explore commercial performance, market-entry strategy, operational i
 
 I am largely self-taught, and AI-assisted development has become one of the ways I learn. I sometimes call it *vibe coding*, but I do not see the process as simply asking an AI tool to generate code and accepting whatever comes back. I start with a problem, explain the context, work through the logic, build a practical solution, and then test where it works and where it falls short.
 
-For example, I am building [CurioTrail](https://denilthaks.github.io/CURIO/#/), a story-driven learning game that turns concepts such as SQL, Python, Excel and KPI analysis into interactive challenges. I learn by experimenting with ideas and building things I can use to practise them. AI tools can accelerate implementation, but I remain responsible for checking the behaviour, understanding the decisions I can explain, and being clear about limitations.
+For example, I am building [CurioTrail](https://subashgauchan16.github.io/CURIO/), a story-driven learning game that turns concepts such as SQL, Python, Excel and KPI analysis into interactive challenges. I learn by experimenting with ideas and building things I can use to practise them. AI tools can accelerate implementation, but I remain responsible for checking the behaviour, understanding the decisions I can explain, and being clear about limitations.
 
 That approach connects with how I think about analysis: begin with a real problem, gather context, reason through possible solutions, test assumptions and improve the result. Analysts cannot prevent every business problem, but they can help identify risks earlier, investigate root causes and support better-informed decisions before issues become more costly.
 
@@ -119,7 +120,7 @@ gantt
 
 ## CurioTrail — A story-driven learning game
 
-**[▶ Play CurioTrail directly](https://denilthaks.github.io/CURIO/#/)** · [View the source code](https://github.com/denilthaks/CURIO)
+**[▶ Play CurioTrail directly](https://subashgauchan16.github.io/CURIO/)** · [View the source code](https://github.com/subashgauchan16/CURIO)
 
 *Best viewed on a modern browser; this prototype is still being iterated. A verified project screenshot will be added when one is available.*
 
@@ -394,7 +395,98 @@ This is an **exploratory prototype**, not a validated trading strategy. The repo
 
 **Conclusion:** The current evaluation does not demonstrate a reliable predictive edge or investment profitability. This project demonstrates an analytical workflow and critical model evaluation—not investment advice.
 
-**Full HTML report:** [Walk-Forward Forecast Review](https://denilthaks.github.io/SubashtheAnalyst/projects/forecasting/walk-forward-review.html) — the charts and key insights above are also visible directly in this README without opening the report.
+**Full HTML report:** [Walk-Forward Forecast Review](https://subashgauchan16.github.io/SubashGauchan-Data-Analytics-Portfolio/projects/forecasting/walk-forward-review.html) — the charts and key insights above are also visible directly in this README without opening the report.
+
+## Resolute Quant — A market research terminal (work in progress)
+
+**[Read the case study](https://subashgauchan16.github.io/SubashGauchan-Data-Analytics-Portfolio/projects/resolute-quant/)** · [Visit the project site](https://subashgauchan16.github.io/Resolute-Quant/) · [View the source code](https://github.com/subashgauchan16/Resolute-Quant)
+
+*Work in progress. The terminal runs on your own computer and places no orders. The project site is a summary and shows no market data.*
+
+Resolute Quant is a personal terminal for studying crypto, stocks, indices and FX. All market data passes through a local Python backend that validates it, and bad provider values are dropped and counted rather than repaired.
+
+I use the project to learn how a dependable market data system works, then how to test forecasts honestly. Stages have written acceptance checks, and failures are published with the results. AI tools support development, and I set the goals, review the changes and decide what ships.
+
+### What it shows right now
+
+*These screenshots show the real interface running on **simulated data**: the instruments are fictional and the prices are generated, because the data providers' terms do not allow their data to be displayed publicly. The numbers are not real prices.*
+
+![Resolute Quant monitoring view with simulated data: watchlist, candlestick chart, order book, trade tape and session statistics](./site/assets/img/rq/terminal-crypto.webp)
+
+**The live monitoring view.** The watchlist is on the left, with the price chart, volume and 20-period moving average in the centre. The order book and trade tape are on the right, and session statistics run along the bottom.
+
+![Resolute Quant company view with simulated data: a fictional company with a daily chart, profile, news and key statistics](./site/assets/img/rq/terminal-markets.webp)
+
+**The company and markets view.** Stocks, indices and currencies replace the order book with a company profile and news. Timeframes run from one minute to one month, offered only where the provider really supplies them. The company and headlines shown are placeholders.
+
+![Resolute Quant after its data stops, with simulated data: red status badges, an offline note and dimmed prices](./site/assets/img/rq/terminal-offline.webp)
+
+**When the data stops.** Status badges turn red, a note says what to do, and last known prices dim so they do not read as current. The page recovers without a reload when the backend returns. The dashed line is a saved price alert.
+
+### Built since: the research workspace
+
+*These screenshots run the terminal's own backend code on prices generated from a seeded random walk, for fictional companies. Panels that need saved research results show invented placeholders, or say they are unavailable, and a banner marks every screen. None of it is real market data or a real model result.*
+
+![Resolute Quant workspace overview with simulated data: a daily chart with indicators, a readout table, next-day volatility, a live Monte Carlo fan, a regime dial and the bot pipeline](./site/assets/img/rq/workspace-overview.webp)
+
+**The workspace overview.** One company at a time. The readout table says where it stands (regime, risk level, expected move, data age, model status), and its signal row stays empty until a model passes every gate. Around it: the chart with Bollinger bands, moving averages and RSI, next-day volatility (a size, never a direction), a Monte Carlo fan re-run as the price moves, the regime dial (labelled unproven) and the bot pipeline, where real money is blocked.
+
+![Resolute Quant markets chart with simulated data, drawn as Heikin-Ashi candles, with the chart style menu above it](./site/assets/img/rq/markets-heikin-ashi.webp)
+
+**Chart styles.** A menu above the price chart redraws the same bars as candles, hollow candles, Heikin-Ashi, OHLC bars, a line or an area. The legend always shows the real bar under the cursor, because Heikin-Ashi draws averaged prices.
+
+![Resolute Quant risk page with simulated data: scenarios, a Monte Carlo price range and a histogram of where the paths ended](./site/assets/img/rq/workspace-risk.webp)
+
+**Risk and scenarios.** The worst and best day in the sample, two-standard-deviation moves, and a block bootstrap of the company's own returns (10,000 paths of 5-day blocks over 20 trading days), with the spread of where the paths ended.
+
+![Resolute Quant bot office with simulated data: a 3D office with labelled desks and an office log](./site/assets/img/rq/workspace-bots.webp)
+
+**The bot office.** Each desk is one program and lights up only when that program is working. Planned desks are dark and do nothing yet. Below the office are the gates every bot must pass and the safety controls.
+
+### The models, step by step
+
+The research uses daily and 5-minute bars for 41 large US companies from Alpaca's IEX feed, for private research only. The data terms do not allow figures derived from that data to be published, so this section gives the method and the verdict for each model, not the scores. None of the results has been independently reviewed yet.
+
+**Every model goes through the same eight steps:**
+
+1. **Write the question down.** One target and one horizon, before any data is read for it.
+2. **Fix the pass marks.** The benchmarks to beat, the statistical bar and the costs are set in code before the run, and never changed after.
+3. **Seal the final period.** The latest data is locked away. A guard stops any run whose dates would reach it.
+4. **Build features that can't see the future.** A test changes future prices and checks that no earlier row changes.
+5. **Walk forward in time order.** Train on the past, test on the next block, and leave a gap so the two never overlap.
+6. **Beat simple rules after costs.** "No change", the past average and similar rules are the bar. Spread, slippage and fees are taken off, and the test is repeated at double cost.
+7. **Count every attempt.** Each variant tried is recorded, so a lucky one can't be picked quietly.
+8. **Check the checker.** On invented markets, the test must find nothing where nothing exists, and find an edge that was planted on purpose.
+
+A model that passes all eight then faces the sealed period once, then a forward record of forecasts saved before the day, then at least 50 days of paper trading. Real money stays blocked after that, until a separate review.
+
+| # | Model | Question | Method | Verdict |
+|---|---|---|---|---|
+| 1 | Next-day direction | Will tomorrow's price be higher or lower? | Twelve features (recent returns, volatility, trend, momentum, volume). LightGBM, XGBoost, CatBoost and a small neural network against no change, the past average, the last return and ridge regression. Pass mark: beat every benchmark after costs, walk-forward t-statistic of at least 2.5. | Failed: no edge found |
+| 2 | Next 5-minute bar | The same question for the next 5-minute bar | The same models on 5-minute bars, with the last fifth sealed and split conformal prediction intervals. Pass mark: lower error than every benchmark and t of at least 3 on daily averages. | Failed: worse than no change |
+| 3 | Market regime | Is the market calm, normal or stressed? | A Gaussian hidden Markov model and a Gaussian mixture on daily return, 20-day volatility and 20-day trend. States chosen by BIC; live readings use only data up to the latest bar. Judged as a volatility forecast against simple rules. | Failed: kept on screen, marked unproven |
+| 4 | Next-day volatility | How much will the price move tomorrow, either way? | HAR regression on realised variance from 5-minute bars, per company and pooled, against last value, past average, 20-day average and EWMA. Pass mark: lower QLIKE and squared error than every benchmark, Newey-West t of at least 3. | Failed: beat the rules, missed the t mark |
+| 5 | Take-profit or stop | Within the next hour, is a profit target or a stop hit first? | Triple-barrier label (up 2 ATR or down 1 ATR within 12 five-minute bars). LightGBM, CatBoost and a 1D convolutional network, walked forward by whole sessions with purging and an embargo. Five pass marks, including double cost. | Failed: no model passed |
+| 6 | Five-day volatility (main test) | How much will the price move over the next week? | Pooled log-HAR, LightGBM and a blend of EWMA and HAR, all against EWMA. Past-data comparison run; the blend chosen as the candidate. The real test is 78 weeks of forecasts saved before each week. | Not started: design not yet frozen |
+
+**Tools that describe risk, not forecast it:**
+
+- **Monte Carlo.** Five ways to simulate a company: day-by-day bootstrap, 5-day blocks, normal, Student t and regime-based. A portfolio version simulates all companies together, and a forward record of its ranges started in November 2026.
+- **Risk board.** A likelihood-by-impact matrix with fixed cut points, a flag for unusual moves, and correlation heatmaps.
+- **Paper trading simulator.** Built and tested on invented prices only: limits on position size, order value and total exposure, a 5% one-bar loss stop, a 3% daily loss limit, a 10% drawdown limit and a kill switch. It is not connected to any broker or bot.
+- **Forensic checks.** Separate tests on invented markets. They found one design fault: the convolutional network could not tell how recent a move was, so its result is not counted as evidence.
+
+### Status and direction
+
+**Current status:** the terminal and its research workspace work, with two acceptance checks still open. Five forecasting experiments have run and none passed its pre-set tests, so there is no evidence of any edge. The main five-day volatility test is designed but not frozen or started.
+
+**Where it is going:** freeze and run the five-day volatility test, then agent bots on paper trading only. The paper simulator is built and waits for review. Real execution would come only after separate approval, and it is not built.
+
+**Why it matters to me:** I am working towards a career in corporate finance and teaching myself quantitative finance independently. This project turns volatility, costs, risk limits and overfitting into problems I have to solve, and builds the validation and audit habits finance teams rely on.
+
+**What this project demonstrates:** data validation, system integration, test design, reading provider terms before using data, and transparent reporting of limitations.
+
+---
 
 ## 5. Green Motion — Operations analysis and improvement proposal
 
@@ -486,7 +578,7 @@ I am particularly interested in opportunities where I can combine analytical ski
 
 - **Email:** [thakalidenil@gmail.com](mailto:thakalidenil@gmail.com)
 - **LinkedIn:** [linkedin.com/in/subash-gauchan16](https://www.linkedin.com/in/subash-gauchan16/)
-- **GitHub:** [github.com/denilthaks](https://github.com/denilthaks)
+- **GitHub:** [github.com/denilthaks](https://github.com/subashgauchan16)
 - **Location:** Woking, Surrey, United Kingdom
 
 ---

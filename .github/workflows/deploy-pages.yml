@@ -1,4 +1,4 @@
-# The only production deployment for https://denilthaks.github.io/SubashtheAnalyst/
+# The only production deployment for https://subashgauchan16.github.io/SubashGauchan-Data-Analytics-Portfolio/
 #
 # Owner: this workflow. It publishes the site/ folder and nothing else, so the workbooks
 # in data/ and the notes in docs/ are never part of the website.
@@ -15,7 +15,7 @@ name: Deploy static portfolio to GitHub Pages
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main-2"]
   workflow_dispatch:
 
 permissions:
